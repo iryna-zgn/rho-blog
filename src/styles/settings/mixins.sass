@@ -1,0 +1,33 @@
+@mixin line-hover
+  position: relative
+  transition: $transition
+  &:before,
+  &:after
+    content: ''
+    position: absolute
+    top: 100%
+    display: block
+    width: 0
+    height: 1px
+    background-color: rgba($color-accent, .35)
+    transition: $transition
+  &:before
+    left: 0
+  &:after
+    right: 0
+  &:hover
+    color: $color-accent
+    &:before,
+    &:after
+      width: 50%
+
+@mixin overflow-text($lines: 3, $fz: 20px, $lh: 1.4)
+  display: block
+  display: -webkit-box
+  max-height: $fz*$lh*$lines
+  font-size: $fz
+  line-height: $lh
+  -webkit-line-clamp: $lines
+  -webkit-box-orient: vertical
+  overflow: hidden
+  text-overflow: ellipsis
