@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Egyptian All Enclusive",
+    "img": "/static/posts/images/img-1.jpg",
+    "text": "post description 1"
+  },
+  {
+    "title": "Egyptian Flowers",
+    "img": "/static/posts/images/img-2.jpg",
+    "text": "post description 2"
+  },
+  {
+    "title": "Ras Mohammad National Park",
+    "img": "/static/posts/images/img-3.jpg",
+    "text": "post description 3"
+  }
+]

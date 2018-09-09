@@ -5,9 +5,10 @@
     display: inline-block
   &__title
     margin-bottom: 30px
-    transition: $transition
-    &:hover
-      color: $color-accent
+    a
+      transition: $transition
+      &:hover
+        color: $color-accent
   &__img
     margin-bottom: 20px
   img
@@ -15,47 +16,3 @@
     max-width: 100%
   &__desc
     +overflow-text(7)
-  &__more-btn
-    font-size: 18px
-    color: $color-text-lighter
-    +line-hover
-
-.post-prev
-  font-size: 0
-  &:not(:last-child)
-    margin-bottom: 70px
-  &__const,
-  &__var
-    display: inline-block
-    vertical-align: top
-  &__const
-    position: relative
-    width: 300px
-    margin-right: -300px
-    z-index: 1
-  &__var
-    width: 100%
-    padding-left: 320px
-    padding-top: 7px
-  &__img
-    display: block
-    background-position: center
-    background-size: cover
-    background-repeat: no-repeat
-  &__dummy-img
-    display: block
-    max-width: 100%
-    width: 100%
-    opacity: 0
-    visibility: hidden
-  &__title
-    margin-bottom: 10px
-    transition: $transition
-    &:hover
-      color: $color-accent
-  &__desc
-    +overflow-text(3, 18px)
-  &__more-btn
-    font-size: 18px
-    color: $color-text-lighter
-    +line-hover

@@ -1,0 +1,50 @@
+.post-prev
+  &:not(:last-child)
+    margin-bottom: 70px
+  &__img
+    display: block
+    margin-bottom: 20px
+    background-position: center
+    background-size: cover
+    background-repeat: no-repeat
+  &__dummy-img
+    display: block
+    max-width: 100%
+    width: 100%
+    opacity: 0
+    visibility: hidden
+  &__title
+    margin-bottom: 10px
+    a
+      transition: $transition
+      &:hover
+        color: $color-accent
+  &__desc
+    +overflow-text(3, 18px)
+
+@media only screen and (min-width: 480px)
+  .post-prev
+    font-size: 0
+    &__const,
+    &__var
+      display: inline-block
+      vertical-align: top
+    &__const
+      position: relative
+      width: 200px
+      margin-right: -200px
+      z-index: 1
+    &__var
+      width: 100%
+      padding-left: 220px
+      padding-top: 7px
+    &__img
+      margin-bottom: 0
+
+@media only screen and (min-width: 768px)
+  .post-prev
+    &__const
+      width: 300px
+      margin-right: -300px
+    &__var
+      padding-left: 320px
