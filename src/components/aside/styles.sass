@@ -1,7 +1,16 @@
 .aside
   display: flex
-  flex-direction: column
-  justify-content: center
-  text-align: right
-  .header
-    margin-bottom: 50px
+
+@media only screen and (max-width: 767px)
+  .aside
+    justify-content: space-between
+    align-items: flex-start
+
+@media only screen and (min-width: 768px)
+  .aside
+    flex-direction: column
+    justify-content: center
+    align-items: flex-end
+    text-align: right
+    .header
+      margin-bottom: 50px

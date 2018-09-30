@@ -19,14 +19,14 @@ export default {
     BlogLastPost,
     BlogReminingPosts
   },
-  created () {
-    this.loadPosts()
-  },
   computed: {
     ...mapGetters({
-      lastPost: 'posts/lastPost',
-      posts: 'posts/posts'
+      lastPost: 'posts/getLastPost',
+      posts: 'posts/getPosts'
     })
+  },
+  created () {
+    this.loadPosts()
   },
   methods: {
     ...mapActions({

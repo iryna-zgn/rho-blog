@@ -3,27 +3,22 @@
   padding: 50px 20px
   margin: 0 auto
 
-.main-wrapper
-  height: 100vh
-  &__aside
-    position: fixed
-    top: 50px
-    bottom: 50px
-    width: 120px
-    transform: translateX(-140px)
-    transition: $transition
-    &-inner
-      position: absolute
-      height: 100%
-      padding-right: 15px
-      overflow-y: auto
-
 @media only screen and (min-width: 768px)
   .main-wrapper
+    height: 100vh
     &__inner
       display: flex
     &__aside
       transform: none
+      position: fixed
+      top: 50px
+      bottom: 50px
+      width: 120px
+      &-inner
+        position: absolute
+        height: 100%
+        padding-right: 15px
+        overflow-y: auto
     &__main
       width: 100%
       padding-top: 12px

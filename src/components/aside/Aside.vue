@@ -1,18 +1,18 @@
 <template>
   <div class="aside">
     <blog-header/>
-    <blog-footer/>
+    <blog-soc-links/>
   </div>
 </template>
 
 <script>
 import BlogHeader from './../header/Header'
-import BlogFooter from './../footer/Footer'
+import BlogSocLinks from './../soc-links/Soc-links'
 export default {
   name: 'BlogAside',
   components: {
     BlogHeader,
-    BlogFooter
+    BlogSocLinks
   }
 }
 </script>

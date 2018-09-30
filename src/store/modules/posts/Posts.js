@@ -2,11 +2,13 @@ import * as types from './mutation-types'
 export default {
   namespaced: true,
   state: {
-    postsArr: []
+    posts: [],
+    tags: []
   },
   getters: {
-    posts: state => state.postsArr.slice(1),
-    lastPost: state => state.postsArr[0]
+    getPosts: state => state.posts.slice(1),
+    getLastPost: state => state.posts[0],
+    getTags: state => state.tags
   },
   actions: {
     loadPosts ({commit}) {
@@ -26,15 +28,19 @@ export default {
         xobj.send(null)
       }
       loadJSON(function (response) {
-        const postsArr = JSON.parse(response)
-        commit(types.LOAD_POSTS, postsArr)
-        return postsArr
+        const posts = JSON.parse(response)
+        commit(types.LOAD_POSTS, posts)
+        return posts
       })
     }
   },
   mutations: {
-    [types.LOAD_POSTS] (state, postsArr) {
-      state.postsArr = postsArr
+    [types.LOAD_POSTS] (state, posts) {
+      const tagsSet = new Set()
+
+      posts.forEach(e => tagsSet.add(e.tag))
+      state.tags = [...tagsSet]
+      state.posts = posts
     }
   }
 }
