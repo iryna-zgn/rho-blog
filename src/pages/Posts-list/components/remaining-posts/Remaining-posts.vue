@@ -20,6 +20,9 @@
             {{ post.title }}
           </a>
         </h3>
+        <div class="post-prev__tag">
+          #{{ post.tag }}
+        </div>
         <p class="post-prev__desc">
           {{ post.text }}
         </p>

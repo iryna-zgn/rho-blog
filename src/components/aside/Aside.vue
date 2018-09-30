@@ -1,7 +1,9 @@
 <template>
-  <div class="aside">
-    <blog-header/>
-    <blog-soc-links/>
+  <div class="aside-wrapper">
+    <div class="aside">
+      <blog-header/>
+      <blog-soc-links/>
+    </div>
   </div>
 </template>
 

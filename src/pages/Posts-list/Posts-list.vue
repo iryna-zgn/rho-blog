@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import BlogLastPost from './last-post/Last-post'
-import BlogReminingPosts from './remaining-posts/Remaining-posts'
+import BlogLastPost from './components/last-post/Last-post'
+import BlogReminingPosts from './components/remaining-posts/Remaining-posts'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'BlogPostsList',

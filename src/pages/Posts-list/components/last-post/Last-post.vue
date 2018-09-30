@@ -6,6 +6,9 @@
         {{ lastPost.title }}
       </a>
     </h2>
+    <div class="post__tag">
+      #{{ lastPost.tag }}
+    </div>
     <div class="post__img">
       <a href="#">
         <img :src="lastPost.img" alt="">
