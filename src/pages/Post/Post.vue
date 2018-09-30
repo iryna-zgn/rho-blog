@@ -28,12 +28,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      posts: 'posts/getPosts'
-    }),
-    post () {
-      const filteredPosts = this.posts.filter(e => e.rout === this.rout)
-      return filteredPosts[0]
-    }
+      post: 'posts/getCurrentPost'
+    })
   }
 }
 </script>

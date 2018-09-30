@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'RemainingPosts',
   props: {
@@ -49,8 +50,12 @@ export default {
     }
   },
   methods:{
+    ...mapActions({
+      setCurrentPost: 'posts/setCurrentPost'
+    }),
     goToPost(rout) {
       this.$router.push({name:'post', params: {rout}})
+      this.setCurrentPost(rout)
     }
   }
 }
