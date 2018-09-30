@@ -38,9 +38,15 @@ export default {
   mutations: {
     [types.LOAD_POSTS] (state, posts) {
       const tagsSet = new Set()
+      const re =/\/n/ig
 
       posts.forEach(e => tagsSet.add(e.tag))
       state.tags = [...tagsSet]
+
+      posts.forEach(function (e) {
+        e.text = `<p>${e.text.replace(re, '</p><p>')}</p>`
+      })
+
       state.posts = posts
     }
   }

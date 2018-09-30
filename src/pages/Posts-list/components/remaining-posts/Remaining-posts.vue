@@ -24,9 +24,11 @@
         <div class="post-prev__tag">
           #{{ post.tag }}
         </div>
-        <p class="post-prev__desc">
+        <div
+          v-html="post.text"
+          class="post-prev__desc">
           {{ post.text }}
-        </p>
+        </div>
         <a href="#"
           class="more-link"
           @click.prevent="goToPost(post.rout)">

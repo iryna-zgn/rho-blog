@@ -16,9 +16,11 @@
         <img :src="post.img" alt="">
       </a>
     </div>
-    <p class="post__desc">
+    <div
+      v-html="post.text"
+      class="post__desc">
       {{ post.text }}
-    </p>
+    </div>
     <a href="#"
       class="more-link"
       @click.prevent="goToPost(post.rout)">

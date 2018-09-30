@@ -9,9 +9,11 @@
     <div class="post__img">
       <img :src="post.img" alt="">
     </div>
-    <p class="post__text">
+    <div
+      v-html="post.text"
+      class="post__text">
       {{ post.text }}
-    </p>
+    </div>
   </div>
 </template>
 

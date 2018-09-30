@@ -18,14 +18,14 @@ const router = new Router({
       name: 'post',
       component: Post
     }
-  ],
-  scrollBehavior () {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({ x: 0, y: 0 })
-      }, 500)
-    })
-  }
+  ]
+  // scrollBehavior (to, from, savedPosition) {
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //       resolve({ x: 0, y: 0 })
+  //     }, 500)
+  //   })
+  // }
 })
 
 export default router
