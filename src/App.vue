@@ -1,7 +1,7 @@
 <template>
   <div class="container main-wrapper" id="app">
     <div class="main-wrapper__aside">
-      <blog-aside/>      
+      <blog-aside/>
     </div>
     <div class="main-wrapper__main">
       <transition
@@ -15,10 +15,19 @@
 
 <script>
 import BlogAside from './components/aside/Aside'
+import { mapActions } from 'vuex'
 export default {
   name: 'app',
   components: {
     BlogAside
+  },
+  created () {
+    this.loadPosts()
+  },
+  methods: {
+    ...mapActions({
+      loadPosts: 'posts/loadPosts'
+    })
   }
 }
 </script>

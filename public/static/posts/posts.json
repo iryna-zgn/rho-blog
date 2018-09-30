@@ -1,35 +1,47 @@
 [
   {
+    "id": 1,
+    "rout": "egyptian-all-enclusive",
     "tag": "thoughts",
     "title": "Egyptian All Enclusive",
     "img": "/static/posts/images/img-1.jpg",
     "text": "post description 1"
   },
   {
+    "id": 2,
+    "rout": "egyptian-flowers",
     "tag": "films",
     "title": "Egyptian Flowers",
     "img": "/static/posts/images/img-2.jpg",
     "text": "post description 2"
   },
   {
+    "id": 3,
+    "rout": "ras-mohammad-national-park",
     "tag": "travel",
     "title": "Ras Mohammad National Park",
     "img": "/static/posts/images/img-3.jpg",
     "text": "post description 3"
   },
   {
+    "id": 4,
+    "rout": "egyptian-all-enclusive-1",
     "tag": "thoughts",
     "title": "Egyptian All Enclusive",
     "img": "/static/posts/images/img-1.jpg",
     "text": "post description 1"
   },
   {
+    "id": 5,
+    "rout": "egyptian-flowers-1",
     "tag": "films",
     "title": "Egyptian Flowers",
     "img": "/static/posts/images/img-2.jpg",
     "text": "post description 2"
   },
   {
+    "id": 6,
+    "rout": "ras-mohammad-national-park-1",
     "tag": "travel",
     "title": "Ras Mohammad National Park",
     "img": "/static/posts/images/img-3.jpg",

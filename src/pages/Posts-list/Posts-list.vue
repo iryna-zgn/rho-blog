@@ -3,16 +3,16 @@
     v-if="posts.length > 0"
     class="posts-list">
     <blog-last-post
-      :last-post="lastPost"/>
+      :post="lastPost"/>
     <blog-remining-posts
-      :posts="posts"/>
+      :posts="remainingPosts"/>
   </div>
 </template>
 
 <script>
 import BlogLastPost from './components/last-post/Last-post'
 import BlogReminingPosts from './components/remaining-posts/Remaining-posts'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'BlogPostsList',
   components: {
@@ -21,16 +21,9 @@ export default {
   },
   computed: {
     ...mapGetters({
+      posts: 'posts/getPosts',
       lastPost: 'posts/getLastPost',
-      posts: 'posts/getPosts'
-    })
-  },
-  created () {
-    this.loadPosts()
-  },
-  methods: {
-    ...mapActions({
-      loadPosts: 'posts/loadPosts'
+      remainingPosts: 'posts/getRemainingPosts'
     })
   }
 }

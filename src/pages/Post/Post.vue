@@ -1,10 +1,37 @@
 <template>
-  <div>
-    <p>Post Page</p>
+  <div class="post">
+    <h2 class="t2 post__title">
+      {{ post.title }}
+    </h2>
+    <div class="post__tag">
+      #{{ post.tag }}
+    </div>
+    <div class="post__img">
+      <img :src="post.img" alt="">
+    </div>
+    <p class="post__text">
+      {{ post.text }}
+    </p>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
+  name: 'Post',
+  data () {
+    return {
+      rout: this.$route.params.rout
+    }
+  },
+  computed: {
+    ...mapGetters({
+      posts: 'posts/getPosts'
+    }),
+    post () {
+      const filteredPosts = this.posts.filter(e => e.rout === this.rout)
+      return filteredPosts[0]
+    }
+  }
 }
 </script>

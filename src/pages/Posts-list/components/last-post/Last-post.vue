@@ -2,22 +2,28 @@
   <div
     class="post">
     <h2 class="t2 post__title">
-      <a href="#">
-        {{ lastPost.title }}
+      <a href="#"
+          @click.prevent="goToPost(post.rout)">
+        {{ post.title }}
       </a>
     </h2>
     <div class="post__tag">
-      #{{ lastPost.tag }}
+      #{{ post.tag }}
     </div>
     <div class="post__img">
-      <a href="#">
-        <img :src="lastPost.img" alt="">
+      <a href="#"
+        @click.prevent="goToPost(post.rout)">
+        <img :src="post.img" alt="">
       </a>
     </div>
     <p class="post__desc">
-      {{ lastPost.text }}
+      {{ post.text }}
     </p>
-    <a href="#" class="more-link">Continue reading...</a>
+    <a href="#"
+      class="more-link"
+      @click.prevent="goToPost(post.rout)">
+        Continue reading...
+    </a>
   </div>
 </template>
 
@@ -25,9 +31,14 @@
 export default {
   name: 'LastPost',
   props: {
-    lastPost: {
+    post: {
       type: Object,
       default: null
+    }
+  },
+  methods:{
+    goToPost(rout) {
+      this.$router.push({name:'post', params: {rout}})
     }
   }
 }

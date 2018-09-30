@@ -10,15 +10,22 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'PostsList',
+      name: 'postsList',
       component: PostsList
     },
     {
-      path: '/Post',
-      name: 'Post',
+      path: '/post/:rout',
+      name: 'post',
       component: Post
     }
-  ]
+  ],
+  scrollBehavior () {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ x: 0, y: 0 })
+      }, 500)
+    })
+  }
 })
 
 export default router

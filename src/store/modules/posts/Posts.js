@@ -6,8 +6,9 @@ export default {
     tags: []
   },
   getters: {
-    getPosts: state => state.posts.slice(1),
+    getPosts: state => state.posts,
     getLastPost: state => state.posts[0],
+    getRemainingPosts: state => state.posts.slice(1),
     getTags: state => state.tags
   },
   actions: {
