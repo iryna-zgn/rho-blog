@@ -63,7 +63,10 @@ export default {
       this.setCurrentPost(rout)
     },
     getTags (post) {
-      return post.tags.split(', ')
+      const tagsSet = new Set()
+      const tags = post.tags.split(', ')
+      tags.forEach(e => tagsSet.add(e))
+      return [...tagsSet]
     }
   }
 }

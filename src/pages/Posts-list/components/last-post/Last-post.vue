@@ -46,7 +46,10 @@ export default {
   },
   computed: {
     tags () {
-      return this.post.tags.split(', ')
+      const tagsSet = new Set()
+      const tags = this.post.tags.split(', ')
+      tags.forEach(e => tagsSet.add(e))
+      return [...tagsSet]
     }
   },
   methods:{
