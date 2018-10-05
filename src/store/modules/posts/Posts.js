@@ -46,7 +46,10 @@ export default {
       const re =/\/n/ig
       const path = window.location.pathname.split('/')[2]
 
-      posts.forEach(e => tagsSet.add(e.tag))
+      posts.forEach(e => {
+        const tags = e.tags.split(', ')
+        tags.forEach(e => tagsSet.add(e))
+      })
       state.tags = [...tagsSet]
 
       posts.forEach(function (e) {

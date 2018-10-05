@@ -10,10 +10,16 @@
       transition: $transition
       &:hover
         color: $color-accent
-  &__tag
+  &__tags
     margin-bottom: 30px
     color: rgba($color-text-lighter, .4)
     font-size: 16px
+  &__tag
+    display: inline-block
+    vertical-align: middle
+    margin-bottom: 5px
+    &:not(:last-child)
+      margin-right: 7px
   &__img
     margin-bottom: 20px
   img

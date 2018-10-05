@@ -21,14 +21,19 @@
             {{ post.title }}
           </a>
         </h3>
-        <div class="post-prev__tag">
-          #{{ post.tag }}
+        <div class="post-prev__tags">
+          <span
+            v-for="(tag, index) in getTags(post)"
+            :key="index"
+            class="post__tag">
+            #{{ tag }}
+          </span>
         </div>
-        <div
-          v-html="post.text"
+        <p
+          v-html="post.description"
           class="post-prev__desc">
-          {{ post.text }}
-        </div>
+          {{ post.description }}
+        </p>
         <a href="#"
           class="more-link"
           @click.prevent="goToPost(post.rout)">
@@ -40,7 +45,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   name: 'RemainingPosts',
   props: {
@@ -56,6 +61,9 @@ export default {
     goToPost(rout) {
       this.$router.push({name:'post', params: {rout}})
       this.setCurrentPost(rout)
+    },
+    getTags (post) {
+      return post.tags.split(', ')
     }
   }
 }

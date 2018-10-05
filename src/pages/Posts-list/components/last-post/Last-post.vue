@@ -7,8 +7,13 @@
         {{ post.title }}
       </a>
     </h2>
-    <div class="post__tag">
-      #{{ post.tag }}
+    <div class="post__tags">
+      <span
+        v-for="(tag, index) in tags"
+        :key="index"
+        class="post__tag">
+        #{{ tag }}
+      </span>
     </div>
     <div class="post__img">
       <a href="#"
@@ -16,11 +21,11 @@
         <img :src="post.img" alt="">
       </a>
     </div>
-    <div
-      v-html="post.text"
+    <p
+      v-html="post.description"
       class="post__desc">
-      {{ post.text }}
-    </div>
+      {{ post.description }}
+    </p>
     <a href="#"
       class="more-link"
       @click.prevent="goToPost(post.rout)">
@@ -37,6 +42,11 @@ export default {
     post: {
       type: Object,
       default: null
+    }
+  },
+  computed: {
+    tags () {
+      return this.post.tags.split(', ')
     }
   },
   methods:{
