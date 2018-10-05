@@ -9,7 +9,7 @@
     </h2>
     <div class="post__tags">
       <span
-        v-for="(tag, index) in tags"
+        v-for="(tag, index) in post.tags"
         :key="index"
         class="post__tag">
         #{{ tag }}
@@ -42,14 +42,6 @@ export default {
     post: {
       type: Object,
       default: null
-    }
-  },
-  computed: {
-    tags () {
-      const tagsSet = new Set()
-      const tags = this.post.tags.split(', ')
-      tags.forEach(e => tagsSet.add(e))
-      return [...tagsSet]
     }
   },
   methods:{

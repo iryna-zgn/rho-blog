@@ -53,6 +53,10 @@ export default {
       state.tags = [...tagsSet]
 
       posts.forEach(function (e) {
+        const tagsSet = new Set()
+        const tags = e.tags.split(', ')
+        tags.forEach(e => tagsSet.add(e))
+        e.tags = [...tagsSet]
         e.text = `<p>${e.text.replace(re, '</p><p>')}</p>`
       })
 

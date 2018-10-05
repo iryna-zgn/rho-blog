@@ -23,7 +23,7 @@
         </h3>
         <div class="post-prev__tags">
           <span
-            v-for="(tag, index) in getTags(post)"
+            v-for="(tag, index) in post.tags"
             :key="index"
             class="post__tag">
             #{{ tag }}
@@ -61,12 +61,6 @@ export default {
     goToPost(rout) {
       this.$router.push({name:'post', params: {rout}})
       this.setCurrentPost(rout)
-    },
-    getTags (post) {
-      const tagsSet = new Set()
-      const tags = post.tags.split(', ')
-      tags.forEach(e => tagsSet.add(e))
-      return [...tagsSet]
     }
   }
 }

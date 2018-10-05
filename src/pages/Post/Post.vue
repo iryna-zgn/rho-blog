@@ -3,8 +3,13 @@
     <h2 class="t2 post__title">
       {{ post.title }}
     </h2>
-    <div class="post__tag">
-      #{{ post.tag }}
+    <div class="post__tags">
+      <span
+        v-for="(tag, index) in post.tags"
+        :key="index"
+        class="post__tag">
+        #{{ tag }}
+      </span>
     </div>
     <div class="post__img">
       <img :src="post.img" alt="">
