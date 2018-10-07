@@ -3,7 +3,8 @@
     <ul class="main-nav__list">
       <li
         class="main-nav__item">
-        <a href="#" class="main-nav__link">
+        <a href="#" class="main-nav__link"
+          @click.prevent="goToAbout">
           about me
         </a>
       </li>
@@ -48,6 +49,9 @@ export default {
     filterPosts (tag) {
       this.$router.push({name:'posts', params: {tag}})
       this.setFilteringTag(tag)
+    },
+    goToAbout () {
+      this.$router.push({name: 'about'})
     }
   }
 }
