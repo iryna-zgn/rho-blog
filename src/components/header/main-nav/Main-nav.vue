@@ -11,7 +11,10 @@
         v-for="(tag, index) in tags"
         :key="index"
         class="main-nav__item">
-        <a href="#" class="main-nav__link">
+        <a
+          href="#"
+          class="main-nav__link"
+          @click.prevent="filterPosts(tag)">
           #{{ tag }}
         </a>
       </li>
@@ -20,13 +23,27 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'BlogNav',
+  data () {
+    return {
+      activeClass: 'is-active'
+    }
+  },
   computed: {
     ...mapGetters({
       tags: 'posts/getTags'
     })
+  },
+  methods: {
+    ...mapActions({
+      setFilteringTag: 'posts/setFilteringTag'
+    }),
+    filterPosts (tag) {
+      this.$router.push({name:'posts', params: {tag}})
+      this.setFilteringTag(tag)
+    }
   }
 }
 </script>

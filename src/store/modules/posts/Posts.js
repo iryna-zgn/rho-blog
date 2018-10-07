@@ -4,14 +4,16 @@ export default {
   state: {
     posts: [],
     tags: [],
-    currentPost: {}
+    currentPost: {},
+    filteredPosts: []
   },
   getters: {
     getPosts: state => state.posts,
     getLastPost: state => state.posts[0],
     getRemainingPosts: state => state.posts.slice(1),
     getTags: state => state.tags,
-    getCurrentPost: state => state.currentPost
+    getCurrentPost: state => state.currentPost,
+    getFilteredPosts: state => state.filteredPosts
   },
   actions: {
     loadPosts ({commit}) {
@@ -38,6 +40,9 @@ export default {
     },
     setCurrentPost ({commit}, rout) {
       commit(types.SET_CURRENT_POST, rout)
+    },
+    setFilteringTag ({commit}, tag) {
+      commit(types.SET_FILTERING_TAG, tag)
     }
   },
   mutations: {
@@ -61,11 +66,15 @@ export default {
       })
 
       state.currentPost = posts.filter(e => e.rout === path)[0]
+      state.filteredPosts = posts.filter(e => e.tags.some(e => e == path))
 
       state.posts = posts
     },
     [types.SET_CURRENT_POST] (state, rout) {
       state.currentPost = state.posts.filter(e => e.rout === rout)[0]
+    },
+    [types.SET_FILTERING_TAG] (state, tag) {
+      state.filteredPosts = state.posts.filter(e => e.tags.some(e => e == tag))
     }
   }
 }

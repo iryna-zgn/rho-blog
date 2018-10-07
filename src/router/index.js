@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import PostsList from '../pages/Posts-list/Posts-list'
+import PostsListFiltered from '../pages/Posts-list-filtered/Posts-list-filtered'
 import Post from '../pages/Post/Post'
 
 Vue.use(Router)
@@ -12,6 +13,11 @@ const router = new Router({
       path: '/',
       name: 'postsList',
       component: PostsList
+    },
+    {
+      path: '/posts/:tag',
+      name: 'posts',
+      component: PostsListFiltered
     },
     {
       path: '/post/:rout',
