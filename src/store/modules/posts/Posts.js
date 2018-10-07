@@ -56,34 +56,41 @@ export default {
       })
       state.posts = posts
 
-      const path = window.location.pathname.split('/')[2]
-      state.currentPost = posts.filter(e => e.rout === path)[0]
-      state.filteredPosts = posts.filter(e => e.tags.some(e => e === path))
-
       const tagsMap = new Map()
       posts.forEach(e => {
         e.tags.forEach(e => {
           tagsMap.set(e, {
-            name: e,
-            postsCount: 0
+            tag: e,
+            postsCount: 0,
+            isActive: false
           })
         })
       })
-
       const tags = [...tagsMap.keys()]
-
       tags.forEach(e => {
         const tag = e
         const count = posts.filter(e => e.tags.some(e => e === tag)).length
         tagsMap.get(tag).postsCount = count
       })
       state.tagsInfo = [...tagsMap.values()]
+
+      const path = window.location.pathname.split('/')[2]
+      state.currentPost = posts.filter(e => e.rout === path)[0]
+      state.filteredPosts = posts.filter(e => e.tags.some(e => e === path))
+      state.tagsInfo
+        .filter(e => e.tag === path)
+        .forEach(e => e.isActive = true)
     },
     [types.SET_CURRENT_POST] (state, rout) {
       state.currentPost = state.posts.filter(e => e.rout === rout)[0]
     },
     [types.SET_FILTERING_TAG] (state, tag) {
       state.filteredPosts = state.posts.filter(e => e.tags.some(e => e === tag))
+      state.tagsInfo
+        .forEach(e => e.isActive = false)
+      state.tagsInfo
+        .filter(e => e.tag === tag)
+        .forEach(e => e.isActive = true)
     }
   }
 }

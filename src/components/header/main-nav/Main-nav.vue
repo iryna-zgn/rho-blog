@@ -10,16 +10,23 @@
       <li
         v-for="(tag, index) in tagsInfo"
         :key="index"
-        class="main-nav__item">
+        class="main-nav__item"
+        :class="{ 'is-active': tag.isActive }">
         <a
           href="#"
           class="main-nav__link"
-          @click.prevent="filterPosts(tag.name)">
-          #{{ tag.name }}
+          @click.prevent="filterPosts(tag.tag)">
+          #{{ tag.tag }}
         </a>
-        <span class="u-small">
-          ({{ tag.postsCount }})
-        </span>
+        <transition
+          name="togglePage"
+          mode="out-in">
+          <span
+            v-if="tag.isActive"
+            class="main-nav__count">
+            ({{ tag.postsCount }})
+          </span>
+        </transition>
       </li>
     </ul>
   </div>

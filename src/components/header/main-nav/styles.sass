@@ -1,25 +1,29 @@
 .main-nav
   &__list
     margin: 30px -7px
-  &__link
-    display: inline-block
-    vertical-align: middle
-    font-size: 20px
-    color: $color-text-lighter
-    +line-hover
   &__item
+    position: relative
     display: block
     padding: 7px
     box-sizing: border-box
-    .main-nav__link
-      &.is-active
+    &.is-active
+      .main-nav__link
+        pointer-events: none
         color: $color-accent
-  .u-small
+  &__link
     display: inline-block
-    vertical-align: middle
-    margin-left: 4px
+    font-size: 20px
+    color: $color-text-lighter
+    +line-hover
+  &__count
+    position: absolute
+    margin-top: -2px
+    padding-left: 3px
+    display: inline-block
     font-size: 12px
-    color: rgba($color-text-lighter, .5)
+    color: rgba($color-accent, .7)
+    text-align: left
+    z-index: 1
 
 @media only screen and (max-width: 767px)
   .main-nav
