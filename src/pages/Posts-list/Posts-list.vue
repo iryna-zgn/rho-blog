@@ -1,11 +1,11 @@
 <template>
   <div
-    v-if="getPosts.length > 0"
+    v-if="posts.length > 0"
     class="posts-list">
     <blog-last-post
-      :post="getLastPost"/>
+      :post="lastPost"/>
     <blog-preview-posts
-      :posts="getRemainingPosts"/>
+      :posts="remainingPosts"/>
   </div>
 </template>
 
@@ -21,9 +21,9 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getPosts: 'posts/getPosts',
-      getLastPost: 'posts/getLastPost',
-      getRemainingPosts: 'posts/getRemainingPosts'
+      posts: 'posts/getPosts',
+      lastPost: 'posts/getLastPost',
+      remainingPosts: 'posts/getRemainingPosts'
     })
   }
 }

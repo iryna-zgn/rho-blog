@@ -2,7 +2,7 @@
   <div
     class="posts-list">
     <blog-preview-posts
-      :posts="getFilteredPosts"/>
+      :posts="filteredPosts"/>
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getFilteredPosts: 'posts/getFilteredPosts'
+      filteredPosts: 'posts/getFilteredPosts'
     })
   }
 }
