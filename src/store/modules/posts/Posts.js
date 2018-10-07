@@ -3,15 +3,15 @@ export default {
   namespaced: true,
   state: {
     posts: [],
-    tags: [],
     currentPost: {},
-    filteredPosts: []
+    filteredPosts: [],
+    tagsInfo: []
   },
   getters: {
     getPosts: state => state.posts,
     getLastPost: state => state.posts[0],
     getRemainingPosts: state => state.posts.slice(1),
-    getTags: state => state.tags,
+    getTagsInfo: state => state.tagsInfo,
     getCurrentPost: state => state.currentPost,
     getFilteredPosts: state => state.filteredPosts
   },
@@ -47,34 +47,43 @@ export default {
   },
   mutations: {
     [types.LOAD_POSTS] (state, posts) {
-      const tagsSet = new Set()
-      const re =/\/n/ig
-      const path = window.location.pathname.split('/')[2]
-
-      posts.forEach(e => {
-        const tags = e.tags.split(', ')
-        tags.forEach(e => tagsSet.add(e))
-      })
-      state.tags = [...tagsSet]
-
       posts.forEach(function (e) {
         const tagsSet = new Set()
         const tags = e.tags.split(', ')
         tags.forEach(e => tagsSet.add(e))
         e.tags = [...tagsSet]
-        e.text = `<p>${e.text.replace(re, '</p><p>')}</p>`
+        e.text = `<p>${e.text.replace(/\/n/ig, '</p><p>')}</p>`
+      })
+      state.posts = posts
+
+      const path = window.location.pathname.split('/')[2]
+      state.currentPost = posts.filter(e => e.rout === path)[0]
+      state.filteredPosts = posts.filter(e => e.tags.some(e => e === path))
+
+      const tagsMap = new Map()
+      posts.forEach(e => {
+        e.tags.forEach(e => {
+          tagsMap.set(e, {
+            name: e,
+            postsCount: 0
+          })
+        })
       })
 
-      state.currentPost = posts.filter(e => e.rout === path)[0]
-      state.filteredPosts = posts.filter(e => e.tags.some(e => e == path))
+      const tags = [...tagsMap.keys()]
 
-      state.posts = posts
+      tags.forEach(e => {
+        const tag = e
+        const count = posts.filter(e => e.tags.some(e => e === tag)).length
+        tagsMap.get(tag).postsCount = count
+      })
+      state.tagsInfo = [...tagsMap.values()]
     },
     [types.SET_CURRENT_POST] (state, rout) {
       state.currentPost = state.posts.filter(e => e.rout === rout)[0]
     },
     [types.SET_FILTERING_TAG] (state, tag) {
-      state.filteredPosts = state.posts.filter(e => e.tags.some(e => e == tag))
+      state.filteredPosts = state.posts.filter(e => e.tags.some(e => e === tag))
     }
   }
 }

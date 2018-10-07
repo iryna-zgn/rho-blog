@@ -8,15 +8,18 @@
         </a>
       </li>
       <li
-        v-for="(tag, index) in tags"
+        v-for="(tag, index) in tagsInfo"
         :key="index"
         class="main-nav__item">
         <a
           href="#"
           class="main-nav__link"
-          @click.prevent="filterPosts(tag)">
-          #{{ tag }}
+          @click.prevent="filterPosts(tag.name)">
+          #{{ tag.name }}
         </a>
+        <span class="u-small">
+          ({{ tag.postsCount }})
+        </span>
       </li>
     </ul>
   </div>
@@ -26,14 +29,9 @@
 import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'BlogNav',
-  data () {
-    return {
-      activeClass: 'is-active'
-    }
-  },
   computed: {
     ...mapGetters({
-      tags: 'posts/getTags'
+      tagsInfo: 'posts/getTagsInfo'
     })
   },
   methods: {
