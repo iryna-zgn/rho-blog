@@ -22,9 +22,17 @@
       margin-right: 7px
   &__img
     margin-bottom: 20px
+    &--link
+      position: relative
+      cursor: pointer
+      transition: $transition
+      &:hover
+        opacity: .9
   img
     display: block
     max-width: 100%
   &__desc
     margin-bottom: 20px
     +overflow-text(7)
+
+.modal

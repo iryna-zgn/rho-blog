@@ -5,7 +5,11 @@ export default {
     posts: [],
     currentPost: {},
     filteredPosts: [],
-    tagsInfo: []
+    tagsInfo: [],
+    galleryModal: {
+      isShown: false,
+      gallery: []
+    }
   },
   getters: {
     getPosts: state => state.posts,
@@ -13,7 +17,8 @@ export default {
     getRemainingPosts: state => state.posts.slice(1),
     getTagsInfo: state => state.tagsInfo,
     getCurrentPost: state => state.currentPost,
-    getFilteredPosts: state => state.filteredPosts
+    getFilteredPosts: state => state.filteredPosts,
+    getGallery: state => state.galleryModal.gallery
   },
   actions: {
     loadPosts ({commit}) {
@@ -43,6 +48,12 @@ export default {
     },
     setFilteringTag ({commit}, tag) {
       commit(types.SET_FILTERING_TAG, tag)
+    },
+    setGallery ({commit}, gallery) {
+      commit(types.SET_GALLERY, gallery)
+    },
+    closeModal ({commit}, modalName) {
+      commit(types.CLOSE_MODAL, modalName)
     }
   },
   mutations: {
@@ -91,6 +102,13 @@ export default {
       state.tagsInfo
         .filter(e => e.tag === tag)
         .forEach(e => e.isActive = true)
+    },
+    [types.SET_GALLERY] (state, gallery) {
+      state.galleryModal.isShown = true,
+      state.galleryModal.gallery = gallery
+    },
+    [types.CLOSE_MODAL] (state, modalName) {
+      state[modalName].isShown = false
     }
   }
 }

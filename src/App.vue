@@ -1,25 +1,32 @@
 <template>
-  <div class="container main-wrapper" id="app">
-    <div class="main-wrapper__aside">
-      <blog-aside/>
+  <div>
+    <div class="main-wrapper" id="app">
+      <div class="container">
+        <div class="main-wrapper__aside">
+          <blog-aside/>
+        </div>
+        <div class="main-wrapper__main">
+          <transition
+            name="togglePage"
+            mode="out-in">
+            <router-view/>
+          </transition>
+        </div>
+      </div>
     </div>
-    <div class="main-wrapper__main">
-      <transition
-        name="togglePage"
-        mode="out-in">
-        <router-view/>
-      </transition>
-    </div>
+    <modals/>
   </div>
 </template>
 
 <script>
 import BlogAside from './components/aside/Aside'
+import Modals from './components/modals/Modals'
 import { mapActions } from 'vuex'
 export default {
   name: 'app',
   components: {
-    BlogAside
+    BlogAside,
+    Modals
   },
   created () {
     this.loadPosts()
