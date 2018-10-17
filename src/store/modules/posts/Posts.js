@@ -18,7 +18,8 @@ export default {
     getTagsInfo: state => state.tagsInfo,
     getCurrentPost: state => state.currentPost,
     getFilteredPosts: state => state.filteredPosts,
-    getGallery: state => state.galleryModal.gallery
+    getGallery: state => state.galleryModal.gallery,
+    isShownGallery: state => state.galleryModal.isShown
   },
   actions: {
     loadPosts ({commit}) {

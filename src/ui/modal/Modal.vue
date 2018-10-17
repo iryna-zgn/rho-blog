@@ -1,8 +1,7 @@
 <template>
   <transition
     name="fade">
-    <div
-      class="modal">
+    <div class="modal">
       <div
         class="modal__backdrop"
         @click="closeModal(stateModalName)"
@@ -15,7 +14,8 @@
       </a>
       <div
         class="modal__container">
-        <slot/>
+        <slot
+          name="content"/>
       </div>
     </div>
   </transition>

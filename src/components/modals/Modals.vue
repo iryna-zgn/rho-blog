@@ -1,5 +1,7 @@
 <template>
-  <gallery-modal/>
+  <div>
+    <gallery-modal/>
+  </div>
 </template>
 
 <script>
