@@ -5,7 +5,7 @@
         class="main-nav__item">
         <a href="#" class="main-nav__link"
           @click.prevent="goToAbout">
-          about me
+          про мене
         </a>
       </li>
       <li
