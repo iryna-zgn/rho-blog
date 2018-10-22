@@ -13,16 +13,21 @@
         </span>
       </div>
       <div
-        :class="['post__img', post.gallery ? 'post__img--link' : '']">
-        <img
-          :src="post.img"
-          alt=""
-          @click="setGallery(post.gallery)">
-      </div>
-      <div
-        v-html="post.text"
-        class="post__text">
-        {{ post.text }}
+        v-for="(item, index) in post.gallery"
+        :key="index"
+        class="post__gallery-item">
+        <div
+          class="post__img">
+          <img
+            :src="item.img"
+            alt=""
+            @click="setGallery(post.gallery)">
+        </div>
+        <div
+          v-html="item.text"
+          class="post__text">
+          {{ item.text }}
+        </div>
       </div>
     </div>
   </div>

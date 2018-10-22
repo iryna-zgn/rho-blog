@@ -13,8 +13,14 @@
           </div>
           <div class="gallery__const">
             <div class="gallery__text">
-              <div class="gallery__title">{{ item.title }}</div>
-              <div class="gallery__desc">{{ item.text }}</div>
+              <div
+                v-if="item.title "
+                class="gallery__title">
+                {{ item.title }}
+              </div>
+              <div
+                v-html="item.shortText"
+                class="gallery__desc">{{ item.shortText }}</div>
             </div>
           </div>
         </div>

@@ -64,7 +64,12 @@ export default {
         const tags = e.tags.split(', ')
         tags.forEach(e => tagsSet.add(e))
         e.tags = [...tagsSet]
-        e.text = `<p>${e.text.replace(/\/n/ig, '</p><p>')}</p>`
+        Object.values(e.gallery).forEach(e => {
+          return e.text = `<p>${e.text.replace(/\/n/ig, '</p><p>')}</p>`
+        })
+        Object.values(e.gallery).forEach(e => {
+          return e.shortText = `<p>${e.shortText.replace(/\/n/ig, '</p><p>')}</p>`
+        })
       })
       state.posts = posts
 

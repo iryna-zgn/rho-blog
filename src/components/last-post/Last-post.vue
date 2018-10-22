@@ -18,7 +18,7 @@
     <div class="post__img">
       <a href="#"
         @click.prevent="goToPost(post.rout)">
-        <img :src="post.img" alt="">
+        <img :src="post.gallery[1].img" alt="">
       </a>
     </div>
     <p

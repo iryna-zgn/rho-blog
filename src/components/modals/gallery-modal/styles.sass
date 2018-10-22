@@ -2,64 +2,48 @@
   img
     display: block
     max-width: 100%
-  &__item
-    position: relative
-    overflow: hidden
-    margin-bottom: 50px
-    &:not(:last-child)
-      .gallery__const
-        &:before,
-        &:after
-          content: ""
-          position: absolute
-          bottom: 0
-          height: 1px
-          z-index: 1
-        &:before
-          left: 20px
-          right: 50%
-          background: linear-gradient(to left, rgba($color-text, .2) 0%,rgba($color-text, 0) 100%)
-        &:after
-          right: 20px
-          left: 50%
-          background: linear-gradient(to right, rgba($color-text, .2) 0%,rgba($color-text, 0) 100%)
   &__const
     position: relative
     min-width: 200px
   &__text
     padding: 20px
-    padding-bottom: 50px
+    padding-bottom: 35px
   &__title
     margin-bottom: 10px
     font-family: $title-font
     font-size: 18px
     font-weight: bold
     line-height: 1.2
-  &__desc
+  &__desc p
     font-size: 13px
     line-height: 1.5
+    &:not(:last-child)
+      margin-bottom: 10px
 
 @media only screen and (min-width: 768px)
   .gallery
     &__item
       display: flex
-      margin-bottom: 0
+      &:not(:last-child)
+        .gallery__const
+          &:before,
+          &:after
+            content: ""
+            position: absolute
+            bottom: 0
+            height: 1px
+            z-index: 1
+          &:before
+            left: 20px
+            right: 50%
+            background: linear-gradient(to left, rgba($color-text, .2) 0%,rgba($color-text, 0) 100%)
+          &:after
+            right: 20px
+            left: 50%
+            background: linear-gradient(to right, rgba($color-text, .2) 0%,rgba($color-text, 0) 100%)
     &__const
       min-width: 300px
       width: 300px
     &__text
-      position: absolute
       height: 100%
-      padding: 35px 20px
-      &:before
-        content: ""
-        position: absolute
-        top: 0
-        right: 0
-        bottom: 0
-        left: 0
-        display: block
-        border-top: 35px solid #ffffff
-        border-bottom: 35px solid #ffffff
-        border-left: 20px solid #ffffff
-        border-right: 20px solid #ffffff
+      padding: 20px 20px
