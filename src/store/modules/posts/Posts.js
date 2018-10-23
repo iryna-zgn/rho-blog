@@ -62,8 +62,10 @@ export default {
       posts.forEach(function (e) {
         const tagsSet = new Set()
         const tags = e.tags.split(', ')
+
         tags.forEach(e => tagsSet.add(e))
         e.tags = [...tagsSet]
+        e.prevImg = Object.values(e.gallery).filter(e => e.prevImg)[0].img
         Object.values(e.gallery).forEach(e => {
           return e.text = `<p>${e.text.replace(/\/n/ig, '</p><p>')}</p>`
         })

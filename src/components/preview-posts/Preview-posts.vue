@@ -9,7 +9,7 @@
         class="post-prev">
         <div class="post-prev__const">
           <a href="#"
-            :style="{backgroundImage: `url(${post.gallery[1].img})`}"
+            :style="{backgroundImage: `url(${post.prevImg})`}"
             class="post-prev__img"
             @click.prevent="goToPost(post.rout)">
             <img src="/static/posts/images/dummy_300x200.png"

@@ -18,7 +18,7 @@
     <div class="post__img">
       <a href="#"
         @click.prevent="goToPost(post.rout)">
-        <img :src="post.gallery[1].img" alt="">
+        <img :src="post.prevImg" alt="">
       </a>
     </div>
     <p
@@ -44,7 +44,7 @@ export default {
       default: null
     }
   },
-  methods:{
+  methods: {
     ...mapActions({
       setCurrentPost: 'posts/setCurrentPost'
     }),

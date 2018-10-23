@@ -1,7 +1,8 @@
 <template>
   <div class="logo">
     <a href="/" class="logo__link">
-      <span class="logo__main">exp</span>
+      <img src="/static/logo.svg" alt="">
+      <!-- <span class="logo__main">exp</span> -->
       <span class="logo__text">blog</span>
     </a>
   </div>
