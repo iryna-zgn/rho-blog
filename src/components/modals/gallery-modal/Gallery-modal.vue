@@ -9,7 +9,10 @@
           :key="index"
           class="gallery__item">
           <div class="gallery__img">
-            <img :src="item.img">
+            <img
+              v-for="(img, index) in item.images"
+              :key="index"
+              :src="img">
           </div>
           <div class="gallery__const">
             <div class="gallery__text">

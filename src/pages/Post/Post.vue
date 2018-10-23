@@ -19,8 +19,11 @@
         <div
           class="post__img">
           <img
-            :src="item.img"
+            v-for="(img, index) in item.images"
+            :key="index"
+            :src="img"
             alt=""
+            :class="{'u-half': item.images.length > 1}"
             @click="setGallery(post.gallery)">
         </div>
         <div

@@ -60,16 +60,23 @@ export default {
   mutations: {
     [types.LOAD_POSTS] (state, posts) {
       posts.forEach(function (e) {
+        const post = e
         const tagsSet = new Set()
         const tags = e.tags.split(', ')
 
         tags.forEach(e => tagsSet.add(e))
-        e.tags = [...tagsSet]
-        e.prevImg = Object.values(e.gallery).filter(e => e.prevImg)[0].img
-        Object.values(e.gallery).forEach(e => {
+        post.tags = [...tagsSet]
+
+        post.prevImg = Object.values(post.gallery).filter(e => e.prevImg)[0].images[1]
+        
+        Object.values(post.gallery).forEach(e => {
+          return e.images = Object.values(e.images)
+        })
+
+        Object.values(post.gallery).forEach(e => {
           return e.text = `<p>${e.text.replace(/\/n/ig, '</p><p>')}</p>`
         })
-        Object.values(e.gallery).forEach(e => {
+        Object.values(post.gallery).forEach(e => {
           return e.shortText = `<p>${e.shortText.replace(/\/n/ig, '</p><p>')}</p>`
         })
       })
