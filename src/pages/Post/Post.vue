@@ -21,7 +21,7 @@
           <img
             v-for="(img, index) in item.images"
             :key="index"
-            :src="img"
+            :src="img.img"
             alt=""
             :class="{'u-50': item.images.length === 2 || item.images.length > 3,
                       'u-33': item.images.length === 3}"

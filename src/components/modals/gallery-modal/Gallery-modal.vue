@@ -6,25 +6,22 @@
       <div class="gallery">
         <div
           v-for="(item, index) in gallery"
-          :key="index"
-          class="gallery__item">
-          <div class="gallery__img">
-            <img
-              v-for="(img, index) in item.images"
-              :key="index"
-              :src="img">
-          </div>
-          <div class="gallery__const">
-            <div class="gallery__text">
-              <div
-                v-if="item.title "
-                class="gallery__title">
-                {{ item.title }}
+          :key="index">
+          <div
+            v-for="(img, index) in item.images"
+            :key="index"
+            class="gallery__item">
+              <div class="gallery__img">
+                <img
+                  :src="img.img">
               </div>
-              <div
-                v-html="item.shortText"
-                class="gallery__desc">{{ item.shortText }}</div>
-            </div>
+              <div class="gallery__const">
+                <div
+                  v-html="img.shortText"
+                  class="gallery__text">
+                  {{ img.shortText }}
+                </div>
+              </div>
           </div>
         </div>
       </div>
