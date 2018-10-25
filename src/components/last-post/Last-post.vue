@@ -16,6 +16,13 @@
       </span>
     </div>
     <div class="post__img">
+      <div
+        v-if="post.map"
+        class="post__map">
+        <img
+          :src="post.map"
+          alt="">
+    </div>
       <a href="#"
         @click.prevent="goToPost(post.rout)">
         <img :src="post.prevImg" alt="">

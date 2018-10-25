@@ -17,6 +17,7 @@
               </div>
               <div class="gallery__const">
                 <div
+                  v-if="img.shortText"
                   v-html="img.shortText"
                   class="gallery__text">
                   {{ img.shortText }}

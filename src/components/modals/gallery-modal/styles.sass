@@ -9,7 +9,7 @@
     padding: 20px
     padding-bottom: 35px
   p
-    font-size: 13px
+    font-size: 14px
     line-height: 1.5
     &:not(:last-child)
       margin-bottom: 10px
@@ -18,26 +18,24 @@
   .gallery
     &__item
       display: flex
-      &:not(:last-child)
-        .gallery__const
-          &:before,
-          &:after
-            content: ""
-            position: absolute
-            bottom: 0
-            height: 1px
-            z-index: 1
-          &:before
-            left: 20px
-            right: 50%
-            background: linear-gradient(to left, rgba($color-text, .2) 0%,rgba($color-text, 0) 100%)
-          &:after
-            right: 20px
-            left: 50%
-            background: linear-gradient(to right, rgba($color-text, .2) 0%,rgba($color-text, 0) 100%)
     &__const
       min-width: 300px
       width: 300px
     &__text
       height: 100%
       padding: 20px 20px
+      &:before,
+      &:after
+        content: ""
+        position: absolute
+        bottom: 0
+        height: 1px
+        z-index: 1
+      &:before
+        left: 20px
+        right: 50%
+        background: linear-gradient(to left, rgba($color-text, .2) 0%,rgba($color-text, 0) 100%)
+      &:after
+        right: 20px
+        left: 50%
+        background: linear-gradient(to right, rgba($color-text, .2) 0%,rgba($color-text, 0) 100%)

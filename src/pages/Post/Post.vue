@@ -1,18 +1,16 @@
 <template>
   <div>
     <div class="post">
-      <div class="post__group">
-        <h2 class="t2 post__title">
-          {{ post.title }}
-        </h2>
-        <div class="post__tags">
-          <span
-            v-for="(tag, index) in post.tags"
-            :key="index"
-            class="post__tag">
-            #{{ tag }}
-          </span>
-        </div>
+      <h2 class="t2 post__title">
+        {{ post.title }}
+      </h2>
+      <div class="post__tags">
+        <span
+          v-for="(tag, index) in post.tags"
+          :key="index"
+          class="post__tag">
+          #{{ tag }}
+        </span>
       </div>
       <div
         v-for="(item, index) in post.gallery"
