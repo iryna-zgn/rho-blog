@@ -1,16 +1,18 @@
 <template>
   <div>
     <div class="post">
-      <h2 class="t2 post__title">
-        {{ post.title }}
-      </h2>
-      <div class="post__tags">
-        <span
-          v-for="(tag, index) in post.tags"
-          :key="index"
-          class="post__tag">
-          #{{ tag }}
-        </span>
+      <div class="post__group">
+        <h2 class="t2 post__title">
+          {{ post.title }}
+        </h2>
+        <div class="post__tags">
+          <span
+            v-for="(tag, index) in post.tags"
+            :key="index"
+            class="post__tag">
+            #{{ tag }}
+          </span>
+        </div>
       </div>
       <div
         v-for="(item, index) in post.gallery"
@@ -18,6 +20,13 @@
         class="post__gallery-item">
         <div
           class="post__img">
+          <div
+            v-if="post.map && index==1"
+            class="post__map">
+            <img
+              :src="post.map"
+              alt="">
+          </div>
           <img
             v-for="(img, index) in item.images"
             :key="index"

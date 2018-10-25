@@ -1,6 +1,9 @@
 .post
   &:not(:last-child)
     margin-bottom: 100px
+  img
+    display: inline-block
+    max-width: 100%
   a
     display: inline-block
   &__title
@@ -11,7 +14,7 @@
       &:hover
         color: $color-accent
   &__tags
-    margin-bottom: 30px
+    margin-bottom: 15px
     color: rgba($color-text-lighter, .4)
     font-size: 16px
   &__tag
@@ -21,22 +24,39 @@
     &:not(:last-child)
       margin-right: 7px
   &__img
+    position: relative
     margin: 0 -4px 40px
     text-align: center
     font-size: 0
     text-align: left
     cursor: pointer
-  img
-    display: inline-block
-    max-width: 100%
-    padding: 4px
+    img
+      padding: 4px
   &__desc
     margin-bottom: 20px
     +overflow-text(7)
   &__gallery-item
     &:not(:last-child)
       margin-bottom: 40px
-  .u-50
-    max-width: 50%
-  .u-33
-    max-width: 33.3333%
+  &__map
+    display: none
+    position: absolute
+    top: 4px
+    left: 4px
+    display: none
+    padding: 30px
+    max-width: 300px
+    width: 100%
+    font-size: 0
+
+@media only screen and (min-width: 480px)
+  .post
+    .u-50
+      max-width: 50%
+    .u-33
+      max-width: 33.3333%
+
+@media only screen and (min-width: 768px)
+  .post
+    &__map
+      display: block
