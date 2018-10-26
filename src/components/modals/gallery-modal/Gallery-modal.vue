@@ -4,27 +4,19 @@
     state-modal-name="galleryModal">
     <template slot="content">
       <div class="gallery">
-        <div
-          v-for="(item, index) in gallery"
-          :key="index">
-          <div
-            v-for="(img, index) in item.images"
-            :key="index"
-            class="gallery__item">
-              <div class="gallery__img">
-                <img
-                  :src="img.img">
-              </div>
-              <div class="gallery__const">
-                <div
-                  v-if="img.shortText"
-                  v-html="img.shortText"
-                  class="gallery__text">
-                  {{ img.shortText }}
-                </div>
-              </div>
+      <div
+        class="gallery__item">
+          <div class="gallery__img">
+            <img
+              :src="gallery.img">
           </div>
-        </div>
+          <div
+            v-if="gallery.shortText !== ''"
+            v-html="gallery.shortText"
+            class="gallery__const">
+            {{ gallery.shortText }}
+          </div>
+      </div>
       </div>
     </template>
   </modal>

@@ -67,10 +67,10 @@ export default {
         tags.forEach(e => tagsSet.add(e))
         post.tags = [...tagsSet]
 
-        post.prevImg = Object.values(post.gallery)
+        post.mainImg = Object.values(post.gallery)
                   .map(e => Object.values(e.images))
                   .reduce((a, b) => [...a, ...b], [])
-                  .filter(e => e.prevImg)[0].img
+                  .filter(e => e.mainImg)[0].img
 
         Object.values(post.gallery).forEach(e => {
           return e.images = Object.values(e.images)
@@ -79,11 +79,11 @@ export default {
         Object.values(post.gallery).forEach(e => {
           return e.text = `<p>${e.text.replace(/\/n/ig, '</p><p>')}</p>`
         })
-        Object.values(post.gallery).forEach(e => {
-          e.images.forEach(e => {
-            return e.shortText = `<p>${e.shortText.replace(/\/n/ig, '</p><p>')}</p>`
-          })
-        })
+        // Object.values(post.gallery).forEach(e => {
+        //   e.images.forEach(e => {
+        //     return e.shortText = `<p>${e.shortText.replace(/\/n/ig, '</p><p>')}</p>`
+        //   })
+        // })
       })
       state.posts = posts
 

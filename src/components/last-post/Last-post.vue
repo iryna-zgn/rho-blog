@@ -1,12 +1,12 @@
 <template>
   <div
     class="post">
-    <h2 class="t2 post__title">
+    <h1 class="t1 post__title">
       <a href="#"
           @click.prevent="goToPost(post.rout)">
         {{ post.title }}
       </a>
-    </h2>
+    </h1>
     <div class="post__tags">
       <span
         v-for="(tag, index) in post.tags"
@@ -16,16 +16,16 @@
       </span>
     </div>
     <div class="post__img">
-      <div
-        v-if="post.map"
-        class="post__map">
-        <img
-          :src="post.map"
-          alt="">
-    </div>
       <a href="#"
         @click.prevent="goToPost(post.rout)">
-        <img :src="post.prevImg" alt="">
+        <span
+          v-if="post.map"
+          class="post__map">
+          <img
+            :src="post.map"
+            alt="">
+        </span>
+        <img :src="post.mainImg" alt="">
       </a>
     </div>
     <p

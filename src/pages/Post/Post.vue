@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="post">
-      <h2 class="t2 post__title">
+      <h1 class="t1 post__title">
         {{ post.title }}
-      </h2>
+      </h1>
       <div class="post__tags">
         <span
           v-for="(tag, index) in post.tags"
@@ -13,26 +13,26 @@
         </span>
       </div>
       <div
-        v-for="(item, index) in post.gallery"
-        :key="index"
+        v-for="(item, galleryIndex) in post.gallery"
+        :key="galleryIndex"
         class="post__gallery-item">
         <div
           class="post__img">
           <div
-            v-if="post.map && index==1"
+            v-if="post.map && galleryIndex==0"
             class="post__map">
             <img
               :src="post.map"
               alt="">
           </div>
           <img
-            v-for="(img, index) in item.images"
-            :key="index"
+            v-for="(img, imgIndex) in item.images"
+            :key="imgIndex"
             :src="img.img"
             alt=""
             :class="{'u-50': item.images.length === 2 || item.images.length > 3,
                       'u-33': item.images.length === 3}"
-            @click="setGallery(post.gallery)">
+            @click="setGallery(post.gallery[galleryIndex].images[imgIndex])">
         </div>
         <div
           v-html="item.text"
