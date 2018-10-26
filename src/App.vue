@@ -13,20 +13,23 @@
           </transition>
         </div>
       </div>
+      <blog-copyright/>
     </div>
-    <modals/>
+    <blog-modals/>
   </div>
 </template>
 
 <script>
 import BlogAside from './components/aside/Aside'
-import Modals from './components/modals/Modals'
+import BlogModals from './components/modals/Modals'
+import BlogCopyright from './components/copyright/Copyright'
 import { mapActions } from 'vuex'
 export default {
   name: 'app',
   components: {
     BlogAside,
-    Modals
+    BlogModals,
+    BlogCopyright
   },
   created () {
     this.loadPosts()
