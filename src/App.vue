@@ -13,7 +13,9 @@
           </transition>
         </div>
       </div>
-      <blog-copyright/>
+      <footer class="footer">
+        <blog-copyright/>
+      </footer>
     </div>
     <blog-modals/>
   </div>

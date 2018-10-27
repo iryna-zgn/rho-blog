@@ -15,18 +15,19 @@
         #{{ tag }}
       </span>
     </div>
-    <div class="post__img">
-      <a href="#"
-        @click.prevent="goToPost(post.rout)">
-        <span
-          v-if="post.map"
-          class="post__map">
-          <img
-            :src="post.map"
-            alt="">
-        </span>
-        <img :src="post.mainImg" alt="">
-      </a>
+    <div
+      class="post__img"
+      @click.prevent="goToPost(post.rout)">
+        <div class="post__img-item">
+          <div
+            v-if="post.map"
+            class="post__map">
+            <img
+              :src="post.map"
+              alt="">
+          </div>
+          <img :src="post.mainImg" alt="">
+        </div>
     </div>
     <p
       v-html="post.description"

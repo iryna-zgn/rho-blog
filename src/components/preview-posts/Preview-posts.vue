@@ -8,14 +8,14 @@
         :key="index"
         class="post-prev">
         <div class="post-prev__const">
-          <a href="#"
+          <div
             :style="{backgroundImage: `url(${post.prevImg})`}"
             class="post-prev__img"
             @click.prevent="goToPost(post.rout)">
             <img src="/static/posts/images/dummy_300x200.png"
               alt=""
               class="post-prev__dummy-img">
-          </a>
+          </div>
         </div>
         <div class="post-prev__var">
           <h3 class="t2 post-prev__title">

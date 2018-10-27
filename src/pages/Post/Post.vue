@@ -19,20 +19,22 @@
         <div
           class="post__img">
           <div
-            v-if="post.map && galleryIndex==0"
-            class="post__map">
-            <img
-              :src="post.map"
-              alt="">
-          </div>
-          <img
             v-for="(img, imgIndex) in item.images"
             :key="imgIndex"
-            :src="img.img"
-            alt=""
-            :class="{'u-50': item.images.length === 2 || item.images.length > 3,
-                      'u-33': item.images.length === 3}"
+            :class="['post__img-item', {'u-50': item.images.length === 2 || item.images.length > 3,
+                      'u-33': item.images.length === 3}]"
             @click="setGallery([post.gallery, galleryIndex, imgIndex])">
+            <div
+              v-if="post.map && galleryIndex==0"
+              class="post__map">
+              <img
+                :src="post.map"
+                alt="">
+            </div>
+            <img
+              :src="img.img"
+              alt="">
+          </div>
         </div>
         <div
           v-html="item.text"
