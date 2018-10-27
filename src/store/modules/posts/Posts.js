@@ -148,7 +148,7 @@ export default {
 
       if (arrow === 'next') {
         if (currentIndex === count - 1) {
-          state.galleryModal.currentIndex = 0
+          state.galleryModal.currentIndex = -1
         }
         index = ++state.galleryModal.currentIndex
       } else if (arrow === 'prev') {
