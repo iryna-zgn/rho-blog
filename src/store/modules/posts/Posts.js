@@ -10,7 +10,7 @@ export default {
       isShown: false,
       currentImg: {},
       gallery: [],
-      currentIndex: null,
+      currentIndex: null
     }
   },
   getters: {
@@ -58,7 +58,7 @@ export default {
     closeModal ({commit}, modalName) {
       commit(types.CLOSE_MODAL, modalName)
     },
-    slideGalleryImg({commit}, arrow) {
+    slideGalleryImg ({commit}, arrow) {
       commit(types.SLIDE_GALLERY_IMG, arrow)
     }
   },
@@ -73,16 +73,16 @@ export default {
         post.tags = [...tagsSet]
 
         post.mainImg = Object.values(post.gallery)
-                  .map(e => Object.values(e.images))
-                  .reduce((a, b) => [...a, ...b], [])
-                  .filter(e => e.mainImg)[0].img
+          .map(e => Object.values(e.images))
+          .reduce((a, b) => [...a, ...b], [])
+          .filter(e => e.mainImg)[0].img
 
         Object.values(post.gallery).forEach(e => {
-          return e.images = Object.values(e.images)
+          e.images = Object.values(e.images)
         })
 
         Object.values(post.gallery).forEach(e => {
-          return e.text = `<p>${e.text.replace(/\/n/ig, '</p><p>')}</p>`
+          e.text = `<p>${e.text.replace(/\/n/ig, '</p><p>')}</p>`
         })
       })
       state.posts = posts
@@ -110,7 +110,7 @@ export default {
       state.filteredPosts = posts.filter(e => e.tags.some(e => e === path))
       state.tagsInfo
         .filter(e => e.tag === path)
-        .forEach(e => e.isActive = true)
+        .forEach(e => { e.isActive = true })
     },
     [types.SET_CURRENT_POST] (state, rout) {
       state.currentPost = state.posts.filter(e => e.rout === rout)[0]
@@ -118,13 +118,13 @@ export default {
     [types.SET_FILTERING_TAG] (state, tag) {
       state.filteredPosts = state.posts.filter(e => e.tags.some(e => e === tag))
       state.tagsInfo
-        .forEach(e => e.isActive = false)
+        .forEach(e => { e.isActive = false })
       state.tagsInfo
         .filter(e => e.tag === tag)
-        .forEach(e => e.isActive = true)
+        .forEach(e => { e.isActive = true })
     },
     [types.SET_GALLERY] (state, galleryInfo) {
-      const gallery =  galleryInfo[0]
+      const gallery = galleryInfo[0]
       const galleryIndex = galleryInfo[1]
       const imageIndex = galleryInfo[2]
       const currentImage = gallery[galleryIndex].images[imageIndex]
@@ -134,8 +134,8 @@ export default {
       state.galleryModal.isShown = true
 
       state.galleryModal.gallery = Object.values(gallery)
-                                          .map(e => Object.values(e.images))
-                                          .reduce((a, b) => [...a, ...b], [])
+        .map(e => Object.values(e.images))
+        .reduce((a, b) => [...a, ...b], [])
       state.galleryModal.currentIndex = state.galleryModal.gallery.findIndex(e => e === currentImage)
     },
     [types.CLOSE_MODAL] (state, modalName) {
