@@ -4,6 +4,7 @@
     max-width: 100%
     max-height: calc(100vh - 100px)
   &__img
+    position: relative
     display: flex
     align-items: center
     width: 100%
@@ -17,6 +18,24 @@
     padding-bottom: 35px
     font-size: 16px
     line-height: 1.5
+  &__arrow
+    position: absolute
+    top: 50%
+    margin-top: -15px
+    font-size: 30px
+    font-weight: bold
+    color: rgba(255, 255, 255, 0.4)
+    transition: all .1s linear
+    cursor: pointer
+    &--right
+      right: 5px
+    &--left
+      left: 5px
+  &__img
+    &:hover
+      .gallery__arrow
+        color: rgba(255, 255, 255, 1)
+
 
 @media only screen and (min-width: 768px)
   .gallery
@@ -28,3 +47,8 @@
     &__text
       height: 100%
       padding: 20px 20px
+    &__arrow
+      &--right
+        right: 10px
+      &--left
+        left: 10px

@@ -8,7 +8,9 @@ export default {
     tagsInfo: [],
     galleryModal: {
       isShown: false,
-      gallery: []
+      currentImg: {},
+      gallery: [],
+      currentIndex: null,
     }
   },
   getters: {
@@ -18,7 +20,7 @@ export default {
     getTagsInfo: state => state.tagsInfo,
     getCurrentPost: state => state.currentPost,
     getFilteredPosts: state => state.filteredPosts,
-    getGallery: state => state.galleryModal.gallery,
+    getCurrentGalleryImg: state => state.galleryModal.currentImg,
     isShownGallery: state => state.galleryModal.isShown
   },
   actions: {
@@ -50,11 +52,14 @@ export default {
     setFilteringTag ({commit}, tag) {
       commit(types.SET_FILTERING_TAG, tag)
     },
-    setGallery ({commit}, gallery) {
-      commit(types.SET_GALLERY, gallery)
+    setGallery ({commit}, galleryInfo) {
+      commit(types.SET_GALLERY, galleryInfo)
     },
     closeModal ({commit}, modalName) {
       commit(types.CLOSE_MODAL, modalName)
+    },
+    slideGalleryImg({commit}, arrow) {
+      commit(types.SLIDE_GALLERY_IMG, arrow)
     }
   },
   mutations: {
@@ -79,11 +84,6 @@ export default {
         Object.values(post.gallery).forEach(e => {
           return e.text = `<p>${e.text.replace(/\/n/ig, '</p><p>')}</p>`
         })
-        // Object.values(post.gallery).forEach(e => {
-        //   e.images.forEach(e => {
-        //     return e.shortText = `<p>${e.shortText.replace(/\/n/ig, '</p><p>')}</p>`
-        //   })
-        // })
       })
       state.posts = posts
 
@@ -123,12 +123,42 @@ export default {
         .filter(e => e.tag === tag)
         .forEach(e => e.isActive = true)
     },
-    [types.SET_GALLERY] (state, gallery) {
-      state.galleryModal.isShown = true,
-      state.galleryModal.gallery = gallery
+    [types.SET_GALLERY] (state, galleryInfo) {
+      const gallery =  galleryInfo[0]
+      const galleryIndex = galleryInfo[1]
+      const imageIndex = galleryInfo[2]
+      const currentImage = gallery[galleryIndex].images[imageIndex]
+
+      state.galleryModal.currentImg = currentImage
+
+      state.galleryModal.isShown = true
+
+      state.galleryModal.gallery = Object.values(gallery)
+                                          .map(e => Object.values(e.images))
+                                          .reduce((a, b) => [...a, ...b], [])
+      state.galleryModal.currentIndex = state.galleryModal.gallery.findIndex(e => e === currentImage)
     },
     [types.CLOSE_MODAL] (state, modalName) {
       state[modalName].isShown = false
+    },
+    [types.SLIDE_GALLERY_IMG] (state, arrow) {
+      const count = state.galleryModal.gallery.length
+      const currentIndex = state.galleryModal.currentIndex
+      let index
+
+      if (arrow === 'next') {
+        if (currentIndex === count - 1) {
+          state.galleryModal.currentIndex = 0
+        }
+        index = ++state.galleryModal.currentIndex
+      } else if (arrow === 'prev') {
+        if (currentIndex === 0) {
+          state.galleryModal.currentIndex = count
+        }
+        index = --state.galleryModal.currentIndex
+      }
+
+      state.galleryModal.currentImg = state.galleryModal.gallery[index]
     }
   }
 }

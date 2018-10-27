@@ -4,19 +4,25 @@
     state-modal-name="galleryModal">
     <template slot="content">
       <div class="gallery">
-      <div
-        class="gallery__item">
-          <div class="gallery__img">
-            <img
-              :src="gallery.img">
-          </div>
-          <div
-            v-if="gallery.shortText !== ''"
-            v-html="gallery.shortText"
-            class="gallery__const">
-            {{ gallery.shortText }}
-          </div>
-      </div>
+        <div
+          class="gallery__item">
+            <div class="gallery__img">
+              <div
+                class="gallery__arrow gallery__arrow--left icon-arrow-left"
+                @click="slideGalleryImg('prev')"/>
+              <img
+                :src="gallery.img">
+              <div
+                class="gallery__arrow gallery__arrow--right icon-arrow-right"
+                @click="slideGalleryImg('next')"/>
+            </div>
+            <div
+              v-if="gallery.shortText !== ''"
+              v-html="gallery.shortText"
+              class="gallery__const">
+              {{ gallery.shortText }}
+            </div>
+        </div>
       </div>
     </template>
   </modal>
@@ -24,7 +30,7 @@
 
 <script>
 import Modal from './../../../ui/modal/Modal.vue'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'galleryModal',
   components: {
@@ -32,8 +38,13 @@ export default {
   },
   computed: {
     ...mapGetters({
-      gallery: 'posts/getGallery',
+      gallery: 'posts/getCurrentGalleryImg',
       isShown: 'posts/isShownGallery'
+    })
+  },
+  methods: {
+    ...mapActions({
+      slideGalleryImg: 'posts/slideGalleryImg'
     })
   }
 }

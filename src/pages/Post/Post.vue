@@ -32,7 +32,7 @@
             alt=""
             :class="{'u-50': item.images.length === 2 || item.images.length > 3,
                       'u-33': item.images.length === 3}"
-            @click="setGallery(post.gallery[galleryIndex].images[imgIndex])">
+            @click="setGallery([post.gallery, galleryIndex, imgIndex])">
         </div>
         <div
           v-html="item.text"
