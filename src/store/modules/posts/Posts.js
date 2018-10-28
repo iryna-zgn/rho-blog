@@ -60,6 +60,9 @@ export default {
     },
     slideGalleryImg ({commit}, arrow) {
       commit(types.SLIDE_GALLERY_IMG, arrow)
+    },
+    disableActiveTag ({commit}) {
+      commit(types.DISABLE_ACTIVE_TAG)
     }
   },
   mutations: {
@@ -159,6 +162,11 @@ export default {
       }
 
       state.galleryModal.currentImg = state.galleryModal.gallery[index]
+    },
+    [types.DISABLE_ACTIVE_TAG] (state) {
+      state.tagsInfo.forEach(e => {
+        e.isActive = false
+      })
     }
   }
 }

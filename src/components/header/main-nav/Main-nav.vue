@@ -3,22 +3,21 @@
     <ul class="main-nav__list">
       <li
         class="main-nav__item">
-        <a href="#" class="main-nav__link"
+        <span class="main-nav__link"
           @click.prevent="goToAbout">
           про мене
-        </a>
+        </span>
       </li>
       <li
         v-for="(tag, index) in tagsInfo"
         :key="index"
         class="main-nav__item"
         :class="{ 'is-active': tag.isActive }">
-        <a
-          href="#"
+        <span
           class="main-nav__link"
           @click.prevent="filterPosts(tag.tag)">
           #{{ tag.tag }}
-        </a>
+        </span>
         <transition
           name="togglePage"
           mode="out-in">
@@ -44,7 +43,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      setFilteringTag: 'posts/setFilteringTag'
+      setFilteringTag: 'posts/setFilteringTag',
+      disableActiveTag: 'posts/disableActiveTag'
     }),
     filterPosts (tag) {
       this.$router.push({name:'posts', params: {tag}})
@@ -52,6 +52,7 @@ export default {
     },
     goToAbout () {
       this.$router.push({name: 'about'})
+      this.disableActiveTag()
     }
   }
 }
