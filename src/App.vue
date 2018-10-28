@@ -2,7 +2,7 @@
   <div>
     <div
       id="app"
-      :class="['main-wrapper', {'is-fixed': isBodyFix}]">
+      class="main-wrapper">
       <div class="container">
         <div class="main-wrapper__aside">
           <blog-aside/>
@@ -27,7 +27,7 @@
 import BlogAside from './components/aside/Aside'
 import BlogModals from './components/modals/Modals'
 import BlogCopyright from './components/copyright/Copyright'
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   name: 'app',
   components: {
@@ -37,11 +37,6 @@ export default {
   },
   created () {
     this.loadPosts()
-  },
-  computed: {
-    ...mapGetters({
-      isBodyFix: 'posts/isBodyFix'
-    })
   },
   methods: {
     ...mapActions({

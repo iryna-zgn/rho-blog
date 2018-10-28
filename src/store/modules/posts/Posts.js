@@ -8,7 +8,6 @@ export default {
     tagsInfo: [],
     galleryModal: {
       isShown: false,
-      isBodyFix: false,
       currentImg: {},
       gallery: [],
       currentIndex: null
@@ -22,8 +21,7 @@ export default {
     getCurrentPost: state => state.currentPost,
     getFilteredPosts: state => state.filteredPosts,
     getCurrentGalleryImg: state => state.galleryModal.currentImg,
-    isShownGallery: state => state.galleryModal.isShown,
-    isBodyFix: state => state.galleryModal.isBodyFix
+    isShownGallery: state => state.galleryModal.isShown
   },
   actions: {
     loadPosts ({commit}) {
@@ -137,7 +135,7 @@ export default {
       state.galleryModal.currentImg = currentImage
 
       state.galleryModal.isShown = true
-      state.galleryModal.isBodyFix = true
+      document.querySelector('body').classList.add('is-fixed')
 
       state.galleryModal.gallery = Object.values(gallery)
         .map(e => Object.values(e.images))
@@ -146,7 +144,7 @@ export default {
     },
     [types.CLOSE_MODAL] (state, modalName) {
       state[modalName].isShown = false
-      state[modalName].isBodyFix = false
+      document.querySelector('body').classList.remove('is-fixed')
     },
     [types.SLIDE_GALLERY_IMG] (state, arrow) {
       const count = state.galleryModal.gallery.length
