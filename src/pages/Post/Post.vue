@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div
+    v-if="post">
     <div class="post">
       <h1 class="t1 post__title">
         {{ post.title }}
@@ -55,6 +56,9 @@ export default {
       rout: this.$route.params.rout
     }
   },
+  created () {
+    this.updateCurrentPost(this.rout)
+  },
   computed: {
     ...mapGetters({
       post: 'posts/getCurrentPost'
@@ -62,7 +66,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      setGallery: 'posts/setGallery'
+      setGallery: 'posts/setGallery',
+      updateCurrentPost: 'posts/updateCurrentPost'
     })
   }
 }

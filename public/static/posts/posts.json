@@ -1,8 +1,7 @@
 [
   {
-    "id": 1,
     "rout": "gorgan-ilemskyj",
-    "tags": "travel, mountains, wiki",
+    "tags": "travel, wiki",
     "title": "Мандрівка на гору Ґорґан-Ілемський",
     "prevImg": "/static/posts/images/gorgan-ilemskyj/preview.jpg",
     "gallery": {
@@ -68,17 +67,15 @@
     "map": "/static/posts/images/gorgan-ilemskyj/map.svg"
   },
   {
-    "id": 1,
     "rout": "gorgan-ilemskyj-1",
-    "tags": "travel, mountains, wiki",
+    "tags": "wiki",
     "title": "Мандрівка на гору Ґорґан-Ілемський",
-    "prevImg": "/static/posts/images/gorgan-ilemskyj/preview.jpg",
+    "prevImg": "/static/posts/images/gorgan-ilemskyj/img-2.jpg",
     "gallery": {
       "0": {
         "images": {
           "0": {
             "img": "/static/posts/images/gorgan-ilemskyj/img-1.jpg",
-            "mainImg": true,
             "shortText": "Вигляд на Ґорґан-Ілемський з полонини Німецька"
           }
         },
@@ -88,6 +85,7 @@
         "images": {
           "0": {
             "img": "/static/posts/images/gorgan-ilemskyj/img-2.jpg",
+            "mainImg": true,
             "shortText": "Маркування"
           },
           "1": {
@@ -136,17 +134,15 @@
     "map": "/static/posts/images/gorgan-ilemskyj/map.svg"
   },
   {
-    "id": 1,
     "rout": "gorgan-ilemskyj-2",
-    "tags": "travel, mountains, wiki",
+    "tags": "mountains",
     "title": "Мандрівка на гору Ґорґан-Ілемський",
-    "prevImg": "/static/posts/images/gorgan-ilemskyj/preview.jpg",
+    "prevImg": "/static/posts/images/gorgan-ilemskyj/img-8.jpg",
     "gallery": {
       "0": {
         "images": {
           "0": {
             "img": "/static/posts/images/gorgan-ilemskyj/img-1.jpg",
-            "mainImg": true,
             "shortText": "Вигляд на Ґорґан-Ілемський з полонини Німецька"
           }
         },
@@ -164,6 +160,7 @@
           },
           "2": {
             "img": "/static/posts/images/gorgan-ilemskyj/img-4.jpg",
+            "mainImg": true,
             "shortText": "Вершина гори Малий Пустошак"
           }
         },

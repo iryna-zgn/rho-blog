@@ -46,11 +46,11 @@ export default {
         return posts
       })
     },
-    setCurrentPost ({commit}, rout) {
-      commit(types.SET_CURRENT_POST, rout)
+    updateFilteredPosts({commit}, tag) {
+      commit(types.UPDATE_FILTERED_POSTS, tag)
     },
-    setFilteringTag ({commit}, tag) {
-      commit(types.SET_FILTERING_TAG, tag)
+    updateCurrentPost ({commit}, rout) {
+      commit(types.UPDATE_CURRENT_POST, rout)
     },
     setGallery ({commit}, galleryInfo) {
       commit(types.SET_GALLERY, galleryInfo)
@@ -60,9 +60,6 @@ export default {
     },
     slideGalleryImg ({commit}, arrow) {
       commit(types.SLIDE_GALLERY_IMG, arrow)
-    },
-    disableActiveTag ({commit}) {
-      commit(types.DISABLE_ACTIVE_TAG)
     }
   },
   mutations: {
@@ -95,8 +92,7 @@ export default {
         e.tags.forEach(e => {
           tagsMap.set(e, {
             tag: e,
-            postsCount: 0,
-            isActive: false
+            postsCount: 0
           })
         })
       })
@@ -107,29 +103,15 @@ export default {
         tagsMap.get(tag).postsCount = count
       })
       state.tagsInfo = [...tagsMap.values()]
-
-      const path = window.location.pathname.split('/')[2]
-      state.currentPost = posts.filter(e => e.rout === path)[0]
-      state.filteredPosts = posts.filter(e => e.tags.some(e => e === path))
-      state.tagsInfo
-        .filter(e => e.tag === path)
-        .forEach(e => { e.isActive = true })
     },
-    [types.SET_CURRENT_POST] (state, rout) {
+    [types.UPDATE_FILTERED_POSTS] (state, tag) {
+      state.filteredPosts = state.posts.filter(e => e.tags.some(e => e === tag))
+    },
+    [types.UPDATE_CURRENT_POST] (state, rout) {
       state.currentPost = state.posts.filter(e => e.rout === rout)[0]
     },
-    [types.SET_FILTERING_TAG] (state, tag) {
-      state.filteredPosts = state.posts.filter(e => e.tags.some(e => e === tag))
-      state.tagsInfo
-        .forEach(e => { e.isActive = false })
-      state.tagsInfo
-        .filter(e => e.tag === tag)
-        .forEach(e => { e.isActive = true })
-    },
     [types.SET_GALLERY] (state, galleryInfo) {
-      const gallery = galleryInfo[0]
-      const galleryIndex = galleryInfo[1]
-      const imageIndex = galleryInfo[2]
+      const [gallery, galleryIndex, imageIndex] = galleryInfo
       const currentImage = gallery[galleryIndex].images[imageIndex]
 
       state.galleryModal.currentImg = currentImage
@@ -141,10 +123,6 @@ export default {
         .map(e => Object.values(e.images))
         .reduce((a, b) => [...a, ...b], [])
       state.galleryModal.currentIndex = state.galleryModal.gallery.findIndex(e => e === currentImage)
-    },
-    [types.CLOSE_MODAL] (state, modalName) {
-      state[modalName].isShown = false
-      document.querySelector('body').classList.remove('is-fixed')
     },
     [types.SLIDE_GALLERY_IMG] (state, arrow) {
       const count = state.galleryModal.gallery.length
@@ -165,10 +143,9 @@ export default {
 
       state.galleryModal.currentImg = state.galleryModal.gallery[index]
     },
-    [types.DISABLE_ACTIVE_TAG] (state) {
-      state.tagsInfo.forEach(e => {
-        e.isActive = false
-      })
+    [types.CLOSE_MODAL] (state, modalName) {
+      state[modalName].isShown = false
+      document.querySelector('body').classList.remove('is-fixed')
     }
   }
 }

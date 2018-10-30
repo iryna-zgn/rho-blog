@@ -1,7 +1,6 @@
 <template>
   <header class="header">
-    <blog-logo
-      @click.native="goToHome"/>
+    <blog-logo/>
     <blog-nav/>
   </header>
 </template>
@@ -14,11 +13,6 @@ export default {
   components: {
     BlogLogo,
     BlogNav
-  },
-  methods: {
-    goToHome () {
-      this.$router.push({name: 'postsList'})
-    }
   }
 }
 </script>

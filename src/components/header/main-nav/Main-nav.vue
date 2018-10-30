@@ -1,59 +1,41 @@
 <template>
   <div class="main-nav">
     <ul class="main-nav__list">
-      <li
-        class="main-nav__item">
-        <span class="main-nav__link"
-          @click.prevent="goToAbout">
-          про мене
-        </span>
-      </li>
-      <li
-        v-for="(tag, index) in tagsInfo"
-        :key="index"
+      <router-link
+        tag="li"
         class="main-nav__item"
-        :class="{ 'is-active': tag.isActive }">
+        :to="{name: 'about'}">
+        <a class="main-nav__link">
+          про мене
+        </a>
+      </router-link>
+      <router-link
+        tag="li"
+        v-for="(tagInfo, index) in tagsInfo"
+        :key="index"
+        :to="{name: 'posts', params: {tag: tagInfo.tag}}"
+        class="main-nav__item">
+        <a
+          class="main-nav__link">
+          #{{ tagInfo.tag }}
+        </a>
         <span
-          class="main-nav__link"
-          @click.prevent="filterPosts(tag.tag)">
-          #{{ tag.tag }}
+          class="main-nav__count">
+          ({{ tagInfo.postsCount }})
         </span>
-        <transition
-          name="togglePage"
-          mode="out-in">
-          <span
-            v-if="tag.isActive"
-            class="main-nav__count">
-            ({{ tag.postsCount }})
-          </span>
-        </transition>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'BlogNav',
   computed: {
     ...mapGetters({
       tagsInfo: 'posts/getTagsInfo'
     })
-  },
-  methods: {
-    ...mapActions({
-      setFilteringTag: 'posts/setFilteringTag',
-      disableActiveTag: 'posts/disableActiveTag'
-    }),
-    filterPosts (tag) {
-      this.$router.push({name:'posts', params: {tag}})
-      this.setFilteringTag(tag)
-    },
-    goToAbout () {
-      this.$router.push({name: 'about'})
-      this.disableActiveTag()
-    }
   }
 }
 </script>
