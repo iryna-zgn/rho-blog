@@ -24,7 +24,11 @@
             :key="imgIndex"
             :class="['post__img-item', {'u-50': item.images.length === 2,
                       'u-33': item.images.length >= 3}]"
-            @click="setGallery([post.gallery, galleryIndex, imgIndex])">
+            @click="setGallery({
+              gallery: post.gallery,
+              galleryIndex: galleryIndex,
+              imageIndex: imgIndex
+            })">
             <div
               v-if="post.map && galleryIndex==0"
               class="post__map">
@@ -55,7 +59,7 @@ export default {
     }
   },
   created () {
-    this.updateCurrentPost(this.rout)
+    this.loadPosts(this.rout)
   },
   computed: {
     ...mapGetters({
@@ -65,7 +69,7 @@ export default {
   methods: {
     ...mapActions({
       setGallery: 'posts/setGallery',
-      updateCurrentPost: 'posts/updateCurrentPost'
+      loadPosts: 'posts/loadPosts'
     })
   }
 }

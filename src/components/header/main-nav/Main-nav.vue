@@ -39,12 +39,24 @@ export default {
       translations: 'posts/getTagsTranslations'
     })
   },
+  data () {
+    return {
+      tag: this.$route.params.tag
+    }
+  },
   created () {
     this.loadTranslations()
   },
+  watch: {
+    $route (toR) {
+      this.tag = toR.params['tag']
+      this.loadPosts(this.tag)
+    }
+  },
   methods: {
     ...mapActions({
-      loadTranslations: 'posts/loadTranslations'
+      loadTranslations: 'posts/loadTranslations',
+      loadPosts: 'posts/loadPosts'
     }),
     t (val) {
       for (let key in this.translations) {

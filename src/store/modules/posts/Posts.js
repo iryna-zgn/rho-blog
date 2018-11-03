@@ -27,21 +27,15 @@ export default {
     isShownGallery: state => state.galleryModal.isShown
   },
   actions: {
-    loadPosts ({commit}) {
+    loadPosts ({commit}, param) {
       fetch(paths.posts)
         .then(data => data.json())
-        .then(data => commit(types.LOAD_POSTS, data))
+        .then(data => commit(types.LOAD_POSTS, [data, param]))
     },
     loadTranslations ({commit}) {
       fetch(paths.tagsTranslations)
         .then(data => data.json())
         .then(data => commit(types.LOAD_TAGS_TRANSLATIONS, data))
-    },
-    updateFilteredPosts({commit}, tag) {
-      commit(types.UPDATE_FILTERED_POSTS, tag)
-    },
-    updateCurrentPost ({commit}, rout) {
-      commit(types.UPDATE_CURRENT_POST, rout)
     },
     setGallery ({commit}, galleryInfo) {
       commit(types.SET_GALLERY, galleryInfo)
@@ -54,7 +48,9 @@ export default {
     }
   },
   mutations: {
-    [types.LOAD_POSTS] (state, posts) {
+    [types.LOAD_POSTS] (state, data) {
+      const [posts, param] = data
+
       posts.forEach(function (e) {
         const post = e
         const tagsSet = new Set()
@@ -73,6 +69,8 @@ export default {
         })
       })
       state.posts = posts
+      state.filteredPosts = state.posts.filter(e => e.tags.some(e => e === param))
+      state.currentPost = state.posts.filter(e => e.rout === param)[0]
 
       const tagsMap = new Map()
       posts.forEach(e => {
@@ -94,14 +92,8 @@ export default {
     [types.LOAD_TAGS_TRANSLATIONS] (state, translations) {
       state.tagsTranslations = translations
     },
-    [types.UPDATE_FILTERED_POSTS] (state, tag) {
-      state.filteredPosts = state.posts.filter(e => e.tags.some(e => e === tag))
-    },
-    [types.UPDATE_CURRENT_POST] (state, rout) {
-      state.currentPost = state.posts.filter(e => e.rout === rout)[0]
-    },
     [types.SET_GALLERY] (state, galleryInfo) {
-      const [gallery, galleryIndex, imageIndex] = galleryInfo
+      const { gallery, galleryIndex, imageIndex } = galleryInfo
       const currentImage = gallery[galleryIndex].images[imageIndex]
 
       state.galleryModal.currentImg = currentImage

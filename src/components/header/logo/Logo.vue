@@ -4,7 +4,7 @@
       :to="{name: 'postsList'}"
       class="logo__link">
       <!-- <img src="/static/logo.svg" alt=""> -->
-      <span class="logo__main">sigma</span>
+      <span class="logo__main">rho</span>
       <span class="logo__text">blog</span>
     </router-link >
   </div>

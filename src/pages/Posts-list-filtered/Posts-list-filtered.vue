@@ -24,17 +24,12 @@ export default {
       filteredPosts: 'posts/getFilteredPosts'
     })
   },
-  mounted () {
-    this.updateFilteredPosts(this.tag)
-  },
-  watch: {
-    $route (toR) {
-      this.tag = toR.params['tag']
-    }
+  created () {
+    this.loadPosts(this.tag)
   },
   methods: {
     ...mapActions({
-      updateFilteredPosts: 'posts/updateFilteredPosts'
+      loadPosts: 'posts/loadPosts'
     })
   }
 }
