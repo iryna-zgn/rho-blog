@@ -5,9 +5,10 @@
         tag="li"
         class="main-nav__item"
         :to="{name: 'about'}">
-        <a class="main-nav__link">
+        <span
+          class="main-nav__link">
           про мене
-        </a>
+        </span>
       </router-link>
       <router-link
         tag="li"
@@ -15,10 +16,10 @@
         :key="index"
         :to="{name: 'posts', params: {tag: tagInfo.tag}}"
         class="main-nav__item">
-        <a
+        <span
           class="main-nav__link">
-          #{{ tagInfo.tag }}
-        </a>
+          #{{ t(tagInfo.tag)}}
+        </span>
         <span
           class="main-nav__count">
           ({{ tagInfo.postsCount }})
@@ -29,13 +30,32 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'BlogNav',
   computed: {
     ...mapGetters({
-      tagsInfo: 'posts/getTagsInfo'
+      tagsInfo: 'posts/getTagsInfo',
+      translations: 'posts/getTranslations'
     })
+  },
+  created () {
+    this.loadTranslations()
+  },
+  methods: {
+    ...mapActions({
+      loadTranslations: 'posts/loadTranslations'
+    }),
+    t (val) {
+      for (let key in this.translations) {
+        switch (val) {
+          case key:
+            return this.translations[key]
+            // eslint-disable-next-line no-unreachable
+            break
+        }
+      }
+    }
   }
 }
 </script>

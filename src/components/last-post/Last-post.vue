@@ -2,10 +2,10 @@
   <div
     class="post">
     <h1 class="t1 post__title">
-      <a href="#"
-        @click.prevent="goToPost(post.rout)">
+      <span class="post__title-link"
+        @click="goToPost(post.rout)">
         {{ post.title }}
-      </a>
+      </span>
     </h1>
     <div class="post__tags">
       <span
@@ -17,7 +17,7 @@
     </div>
     <div
       class="post__img"
-      @click.prevent="goToPost(post.rout)">
+      @click="goToPost(post.rout)">
         <div class="post__img-item">
           <div
             v-if="post.map"
@@ -30,15 +30,14 @@
         </div>
     </div>
     <p
-      v-html="post.description"
       class="post__desc">
       {{ post.description }}
     </p>
-    <a href="#"
+    <span
       class="more-link"
-      @click.prevent="goToPost(post.rout)">
+      @click="goToPost(post.rout)">
         Continue reading...
-    </a>
+    </span>
   </div>
 </template>
 

@@ -11,7 +11,7 @@
           <div
             :style="{backgroundImage: `url(${post.prevImg})`}"
             class="post-prev__img"
-            @click.prevent="goToPost(post.rout)">
+            @click="goToPost(post.rout)">
             <img src="/static/posts/images/dummy_300x200.png"
               alt=""
               class="post-prev__dummy-img">
@@ -19,10 +19,11 @@
         </div>
         <div class="post-prev__var">
           <h3 class="t2 post-prev__title">
-            <a href="#"
-                @click.prevent="goToPost(post.rout)">
+            <span
+                class="post-prev__title-link"
+                @click="goToPost(post.rout)">
               {{ post.title }}
-            </a>
+            </span>
           </h3>
           <div class="post-prev__tags">
             <span
@@ -33,15 +34,14 @@
             </span>
           </div>
           <p
-            v-html="post.description"
             class="post-prev__desc">
             {{ post.description }}
           </p>
-          <a href="#"
+          <span
             class="more-link"
-            @click.prevent="goToPost(post.rout)">
+            @click="goToPost(post.rout)">
               Continue reading...
-          </a>
+          </span>
         </div>
       </div>
     </transition-group>

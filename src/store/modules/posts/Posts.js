@@ -3,6 +3,7 @@ export default {
   namespaced: true,
   state: {
     posts: [],
+    translations: {},
     currentPost: {},
     filteredPosts: [],
     tagsInfo: [],
@@ -15,6 +16,7 @@ export default {
   },
   getters: {
     getPosts: state => state.posts,
+    getTranslations: state => state.translations,
     getLastPost: state => state.posts[0],
     getRemainingPosts: state => state.posts.slice(1),
     getTagsInfo: state => state.tagsInfo,
@@ -44,6 +46,28 @@ export default {
         const posts = JSON.parse(response)
         commit(types.LOAD_POSTS, posts)
         return posts
+      })
+    },
+    loadTranslations ({commit}) {
+      function loadJSON (callback) {
+        const xobj = new XMLHttpRequest()
+        xobj.overrideMimeType('application/json')
+        xobj.open('GET', '/static/posts/translations.json', true)
+        xobj.onreadystatechange = function () {
+          if (
+            /* eslint-disable */
+            xobj.readyState == 4 && xobj.status == '200'
+            /* eslint-enable */
+          ) {
+            callback(xobj.responseText)
+          }
+        }
+        xobj.send(null)
+      }
+      loadJSON(function (response) {
+        const translations = JSON.parse(response)
+        commit(types.LOAD_TRANSLATIONS, translations)
+        return translations
       })
     },
     updateFilteredPosts({commit}, tag) {
@@ -99,6 +123,9 @@ export default {
         tagsMap.get(tag).postsCount = count
       })
       state.tagsInfo = [...tagsMap.values()]
+    },
+    [types.LOAD_TRANSLATIONS] (state, translations) {
+      state.translations = translations
     },
     [types.UPDATE_FILTERED_POSTS] (state, tag) {
       state.filteredPosts = state.posts.filter(e => e.tags.some(e => e === tag))

@@ -18,7 +18,6 @@
             </div>
             <div
               v-if="gallery.shortText !== ''"
-              v-html="gallery.shortText"
               class="gallery__const">
               {{ gallery.shortText }}
             </div>

@@ -22,8 +22,8 @@
           <div
             v-for="(img, imgIndex) in item.images"
             :key="imgIndex"
-            :class="['post__img-item', {'u-50': item.images.length === 2 || item.images.length > 3,
-                      'u-33': item.images.length === 3}]"
+            :class="['post__img-item', {'u-50': item.images.length === 2,
+                      'u-33': item.images.length >= 3}]"
             @click="setGallery([post.gallery, galleryIndex, imgIndex])">
             <div
               v-if="post.map && galleryIndex==0"
@@ -39,9 +39,7 @@
         </div>
         <div
           v-html="item.text"
-          class="post__text">
-          {{ item.text }}
-        </div>
+          class="post__text"/>
       </div>
     </div>
   </div>

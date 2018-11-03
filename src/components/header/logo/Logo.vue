@@ -3,8 +3,8 @@
     <router-link
       :to="{name: 'postsList'}"
       class="logo__link">
-      <img src="/static/logo.svg" alt="">
-      <!-- <span class="logo__main">exp</span> -->
+      <!-- <img src="/static/logo.svg" alt=""> -->
+      <span class="logo__main">sigma</span>
       <span class="logo__text">blog</span>
     </router-link >
   </div>

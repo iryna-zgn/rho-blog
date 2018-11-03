@@ -6,12 +6,11 @@
         class="modal__backdrop"
         @click="closeModal(stateModalName)"
       />
-      <a
-        href="#"
+      <span
         class="modal__close"
-        @click.prevent="closeModal(stateModalName)">
+        @click="closeModal(stateModalName)">
         &times;
-      </a>
+      </span>
       <div
         class="modal__container">
         <slot
@@ -30,6 +29,13 @@ export default {
       type: String,
       default: 'defaultModal'
     }
+  },
+  created () {
+    window.addEventListener('keydown', (e) => {
+      if (e.key == 'Escape') {
+        this.closeModal(this.stateModalName)
+      }
+    })
   },
   methods: {
     ...mapActions({
