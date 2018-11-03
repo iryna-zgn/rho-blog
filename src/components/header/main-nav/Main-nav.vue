@@ -36,7 +36,7 @@ export default {
   computed: {
     ...mapGetters({
       tagsInfo: 'posts/getTagsInfo',
-      translations: 'posts/getTranslations'
+      translations: 'posts/getTagsTranslations'
     })
   },
   created () {
@@ -53,6 +53,8 @@ export default {
             return this.translations[key]
             // eslint-disable-next-line no-unreachable
             break
+          default:
+            return val
         }
       }
     }

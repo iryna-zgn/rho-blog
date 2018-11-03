@@ -4,7 +4,7 @@ export default {
   namespaced: true,
   state: {
     posts: [],
-    translations: {},
+    tagsTranslations: {},
     currentPost: {},
     filteredPosts: [],
     tagsInfo: [],
@@ -17,7 +17,7 @@ export default {
   },
   getters: {
     getPosts: state => state.posts,
-    getTranslations: state => state.translations,
+    getTagsTranslations: state => state.tagsTranslations,
     getLastPost: state => state.posts[0],
     getRemainingPosts: state => state.posts.slice(1),
     getTagsInfo: state => state.tagsInfo,
@@ -28,44 +28,14 @@ export default {
   },
   actions: {
     loadPosts ({commit}) {
-      function loadJSON (callback) {
-        const xobj = new XMLHttpRequest()
-        xobj.overrideMimeType('application/json')
-        xobj.open('GET', paths.posts, true)
-        xobj.onreadystatechange = function () {
-          if (
-            /* eslint-disable */
-            xobj.readyState == 4 && xobj.status == '200'
-            /* eslint-enable */
-          ) {
-            callback(xobj.responseText)
-          }
-        }
-        xobj.send(null)
-      }
-      loadJSON(function (response) {
-        commit(types.LOAD_POSTS, JSON.parse(response))
-      })
+      fetch(paths.posts)
+        .then(data => data.json())
+        .then(data => commit(types.LOAD_POSTS, data))
     },
     loadTranslations ({commit}) {
-      function loadJSON (callback) {
-        const xobj = new XMLHttpRequest()
-        xobj.overrideMimeType('application/json')
-        xobj.open('GET', paths.translations, true)
-        xobj.onreadystatechange = function () {
-          if (
-            /* eslint-disable */
-            xobj.readyState == 4 && xobj.status == '200'
-            /* eslint-enable */
-          ) {
-            callback(xobj.responseText)
-          }
-        }
-        xobj.send(null)
-      }
-      loadJSON(function (response) {
-        commit(types.LOAD_TRANSLATIONS, JSON.parse(response))
-      })
+      fetch(paths.tagsTranslations)
+        .then(data => data.json())
+        .then(data => commit(types.LOAD_TAGS_TRANSLATIONS, data))
     },
     updateFilteredPosts({commit}, tag) {
       commit(types.UPDATE_FILTERED_POSTS, tag)
@@ -121,8 +91,8 @@ export default {
       })
       state.tagsInfo = [...tagsMap.values()]
     },
-    [types.LOAD_TRANSLATIONS] (state, translations) {
-      state.translations = translations
+    [types.LOAD_TAGS_TRANSLATIONS] (state, translations) {
+      state.tagsTranslations = translations
     },
     [types.UPDATE_FILTERED_POSTS] (state, tag) {
       state.filteredPosts = state.posts.filter(e => e.tags.some(e => e === tag))
