@@ -1,4 +1,5 @@
 import * as types from './mutation-types'
+import * as paths from './paths'
 export default {
   namespaced: true,
   state: {
@@ -30,7 +31,7 @@ export default {
       function loadJSON (callback) {
         const xobj = new XMLHttpRequest()
         xobj.overrideMimeType('application/json')
-        xobj.open('GET', '/static/posts/posts.json', true)
+        xobj.open('GET', paths.posts, true)
         xobj.onreadystatechange = function () {
           if (
             /* eslint-disable */
@@ -43,16 +44,14 @@ export default {
         xobj.send(null)
       }
       loadJSON(function (response) {
-        const posts = JSON.parse(response)
-        commit(types.LOAD_POSTS, posts)
-        return posts
+        commit(types.LOAD_POSTS, JSON.parse(response))
       })
     },
     loadTranslations ({commit}) {
       function loadJSON (callback) {
         const xobj = new XMLHttpRequest()
         xobj.overrideMimeType('application/json')
-        xobj.open('GET', '/static/posts/translations.json', true)
+        xobj.open('GET', paths.translations, true)
         xobj.onreadystatechange = function () {
           if (
             /* eslint-disable */
@@ -65,9 +64,7 @@ export default {
         xobj.send(null)
       }
       loadJSON(function (response) {
-        const translations = JSON.parse(response)
-        commit(types.LOAD_TRANSLATIONS, translations)
-        return translations
+        commit(types.LOAD_TRANSLATIONS, JSON.parse(response))
       })
     },
     updateFilteredPosts({commit}, tag) {
