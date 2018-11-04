@@ -2,7 +2,8 @@
   <div
     class="post">
     <h1 class="t1 post__title">
-      <span class="post__title-link"
+      <span
+        class="post__title-link"
         @click="goToPost(post.rout)">
         {{ post.title }}
       </span>
@@ -18,16 +19,18 @@
     <div
       class="post__img"
       @click="goToPost(post.rout)">
-        <div class="post__img-item">
-          <div
-            v-if="post.map"
-            class="post__map">
-            <img
-              :src="post.map"
-              alt="">
-          </div>
-          <img :src="post.mainImg" alt="">
+      <div class="post__img-item">
+        <div
+          v-if="post.map"
+          class="post__map">
+          <img
+            :src="post.map"
+            alt="">
         </div>
+        <img
+          :src="post.mainImg"
+          alt="">
+      </div>
     </div>
     <p
       class="post__desc">
@@ -36,7 +39,7 @@
     <span
       class="more-link"
       @click="goToPost(post.rout)">
-        Continue reading...
+      Continue reading...
     </span>
   </div>
 </template>
@@ -51,8 +54,8 @@ export default {
     }
   },
   methods: {
-    goToPost(rout) {
-      this.$router.push({name:'post', params: {rout}})
+    goToPost (rout) {
+      this.$router.push({ name: 'post', params: { rout } })
     }
   }
 }

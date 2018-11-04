@@ -4,9 +4,11 @@
       v-for="(item, index) in items"
       :key="index"
       class="soc-links__item">
-      <a href="#" class="soc-links__link">
+      <a
+        href="#"
+        class="soc-links__link">
         <span
-          :class="['soc-links__icon', 'icon-'+ item]"></span>
+          :class="['soc-links__icon', 'icon-'+ item]"/>
       </a>
     </li>
   </ul>

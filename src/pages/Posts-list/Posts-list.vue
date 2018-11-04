@@ -20,7 +20,7 @@ export default {
     BlogLastPost,
     BlogPreviewPosts
   },
-  data() {
+  data () {
     return {
       page: 0,
       perPage: 2

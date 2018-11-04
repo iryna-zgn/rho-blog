@@ -29,7 +29,7 @@ import BlogModals from './components/modals/Modals'
 import BlogCopyright from './components/copyright/Copyright'
 import { mapActions } from 'vuex'
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     BlogAside,
     BlogModals,

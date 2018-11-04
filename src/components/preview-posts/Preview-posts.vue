@@ -12,7 +12,8 @@
             :style="{backgroundImage: `url(${post.prevImg})`}"
             class="post-prev__img"
             @click="goToPost(post.rout)">
-            <img src="/static/posts/images/dummy_300x200.png"
+            <img
+              src="/static/posts/images/dummy_300x200.png"
               alt=""
               class="post-prev__dummy-img">
           </div>
@@ -20,8 +21,8 @@
         <div class="post-prev__var">
           <h3 class="t2 post-prev__title">
             <span
-                class="post-prev__title-link"
-                @click="goToPost(post.rout)">
+              class="post-prev__title-link"
+              @click="goToPost(post.rout)">
               {{ post.title }}
             </span>
           </h3>
@@ -40,7 +41,7 @@
           <span
             class="more-link"
             @click="goToPost(post.rout)">
-              Continue reading...
+            Continue reading...
           </span>
         </div>
       </div>
@@ -58,8 +59,8 @@ export default {
     }
   },
   methods: {
-    goToPost(rout) {
-      this.$router.push({name:'post', params: {rout}})
+    goToPost (rout) {
+      this.$router.push({ name: 'post', params: { rout } })
     }
   }
 }

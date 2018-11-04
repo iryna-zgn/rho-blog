@@ -14,8 +14,7 @@
       <div
         class="modal__container">
         <slot
-          name="content"/>
-      </div>
+          name="content"/></div>
     </div>
   </transition>
 </template>
@@ -32,7 +31,7 @@ export default {
   },
   created () {
     window.addEventListener('keydown', (e) => {
-      if (e.key == 'Escape') {
+      if (e.key === 'Escape') {
         this.closeModal(this.stateModalName)
       }
     })

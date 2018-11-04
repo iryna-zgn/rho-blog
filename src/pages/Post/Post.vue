@@ -23,12 +23,12 @@
             v-for="(img, imgIndex) in item.images"
             :key="imgIndex"
             :class="['post__img-item', {'u-50': item.images.length === 2,
-                      'u-33': item.images.length >= 3}]"
+                                        'u-33': item.images.length >= 3}]"
             @click="setGallery({
               gallery: post.gallery,
               galleryIndex: galleryIndex,
               imageIndex: imgIndex
-            })">
+          })">
             <div
               v-if="post.map && galleryIndex==0"
               class="post__map">
@@ -42,8 +42,8 @@
           </div>
         </div>
         <div
-          v-html="item.text"
-          class="post__text"/>
+          class="post__text"
+          v-html="item.text"/>
       </div>
     </div>
   </div>
@@ -58,13 +58,13 @@ export default {
       rout: this.$route.params.rout
     }
   },
-  created () {
-    this.loadPosts(this.rout)
-  },
   computed: {
     ...mapGetters({
       post: 'posts/getCurrentPost'
     })
+  },
+  created () {
+    this.loadPosts(this.rout)
   },
   methods: {
     ...mapActions({

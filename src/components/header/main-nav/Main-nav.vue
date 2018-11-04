@@ -2,23 +2,23 @@
   <div class="main-nav">
     <ul class="main-nav__list">
       <router-link
+        :to="{name: 'about'}"
         tag="li"
-        class="main-nav__item"
-        :to="{name: 'about'}">
+        class="main-nav__item">
         <span
           class="main-nav__link">
           про мене
         </span>
       </router-link>
       <router-link
-        tag="li"
         v-for="(tagInfo, index) in tagsInfo"
         :key="index"
         :to="{name: 'posts', params: {tag: tagInfo.tag}}"
+        tag="li"
         class="main-nav__item">
         <span
           class="main-nav__link">
-          #{{ t(tagInfo.tag)}}
+          #{{ t(tagInfo.tag) }}
         </span>
         <span
           class="main-nav__count">
@@ -33,25 +33,25 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'BlogNav',
+  data () {
+    return {
+      tag: this.$route.params.tag
+    }
+  },
   computed: {
     ...mapGetters({
       tagsInfo: 'posts/getTagsInfo',
       translations: 'posts/getTagsTranslations'
     })
   },
-  data () {
-    return {
-      tag: this.$route.params.tag
-    }
-  },
-  created () {
-    this.loadTranslations()
-  },
   watch: {
     $route (toR) {
       this.tag = toR.params['tag']
       this.loadPosts(this.tag)
     }
+  },
+  created () {
+    this.loadTranslations()
   },
   methods: {
     ...mapActions({

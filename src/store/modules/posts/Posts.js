@@ -27,23 +27,23 @@ export default {
     isShownGallery: state => state.galleryModal.isShown
   },
   actions: {
-    loadPosts ({commit}, param) {
+    loadPosts ({ commit }, param) {
       fetch(paths.posts)
         .then(data => data.json())
         .then(data => commit(types.LOAD_POSTS, [data, param]))
     },
-    loadTranslations ({commit}) {
+    loadTranslations ({ commit }) {
       fetch(paths.tagsTranslations)
         .then(data => data.json())
         .then(data => commit(types.LOAD_TAGS_TRANSLATIONS, data))
     },
-    setGallery ({commit}, galleryInfo) {
+    setGallery ({ commit }, galleryInfo) {
       commit(types.SET_GALLERY, galleryInfo)
     },
-    closeModal ({commit}, modalName) {
+    closeModal ({ commit }, modalName) {
       commit(types.CLOSE_MODAL, modalName)
     },
-    slideGalleryImg ({commit}, arrow) {
+    slideGalleryImg ({ commit }, arrow) {
       commit(types.SLIDE_GALLERY_IMG, arrow)
     }
   },
@@ -127,7 +127,7 @@ export default {
     },
     [types.CLOSE_MODAL] (state, modalName) {
       state[modalName].isShown = false
-      setTimeout (function () {
+      setTimeout(function () {
         document.querySelector('body').classList.remove('is-fixed')
       }, 200)
     }
