@@ -36,17 +36,18 @@
       class="post__desc">
       {{ post.description }}
     </p>
-    <span
-      class="more-link"
-      @click="goToPost(post.rout)">
-      Continue reading...
-    </span>
+    <blog-more-link
+      @click.native="goToPost(post.rout)"/>
   </div>
 </template>
 
 <script>
+import BlogMoreLink from './../more-link/More-link.vue'
 export default {
   name: 'LastPost',
+  components: {
+    BlogMoreLink
+  },
   props: {
     post: {
       type: Object,
