@@ -32,22 +32,8 @@
     &--left
       left: 5px
   &__img
-    &:before
-      content: ''
-      position: absolute
-      top: 0
-      right: 0
-      bottom: 0
-      left: 0
-      display: block
-      background-color: rgba(#000000, .1)
-      opacity: 0
-      visibility: hidden
-      transition: all .2s linear
+    +img-hover
     &:hover
-      &:before
-        opacity: 1
-        visibility: visible
       .gallery__arrow
         color: rgba(255, 255, 255, .8)
 
