@@ -64,9 +64,9 @@ export default {
           case key:
             return this.translations[key]
             // eslint-disable-next-line no-unreachable
-            break
-          default:
-            return val
+            // break
+          // default:
+          //   return val
         }
       }
     }

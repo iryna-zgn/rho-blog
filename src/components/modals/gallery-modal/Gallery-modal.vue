@@ -35,6 +35,12 @@ export default {
   components: {
     Modal
   },
+  computed: {
+    ...mapGetters({
+      gallery: 'posts/getCurrentGalleryImg',
+      isShown: 'posts/isShownGallery'
+    })
+  },
   created () {
     window.addEventListener('keydown', (e) => {
       if (event.keyCode === 37) {
@@ -42,12 +48,6 @@ export default {
       } else if (event.keyCode === 39) {
         this.slideGalleryImg('next')
       }
-    })
-  },
-  computed: {
-    ...mapGetters({
-      gallery: 'posts/getCurrentGalleryImg',
-      isShown: 'posts/isShownGallery'
     })
   },
   methods: {
