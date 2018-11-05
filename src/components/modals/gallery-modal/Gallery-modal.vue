@@ -35,6 +35,15 @@ export default {
   components: {
     Modal
   },
+  created () {
+    window.addEventListener('keydown', (e) => {
+      if (event.keyCode === 37) {
+        this.slideGalleryImg('prev')
+      } else if (event.keyCode === 39) {
+        this.slideGalleryImg('next')
+      }
+    })
+  },
   computed: {
     ...mapGetters({
       gallery: 'posts/getCurrentGalleryImg',

@@ -1,7 +1,7 @@
 <template>
   <span
     class="more-link">
-    Продовжити читати...
+    Читати статтю...
   </span>
 </template>
 
