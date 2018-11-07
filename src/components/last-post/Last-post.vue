@@ -28,7 +28,7 @@
             alt="">
         </div>
         <img
-          :src="post.mainImg"
+          :src="post.prevImgBig"
           alt="">
       </div>
     </div>

@@ -4,12 +4,12 @@
     "tags": "carpathians, travel, carpathians",
     "title": "Мандрівка на гору Ґорґан-Ілемський",
     "prevImg": "/static/posts/images/gorgan-ilemskyj/preview.jpg",
+    "prevImgBig": "/static/posts/images/gorgan-ilemskyj/previewBig.jpg",
     "gallery": [
       {
         "images": [
           {
             "img": "/static/posts/images/gorgan-ilemskyj/img-1.jpg",
-            "mainImg": true,
             "shortText": "Захований в тумані Ґорґан-Ілемський. Це шлях у два кілометри від полонини Німецька. Але про все попорядку."
           }
         ],

@@ -59,11 +59,6 @@ export default {
         tags.forEach(e => tagsSet.add(e))
         post.tags = [...tagsSet]
 
-        post.mainImg = post.gallery
-          .map(e => e.images)
-          .reduce((a, b) => [...a, ...b], [])
-          .filter(e => e.mainImg)[0].img
-
         post.gallery.forEach(e => {
           e.text = `<p>${e.text.replace(/\/n/ig, '</p><p>')}</p>`
         })
