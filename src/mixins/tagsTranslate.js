@@ -15,15 +15,10 @@ export default {
       loadTranslations: 'posts/loadTranslations'
     }),
     t (val) {
-      for (let key in this.translations) {
-        switch (val) {
-          case key:
-            return this.translations[key]
-            // eslint-disable-next-line no-unreachable
-            // break
-          // default:
-          //   return val
-        }
+      if (this.translations[val] !== undefined) {
+        return this.translations[val]
+      } else {
+        return val
       }
     }
   }
