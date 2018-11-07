@@ -30,9 +30,13 @@
 </template>
 
 <script>
+import tagsTranslate from './../../../mixins/tagsTranslate'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'BlogNav',
+  mixins: [
+    tagsTranslate
+  ],
   data () {
     return {
       tag: this.$route.params.tag
@@ -40,8 +44,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      tagsInfo: 'posts/getTagsInfo',
-      translations: 'posts/getTagsTranslations'
+      tagsInfo: 'posts/getTagsInfo'
     })
   },
   watch: {
@@ -50,26 +53,10 @@ export default {
       this.loadPosts(this.tag)
     }
   },
-  created () {
-    this.loadTranslations()
-  },
   methods: {
     ...mapActions({
-      loadTranslations: 'posts/loadTranslations',
       loadPosts: 'posts/loadPosts'
-    }),
-    t (val) {
-      for (let key in this.translations) {
-        switch (val) {
-          case key:
-            return this.translations[key]
-            // eslint-disable-next-line no-unreachable
-            // break
-          // default:
-          //   return val
-        }
-      }
-    }
+    })
   }
 }
 </script>

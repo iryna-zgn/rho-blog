@@ -31,7 +31,7 @@
               v-for="(tag, index) in post.tags"
               :key="index"
               class="post__tag">
-              #{{ tag }}
+              #{{ t(tag) }}
             </span>
           </div>
           <p
@@ -47,12 +47,16 @@
 </template>
 
 <script>
+import tagsTranslate from './../../mixins/tagsTranslate'
 import BlogMoreLink from './../more-link/More-link.vue'
 export default {
   name: 'RemainingPosts',
   components: {
     BlogMoreLink
   },
+  mixins: [
+    tagsTranslate
+  ],
   props: {
     posts: {
       type: Array,

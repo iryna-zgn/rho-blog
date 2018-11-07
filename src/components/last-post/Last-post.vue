@@ -13,7 +13,7 @@
         v-for="(tag, index) in post.tags"
         :key="index"
         class="post__tag">
-        #{{ tag }}
+        #{{ t(tag) }}
       </span>
     </div>
     <div
@@ -43,11 +43,15 @@
 
 <script>
 import BlogMoreLink from './../more-link/More-link.vue'
+import tagsTranslate from './../../mixins/tagsTranslate'
 export default {
   name: 'LastPost',
   components: {
     BlogMoreLink
   },
+  mixins: [
+    tagsTranslate
+  ],
   props: {
     post: {
       type: Object,

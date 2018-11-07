@@ -10,7 +10,7 @@
           v-for="(tag, index) in post.tags"
           :key="index"
           class="post__tag">
-          #{{ tag }}
+          #{{ t(tag) }}
         </span>
       </div>
       <div
@@ -50,9 +50,13 @@
 </template>
 
 <script>
+import tagsTranslate from './../../mixins/tagsTranslate'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Post',
+  mixins: [
+    tagsTranslate
+  ],
   data () {
     return {
       rout: this.$route.params.rout
