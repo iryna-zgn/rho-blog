@@ -1,12 +1,18 @@
 <template>
-  <span
+  <div
     class="more-link">
-    Читати...
-  </span>
+    {{ text }}
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'MoreLink'
+  name: 'MoreLink',
+  props: {
+    text: {
+      type: String,
+      default: 'Далі...'
+    }
+  }
 }
 </script>

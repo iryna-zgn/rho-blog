@@ -4,21 +4,30 @@
     <blog-last-post
       v-if="lastPost"
       :post="lastPost"/>
-    <blog-preview-posts
-      v-if="posts.length > 0"
-      :posts="posts"/>
+    <template
+      v-if="posts.length > 0">
+      <blog-preview-posts
+        :posts="posts"/>
+      <div class="u-center">
+        <blog-more-link
+          :text="'Завантажити ще'"
+          @click="partPosts"/>
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
 import BlogLastPost from './../../components/last-post/Last-post'
 import BlogPreviewPosts from './../../components/preview-posts/Preview-posts'
+import BlogMoreLink from './../../components/more-link/More-link.vue'
 import { mapGetters } from 'vuex'
 export default {
   name: 'BlogPostsList',
   components: {
     BlogLastPost,
-    BlogPreviewPosts
+    BlogPreviewPosts,
+    BlogMoreLink
   },
   data () {
     return {
