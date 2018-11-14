@@ -3,10 +3,6 @@
     class="posts-list">
     <blog-preview-posts
       :posts="filteredPosts"/>
-    <div class="u-center">
-      <blog-more-link
-        :text="'Завантажити ще'"/>
-    </div>
   </div>
 </template>
 

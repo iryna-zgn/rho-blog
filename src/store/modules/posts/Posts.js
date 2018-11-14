@@ -4,6 +4,10 @@ export default {
   namespaced: true,
   state: {
     posts: [],
+    lastPost: {},
+    partPosts: [],
+    page: 1,
+    perPage: 3,
     tagsTranslations: {},
     currentPost: {},
     filteredPosts: [],
@@ -18,8 +22,9 @@ export default {
   getters: {
     getPosts: state => state.posts,
     getTagsTranslations: state => state.tagsTranslations,
-    getLastPost: state => state.posts[0],
-    getRemainingPosts: state => state.posts.slice(1),
+    getLastPost: state => state.lastPost,
+    getPartPosts: state => state.partPosts,
+    getPerPage: state => state.perPage,
     getTagsInfo: state => state.tagsInfo,
     getCurrentPost: state => state.currentPost,
     getFilteredPosts: state => state.filteredPosts,
@@ -45,6 +50,9 @@ export default {
     },
     slideGalleryImg ({ commit }, arrow) {
       commit(types.SLIDE_GALLERY_IMG, arrow)
+    },
+    loadMorePosts ({ commit }, offset) {
+      commit(types.LOAD_MORE_POSTS, offset)
     }
   },
   mutations: {
@@ -64,6 +72,8 @@ export default {
         })
       })
       state.posts = posts
+      state.lastPost = posts[0]
+      state.partPosts = posts.slice(state.page, state.perPage)
       state.filteredPosts = state.posts.filter(e => e.tags.some(e => e === param))
       state.currentPost = state.posts.filter(e => e.rout === param)[0]
 
@@ -125,6 +135,10 @@ export default {
       setTimeout(function () {
         document.querySelector('body').classList.remove('is-fixed')
       }, 200)
+    },
+    [types.LOAD_MORE_POSTS] (state, offset) {
+      const part = state.posts.slice(offset + state.page, offset + state.perPage)
+      state.partPosts = [...state.partPosts, ...part]
     }
   }
 }
