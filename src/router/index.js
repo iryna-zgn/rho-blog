@@ -12,7 +12,7 @@ const router = new Router({
   linkExactActiveClass: 'is-active',
   routes: [
     {
-      path: '/vuejs-blog',
+      path: '/',
       name: 'postsList',
       component: PostsList
     },
