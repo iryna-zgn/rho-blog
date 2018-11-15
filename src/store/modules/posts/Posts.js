@@ -3,14 +3,21 @@ import * as paths from './paths'
 export default {
   namespaced: true,
   state: {
-    posts: [],
-    lastPost: {},
-    partPosts: [],
-    page: 1,
+    posts: [], // all posts
+    tailPosts: [], // except first post
+    filtered: [],
+    homePosts: {
+      last: {},
+      part: [],
+      countTail: 0
+    },
+    filteredPosts: {
+      part: [],
+      count: 0
+    },
     perPage: 3,
-    tagsTranslations: {},
     currentPost: {},
-    filteredPosts: [],
+    tagsTranslations: {},
     tagsInfo: [],
     galleryModal: {
       isShown: false,
@@ -21,12 +28,10 @@ export default {
   },
   getters: {
     getPosts: state => state.posts,
-    getTagsTranslations: state => state.tagsTranslations,
-    getLastPost: state => state.lastPost,
-    getPartPosts: state => state.partPosts,
-    getPerPage: state => state.perPage,
-    getTagsInfo: state => state.tagsInfo,
+    getHomePost: state => state.homePosts,
     getCurrentPost: state => state.currentPost,
+    getTagsTranslations: state => state.tagsTranslations,
+    getTagsInfo: state => state.tagsInfo,
     getFilteredPosts: state => state.filteredPosts,
     getCurrentGalleryImg: state => state.galleryModal.currentImg,
     isShownGallery: state => state.galleryModal.isShown
@@ -51,8 +56,8 @@ export default {
     slideGalleryImg ({ commit }, arrow) {
       commit(types.SLIDE_GALLERY_IMG, arrow)
     },
-    loadMorePosts ({ commit }, offset) {
-      commit(types.LOAD_MORE_POSTS, offset)
+    loadMorePosts ({ commit }, payload) {
+      commit(types.LOAD_MORE_POSTS, payload)
     }
   },
   mutations: {
@@ -72,9 +77,18 @@ export default {
         })
       })
       state.posts = posts
-      state.lastPost = posts[0]
-      state.partPosts = posts.slice(state.page, state.perPage)
-      state.filteredPosts = state.posts.filter(e => e.tags.some(e => e === param))
+      // for home page
+      state.tailPosts = posts.slice(1)
+      state.homePosts.last = posts[0]
+      state.homePosts.part = state.tailPosts.slice(0, state.perPage)
+      state.homePosts.countTail = state.tailPosts.length
+      // for filtering page
+      state.filtered = state.posts.filter(e => {
+        return e.tags.some(e => e === param)
+      })
+      state.filteredPosts.part = state.filtered.slice(0, state.perPage)
+      state.filteredPosts.count = state.filtered.length
+      // for post page
       state.currentPost = state.posts.filter(e => e.rout === param)[0]
 
       const tagsMap = new Map()
@@ -136,9 +150,15 @@ export default {
         document.querySelector('body').classList.remove('is-fixed')
       }, 200)
     },
-    [types.LOAD_MORE_POSTS] (state, offset) {
-      const part = state.posts.slice(offset + state.page, offset + state.perPage)
-      state.partPosts = [...state.partPosts, ...part]
+    [types.LOAD_MORE_POSTS] (state, payload) {
+      const { from, offset } = payload
+      if (from === 'home') {
+        const part = state.tailPosts.slice(offset, offset + state.perPage)
+        state.homePosts.part = [...state.homePosts.part, ...part]
+      } else if (from === 'filter') {
+        const part = state.filtered.slice(offset, offset + state.perPage)
+        state.filteredPosts.part = [...state.filteredPosts.part, ...part]
+      }
     }
   }
 }

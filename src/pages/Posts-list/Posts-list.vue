@@ -8,11 +8,13 @@
       v-if="posts.length > 0"
       :posts="posts"/>
     <div
-      v-if="posts.length"
+      v-if="posts.length < count"
       class="u-center">
       <blog-more-link
         :text="'Завантажити ще'"
-        @click.native="loadMorePosts(posts.length)"/>
+        @click.native="loadMorePosts({
+          from: 'home',
+          offset: posts.length})"/>
     </div>
   </div>
 </template>
@@ -31,10 +33,17 @@ export default {
   },
   computed: {
     ...mapGetters({
-      lastPost: 'posts/getLastPost',
-      posts: 'posts/getPartPosts',
-      perPage: 'posts/getPerPage'
-    })
+      homePosts: 'posts/getHomePost'
+    }),
+    lastPost () {
+      return this.homePosts.last
+    },
+    posts () {
+      return this.homePosts.part
+    },
+    count () {
+      return this.homePosts.countTail
+    }
   },
   methods: {
     ...mapActions({
