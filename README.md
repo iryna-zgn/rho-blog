@@ -1,4 +1,4 @@
-# blog
+# rho.blog
 
 ## Project setup
 ```
