@@ -1,0 +1,30 @@
+.about
+  img
+    display: block
+    margin: 0 auto 10px
+    max-width: 100%
+  &__quote
+    margin-left: auto
+    margin-bottom: 35px
+    font-size: 13px
+    line-height: 1.7
+    text-align: right
+    font-family: $decorate-font
+    &-name
+      margin-top: 20px
+
+@media only screen and (min-width: 400px)
+  .about
+    &__two-parts
+      font-size: 0
+    &__const,
+    &__var
+      display: inline-block
+      vertical-align: top
+    &__const
+      width: 150px
+      margin-right: -150px
+    &__var
+      width: 100%
+      padding-top: 15px
+      padding-left: 170px
