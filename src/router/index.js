@@ -17,17 +17,17 @@ const router = new Router({
       component: PostsList
     },
     {
-      path: '/posts/:tag',
+      path: '/rho.blog/posts/:tag',
       name: 'posts',
       component: PostsListFiltered
     },
     {
-      path: '/post/:rout',
+      path: '/rho.blog/post/:rout',
       name: 'post',
       component: Post
     },
     {
-      path: '/about',
+      path: '/rho.blog/about',
       name: 'about',
       component: About
     }
