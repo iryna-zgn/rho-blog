@@ -4,15 +4,15 @@
     "rout": "ras-muhammad",
     "tags": "travel",
     "title": "Рас Мохаммед",
-    "prevImg": "static/posts/images/ras-muhammad/preview.jpg",
-    "prevImgBig": "static/posts/images/ras-muhammad/previewBig.jpg",
+    "prevImg": "/static/posts/images/ras-muhammad/preview.jpg",
+    "prevImgBig": "/static/posts/images/ras-muhammad/previewBig.jpg",
     "description": "В Шарм Ель Шейху, вам обов'язково запропонують придбати погулянку на яхті в національний парк Рас Мохаммед. Блакитні вода і небо у контрасті із жовтогарячими горами та піском створюють неймовірні краєвиди. Але головна мета цієї мандрівки — заглянути у підводний світ — це дайвінг та снорклінг.",
-    "map": "static/posts/images/ras-muhammad/map.svg",
+    "map": "/static/posts/images/ras-muhammad/map.svg",
     "gallery": [
       {
         "images": [
           {
-            "img": "static/posts/images/ras-muhammad/img-1.jpg",
+            "img": "/static/posts/images/ras-muhammad/img-1.jpg",
             "shortText": "Блакитні вода і небо у контрасті із жовтогарячими горами та піском створюють неймовірні краєвиди."
           }
         ],
@@ -21,7 +21,7 @@
       {
         "images": [
           {
-            "img": "static/posts/images/ras-muhammad/img-2.jpg",
+            "img": "/static/posts/images/ras-muhammad/img-2.jpg",
             "shortText": "Риби хірурги"
           }
         ],
@@ -33,15 +33,15 @@
     "rout": "gorgan-ilemskyj",
     "tags": "carpathians, travel, mountains",
     "title": "Мандрівка на гору Ґорґан-Ілемський",
-    "prevImg": "static/posts/images/gorgan-ilemskyj/preview.jpg",
-    "prevImgBig": "static/posts/images/gorgan-ilemskyj/previewBig.jpg",
+    "prevImg": "/static/posts/images/gorgan-ilemskyj/preview.jpg",
+    "prevImgBig": "/static/posts/images/gorgan-ilemskyj/previewBig.jpg",
     "description": "Ми йшли маршрутом 'село Мислівка — гора Малий Пустошак — гора Великий Пустошак — полонина Німецька — гора Ґорґан Ілемський'. Це шлях довжиною 11 кілометрів в одну сторону. Маршрут добре маркований (принаймні, так було у 2017). Мітки є на деревах, каміннях, табличках. Через повалені дерева безперешкодні стежини змінюються тяжко подоланними. На шляху до полонини Німецька — Малий та Великий Пустошаки, тому це спуски і підйоми.",
-    "map": "static/posts/images/gorgan-ilemskyj/map.svg",
+    "map": "/static/posts/images/gorgan-ilemskyj/map.svg",
     "gallery": [
       {
         "images": [
           {
-            "img": "static/posts/images/gorgan-ilemskyj/img-1.jpg",
+            "img": "/static/posts/images/gorgan-ilemskyj/img-1.jpg",
             "shortText": "Захований в тумані Ґорґан-Ілемський. Це шлях у два кілометри від полонини Німецька. Але про все попорядку."
           }
         ],
@@ -50,15 +50,15 @@
       {
         "images": [
           {
-            "img": "static/posts/images/gorgan-ilemskyj/img-9.jpg",
+            "img": "/static/posts/images/gorgan-ilemskyj/img-9.jpg",
             "shortText": "Ми йшли жовтим маршрутом. Мислівка - Малий Пустошак - Великий Пустошак - полонина Німецька - Ґорґан Ілемський. Оскільки, була туманна, хмарна та вітряна погода, назад повертались тим же шляхом."
           },
           {
-            "img": "static/posts/images/gorgan-ilemskyj/img-2.jpg",
+            "img": "/static/posts/images/gorgan-ilemskyj/img-2.jpg",
             "shortText": "Шлях добре маркований (так було восени 2017). Мітки і на деревах, і на каміннях. На зміну таким безперешкодним стежинам траплялись і повалені дерева."
           },
           {
-            "img": "static/posts/images/gorgan-ilemskyj/img-4.jpg",
+            "img": "/static/posts/images/gorgan-ilemskyj/img-4.jpg",
             "shortText": "Малий Пустошак."
           }
         ],
@@ -67,15 +67,15 @@
       {
         "images": [
           {
-            "img": "static/posts/images/gorgan-ilemskyj/img-5.jpg",
+            "img": "/static/posts/images/gorgan-ilemskyj/img-5.jpg",
             "shortText": "Великий Пустошак."
           },
           {
-            "img": "static/posts/images/gorgan-ilemskyj/img-7.jpg",
+            "img": "/static/posts/images/gorgan-ilemskyj/img-7.jpg",
             "shortText": "Подолавши підйоми та спуски, доходимо до полонини Німецька."
           },
           {
-            "img": "static/posts/images/gorgan-ilemskyj/img-6.jpg",
+            "img": "/static/posts/images/gorgan-ilemskyj/img-6.jpg",
             "shortText": "11 км пройдено. Ґорґан Ілемський. Густий туман та сильний вітер."
           }
         ],
@@ -84,7 +84,7 @@
       {
         "images": [
           {
-            "img": "static/posts/images/gorgan-ilemskyj/img-8.jpg",
+            "img": "/static/posts/images/gorgan-ilemskyj/img-8.jpg",
             "shortText": "Одна з небагатьох можливостей того туманного дня помилуватись такими краєвидами - туман розвіявся тільки надвечір (вигляд з полонини)."
           }
         ],
