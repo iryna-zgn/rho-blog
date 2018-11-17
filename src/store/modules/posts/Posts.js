@@ -83,13 +83,13 @@ export default {
       state.homePosts.part = state.tailPosts.slice(0, state.perPage)
       state.homePosts.countTail = state.tailPosts.length
       // for filtering page
-      state.filtered = state.posts.filter(e => {
+      state.filtered = posts.filter(e => {
         return e.tags.some(e => e === param)
       })
       state.filteredPosts.part = state.filtered.slice(0, state.perPage)
       state.filteredPosts.count = state.filtered.length
       // for post page
-      state.currentPost = state.posts.filter(e => e.rout === param)[0]
+      state.currentPost = posts.filter(e => e.rout === param)[0]
 
       const tagsMap = new Map()
       posts.forEach(e => {
