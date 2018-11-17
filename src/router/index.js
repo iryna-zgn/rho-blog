@@ -12,7 +12,7 @@ const router = new Router({
   linkExactActiveClass: 'is-active',
   routes: [
     {
-      path: '/',
+      path: '/rho.blog',
       name: 'postsList',
       component: PostsList
     },
