@@ -1,5 +1,5 @@
 module.exports = {
   baseUrl: process.env.NODE_ENV === 'production'
-    ? '/rho.blog/'
+    ? 'https://iryna-zgn.github.io/rho.blog/'
     : '/'
 }
