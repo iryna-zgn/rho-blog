@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition-group
-      name="togglePage"
+      name="fade"
       mode="out-in">
       <div
         v-for="(post, index) in posts"

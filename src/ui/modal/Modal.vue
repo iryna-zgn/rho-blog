@@ -1,6 +1,6 @@
 <template>
   <transition
-    name="togglePage">
+    name="fade">
     <div class="modal">
       <div
         class="modal__backdrop"

@@ -4,7 +4,7 @@
   right: 0
   bottom: 0
   left: 0
-  padding: 50px 30px
+  padding: 50px 20px
   text-align: center
   overflow-y: auto
   z-index: 100
@@ -32,15 +32,22 @@
     margin-left: -.1%
   &__close
     position: absolute
-    right: 30px
+    right: 20px
     top: 15px
     text-decoration: none
     font-size: 40px
     line-height: .6
-    color: rgba(255, 255, 255, .7)
-    transition: all .1s linear
+    color: #fff
     outline: none
     cursor: pointer
-    &:hover
-      color: rgba(255, 255, 255, 1)
-      transition: none
+
+@media only screen and (min-width: 1025px)
+  .modal
+    padding: 50px 30px
+    &__close
+      right: 30px
+      color: rgba(255, 255, 255, .7)
+      transition: all .1s linear
+      &:hover
+        color: rgba(255, 255, 255, 1)
+        transition: none

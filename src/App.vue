@@ -8,8 +8,10 @@
           <blog-aside/>
         </div>
         <div class="main-wrapper__main">
+          <blog-search
+            v-model="searchingStr"/>
           <transition
-            name="togglePage"
+            name="fade"
             mode="out-in">
             <router-view/>
           </transition>
@@ -27,17 +29,31 @@
 import BlogAside from './components/aside/Aside'
 import BlogModals from './components/modals/Modals'
 import BlogCopyright from './components/copyright/Copyright'
+import BlogSearch from './ui/search/Search.vue'
 import { mapActions } from 'vuex'
 export default {
   name: 'App',
   components: {
     BlogAside,
     BlogModals,
-    BlogCopyright
+    BlogCopyright,
+    BlogSearch
+  },
+  data () {
+    return {
+      searchingStr: ''
+    }
   },
   created () {
     this.loadPosts()
   },
+  // computed: {
+  //   searchedPosts () {
+  //     return this.allPosts.filter(item => {
+  //       return item.title.toLowerCase().includes(this.searchingStr.toLowerCase())
+  //     })
+  //   }
+  // }
   methods: {
     ...mapActions({
       loadPosts: 'posts/loadPosts'

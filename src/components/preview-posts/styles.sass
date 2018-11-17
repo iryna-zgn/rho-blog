@@ -1,14 +1,13 @@
 .post-prev
-  &:not(:last-child)
-    margin-bottom: 70px
+  margin-bottom: 70px
   &__img
+    position: relative
     display: block
     margin-bottom: 20px
     background-position: center
     background-size: cover
     background-repeat: no-repeat
     cursor: pointer
-    +img-hover
   &__dummy-img
     display: block
     max-width: 100%
@@ -62,3 +61,8 @@
       margin-right: -300px
     &__var
       padding-left: 320px
+
+@media only screen and (min-width: 1025px)
+  .post-prev
+    &__img
+      +img-hover

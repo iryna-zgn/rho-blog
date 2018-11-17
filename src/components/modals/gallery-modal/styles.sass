@@ -1,6 +1,7 @@
 .gallery
   img
     display: inline-block
+    margin: 0 auto
     max-width: 100%
     max-height: calc(100vh - 100px)
   &__img
@@ -24,18 +25,12 @@
     margin-top: -15px
     font-size: 30px
     font-weight: bold
-    color: rgba(255, 255, 255, 0.4)
-    transition: all .1s linear
+    color: #fff
     cursor: pointer
     &--right
       right: 5px
     &--left
       left: 5px
-  &__img
-    +img-hover
-    &:hover
-      .gallery__arrow
-        color: rgba(255, 255, 255, .8)
 
 
 @media only screen and (min-width: 768px)
@@ -53,3 +48,14 @@
         right: 10px
       &--left
         left: 10px
+
+@media only screen and (min-width: 1025px)
+  .gallery
+    &__arrow
+      color: rgba(255, 255, 255, 0.4)
+      transition: all .1s linear
+    &__img
+      +img-hover
+      &:hover
+        .gallery__arrow
+          color: rgba(255, 255, 255, .8)
