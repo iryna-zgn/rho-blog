@@ -1,29 +1,32 @@
 <template>
   <div class="search">
-    <transition
-      name="fade">
-      <div
-        v-show="isShown">
-        <input
-          ref="input"
-          :maxlength="maxlength"
-          :placeholder="placeholder"
-          type="text"
-          class="search__input"
-          @input="changeValue">
-        <transition
-          name="fade">
-          <div
-            v-if="isError"
-            class="search__error">
-            {{ errorMsg }}
-          </div>
-        </transition>
-      </div>
-    </transition>
-    <span
-      class="search__icon icon-search"
-      @click="toggleInput"/>
+    <div
+      class="search__field">
+      <transition
+        name="fade">
+        <div
+          v-show="isShown">
+          <input
+            ref="input"
+            :maxlength="maxlength"
+            :placeholder="placeholder"
+            type="text"
+            class="search__input"
+            @input="changeValue">
+          <transition
+            name="fade">
+            <div
+              v-if="isError"
+              class="search__error">
+              {{ errorMsg }}
+            </div>
+          </transition>
+        </div>
+      </transition>
+      <span
+        class="search__icon icon-search"
+        @click="toggleInput"/>
+    </div>
   </div>
 </template>
 

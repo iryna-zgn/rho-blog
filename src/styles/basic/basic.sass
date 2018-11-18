@@ -7,8 +7,12 @@ body
   -webkit-overflow-scrolling: touch
   &.is-fixed
     overflow: hidden
-    margin-right: 15px
 
+@media only screen and (min-width: 1025px)
+  body
+    &.is-fixed
+      margin-right: 15px
+      
 a
   color: inherit
   text-decoration: none
