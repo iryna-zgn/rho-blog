@@ -3,19 +3,22 @@
     <transition
       name="fade">
       <div
-        v-if="isShown">
+        v-show="isShown">
         <input
-          v-focus
+          ref="input"
           :maxlength="maxlength"
           :placeholder="placeholder"
           type="text"
           class="search__input"
           @input="changeValue">
-        <div
-          v-if="isError"
-          class="search__error">
-          {{ errorMsg }}
-        </div>
+        <transition
+          name="fade">
+          <div
+            v-if="isError"
+            class="search__error">
+            {{ errorMsg }}
+          </div>
+        </transition>
       </div>
     </transition>
     <span
@@ -37,13 +40,16 @@ export default {
     return {
       isShown: false,
       maxlength: 30,
-      placeholder: 'search',
+      placeholder: 'пошук',
       errorMsg: 'Не знайдено :('
     }
   },
   methods: {
     toggleInput () {
       this.isShown = !this.isShown
+      if (this.isShown) {
+        this.$nextTick(_ => this.$refs.input.focus())
+      }
     },
     changeValue (e) {
       this.$emit('input', e.target.value)
