@@ -1,12 +1,13 @@
 <template>
   <div
     class="posts-list">
-    <blog-last-post
-      v-if="lastPost"
-      :post="lastPost"/>
+    <blog-search
+      v-model="searchingStr"
+      @input="test"/>
     <blog-preview-posts
       v-if="posts.length > 0"
-      :posts="posts"/>
+      :posts="posts"
+      has-big-prev/>
     <div
       v-if="posts.length < count"
       class="u-center">
@@ -20,35 +21,45 @@
 </template>
 
 <script>
-import BlogLastPost from './../../components/last-post/Last-post'
 import BlogPreviewPosts from './../../components/preview-posts/Preview-posts'
 import BlogMoreLink from './../../components/more-link/More-link.vue'
+import BlogSearch from './../../ui/search/Search.vue'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'BlogPostsList',
   components: {
-    BlogLastPost,
     BlogPreviewPosts,
+    BlogSearch,
     BlogMoreLink
+  },
+  data () {
+    return {
+      searchingStr: ''
+    }
   },
   computed: {
     ...mapGetters({
       homePosts: 'posts/getHomePost'
     }),
-    lastPost () {
-      return this.homePosts.last
-    },
     posts () {
       return this.homePosts.part
     },
     count () {
-      return this.homePosts.countTail
+      return this.homePosts.count
+    },
+    searchedPosts () {
+      return this.posts.filter(item => {
+        return item.title.toLowerCase().includes(this.searchingStr.toLowerCase())
+      })
     }
   },
   methods: {
     ...mapActions({
       loadMorePosts: 'posts/loadMorePosts'
-    })
+    }),
+    test () {
+      console.log(this.searchingStr)
+    }
   }
 }
 </script>

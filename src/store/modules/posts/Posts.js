@@ -4,12 +4,10 @@ export default {
   namespaced: true,
   state: {
     posts: [], // all posts
-    tailPosts: [], // except first post
     filtered: [],
     homePosts: {
-      last: {},
       part: [],
-      countTail: 0
+      count: 0
     },
     filteredPosts: {
       part: [],
@@ -78,10 +76,8 @@ export default {
       })
       state.posts = posts
       // for home page
-      state.tailPosts = posts.slice(1)
-      state.homePosts.last = posts[0]
-      state.homePosts.part = state.tailPosts.slice(0, state.perPage)
-      state.homePosts.countTail = state.tailPosts.length
+      state.homePosts.part = state.posts.slice(0, state.perPage)
+      state.homePosts.count = state.posts.length
       // for filtering page
       state.filtered = posts.filter(e => {
         return e.tags.some(e => e === param)
@@ -153,7 +149,7 @@ export default {
     [types.LOAD_MORE_POSTS] (state, payload) {
       const { from, offset } = payload
       if (from === 'home') {
-        const part = state.tailPosts.slice(offset, offset + state.perPage)
+        const part = state.posts.slice(offset, offset + state.perPage)
         state.homePosts.part = [...state.homePosts.part, ...part]
       } else if (from === 'filter') {
         const part = state.filtered.slice(offset, offset + state.perPage)

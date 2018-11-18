@@ -3,70 +3,44 @@
     <transition-group
       name="fade"
       mode="out-in">
-      <div
-        v-for="(post, index) in posts"
-        :key="index"
-        class="post-prev">
-        <div class="post-prev__const">
-          <div
-            :style="{backgroundImage: `url(${post.prevImg})`}"
-            class="post-prev__img"
-            @click="goToPost(post.rout)">
-            <img
-              src="https://iryna-zgn.github.io/rho.blog/static/posts/images/dummy_300x200.png"
-              alt=""
-              class="post-prev__dummy-img">
-          </div>
-        </div>
-        <div class="post-prev__var">
-          <h3 class="t2 post-prev__title">
-            <span
-              class="post-prev__title-link"
-              @click="goToPost(post.rout)">
-              {{ post.title }}
-            </span>
-          </h3>
-          <div class="post-prev__tags">
-            <span
-              v-for="(tag, index) in post.tags"
-              :key="index"
-              class="post__tag">
-              #{{ t(tag) }}
-            </span>
-          </div>
-          <p
-            class="post-prev__desc">
-            {{ post.description }}
-          </p>
-          <blog-more-link
-            :text="'Читати...'"
-            @click.native="goToPost(post.rout)"/>
-        </div>
-      </div>
+      <template
+        v-for="(post, index) in posts">
+        <template
+          v-if="index === 0 && hasBigPrev">
+          <preview-post-big
+            :post="post"
+            :key="index"/>
+        </template>
+        <template
+          v-else>
+          <preview-post-small
+            :post="post"
+            :key="index"/>
+        </template>
+      </template>
     </transition-group>
   </div>
 </template>
 
 <script>
-import tagsTranslate from './../../mixins/tagsTranslate'
+import previewPostBig from './../preview-post-big/Preview-post-big'
+import previewPostSmall from './../preview-post-small/Preview-post-small'
 import BlogMoreLink from './../more-link/More-link.vue'
 export default {
-  name: 'RemainingPosts',
+  name: 'PreviewPosts',
   components: {
-    BlogMoreLink
+    BlogMoreLink,
+    previewPostBig,
+    previewPostSmall
   },
-  mixins: [
-    tagsTranslate
-  ],
   props: {
     posts: {
       type: Array,
       default: null
-    }
-  },
-  methods: {
-    goToPost (rout) {
-      this.$router.push({ name: 'post', params: { rout } })
+    },
+    hasBigPrev: {
+      type: Boolean,
+      default: false
     }
   }
 }

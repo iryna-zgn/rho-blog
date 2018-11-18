@@ -46,7 +46,7 @@
 import BlogMoreLink from './../more-link/More-link.vue'
 import tagsTranslate from './../../mixins/tagsTranslate'
 export default {
-  name: 'LastPost',
+  name: 'PreviewPostBig',
   components: {
     BlogMoreLink
   },
