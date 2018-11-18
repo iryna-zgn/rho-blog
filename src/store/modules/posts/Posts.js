@@ -7,7 +7,8 @@ export default {
     filtered: [],
     homePosts: {
       part: [],
-      count: 0
+      count: 0,
+      searched: []
     },
     filteredPosts: {
       part: [],
@@ -56,6 +57,9 @@ export default {
     },
     loadMorePosts ({ commit }, payload) {
       commit(types.LOAD_MORE_POSTS, payload)
+    },
+    searchPosts ({ commit }, str) {
+      commit(types.SEARCH_POSTS, str)
     }
   },
   mutations: {
@@ -155,6 +159,11 @@ export default {
         const part = state.filtered.slice(offset, offset + state.perPage)
         state.filteredPosts.part = [...state.filteredPosts.part, ...part]
       }
+    },
+    [types.SEARCH_POSTS] (state, str) {
+      state.homePosts.searched = state.posts.filter(e => {
+        return e.title.toLowerCase().includes(str.toLowerCase())
+      }).slice(0, 5)
     }
   }
 }

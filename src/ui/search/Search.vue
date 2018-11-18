@@ -2,16 +2,21 @@
   <div class="search">
     <transition
       name="fade">
-      <input
-        v-focus
-        v-if="isShown"
-        :value="value"
-        :maxlength="maxlength"
-        :placeholder="placeholder"
-        type="text"
-        class="search__input"
-        @input="changeValue"
-        @change="onChangeValue">
+      <div
+        v-if="isShown">
+        <input
+          v-focus
+          :maxlength="maxlength"
+          :placeholder="placeholder"
+          type="text"
+          class="search__input"
+          @input="changeValue">
+        <div
+          v-if="isError"
+          class="search__error">
+          {{ errorMsg }}
+        </div>
+      </div>
     </transition>
     <span
       class="search__icon icon-search"
@@ -22,24 +27,26 @@
 <script>
 export default {
   name: 'Search',
+  props: {
+    isError: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
       isShown: false,
       maxlength: 30,
       placeholder: 'search',
-      value: ''
+      errorMsg: 'Не знайдено :('
     }
   },
   methods: {
     toggleInput () {
       this.isShown = !this.isShown
-      this.value = ''
     },
     changeValue (e) {
       this.$emit('input', e.target.value)
-    },
-    onChangeValue (e) {
-      this.$emit('change', e.target.value)
     }
   }
 }

@@ -3,13 +3,14 @@
     class="posts-list">
     <blog-search
       v-model="searchingStr"
-      @input="test"/>
+      :is-error="!hasSearched && searchingStr.length > char"
+      @input="searchPosts(searchingStr)"/>
     <blog-preview-posts
       v-if="posts.length > 0"
       :posts="posts"
-      has-big-prev/>
+      :has-big-prev="!hasSearched"/>
     <div
-      v-if="posts.length < count"
+      v-if="posts.length < count && !hasSearched"
       class="u-center">
       <blog-more-link
         :text="'Завантажити ще'"
@@ -34,32 +35,29 @@ export default {
   },
   data () {
     return {
-      searchingStr: ''
+      searchingStr: '',
+      char: 2
     }
   },
   computed: {
     ...mapGetters({
       homePosts: 'posts/getHomePost'
     }),
+    hasSearched () {
+      return this.homePosts.searched.length > 0 && this.searchingStr.length > this.char
+    },
     posts () {
-      return this.homePosts.part
+      return this.hasSearched ? this.homePosts.searched : this.homePosts.part
     },
     count () {
       return this.homePosts.count
-    },
-    searchedPosts () {
-      return this.posts.filter(item => {
-        return item.title.toLowerCase().includes(this.searchingStr.toLowerCase())
-      })
     }
   },
   methods: {
     ...mapActions({
-      loadMorePosts: 'posts/loadMorePosts'
-    }),
-    test () {
-      console.log(this.searchingStr)
-    }
+      loadMorePosts: 'posts/loadMorePosts',
+      searchPosts: 'posts/searchPosts'
+    })
   }
 }
 </script>

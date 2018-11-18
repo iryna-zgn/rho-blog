@@ -1,8 +1,8 @@
 .search
-  display: flex
-  align-items: center
   margin-bottom: 30px
-  height: 31px
+  height: 53px
+  display: flex
+  align-items: flex-start
   &__input
     max-width: 280px
     width: 100%
@@ -11,7 +11,14 @@
     font-size: 18px
     color: $color-text
     cursor: pointer
+  &__error
+    padding: 5px 23px 5px 5px
+    font-size: 12px
+    color: $color-text-lighter
 
 @media only screen and (min-width: 768px)
   .search
+    position: absolute
+    top: 15px
+    right: 20px
     justify-content: flex-end
