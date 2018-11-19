@@ -8,7 +8,7 @@ import About from '../pages/About/About'
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
+  // mode: 'history',
   linkExactActiveClass: 'is-active',
   routes: [
     {
