@@ -2,6 +2,7 @@
   <div class="logo">
     <router-link
       :to="{name: 'postsList'}"
+      tag="div"
       class="logo__link">
       <!-- <img src="/static/logo.svg" alt=""> -->
       <span class="logo__main">rho</span>
