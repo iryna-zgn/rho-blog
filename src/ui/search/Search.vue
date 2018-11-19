@@ -45,7 +45,7 @@ export default {
   created () {
     const vm = this
     window.addEventListener('click', function (e) {
-      if (!vm.$refs.input.contains(e.target)) {
+      if (vm.$refs.input && !vm.$refs.input.contains(e.target)) {
         vm.$refs.input.classList.remove('is-focused')
       }
     })

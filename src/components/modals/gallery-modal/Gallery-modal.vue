@@ -6,7 +6,10 @@
       <div class="gallery">
         <div
           class="gallery__item">
-          <div class="gallery__img">
+          <v-touch
+            class="gallery__img"
+            @swipeleft="slideGalleryImg('next')"
+            @swiperight="slideGalleryImg('prev')">
             <div
               class="gallery__arrow gallery__arrow--left icon-arrow-left"
               @click="slideGalleryImg('prev')"/>
@@ -15,7 +18,7 @@
             <div
               class="gallery__arrow gallery__arrow--right icon-arrow-right"
               @click="slideGalleryImg('next')"/>
-          </div>
+          </v-touch>
           <div
             v-if="gallery.shortText !== ''"
             class="gallery__const">
