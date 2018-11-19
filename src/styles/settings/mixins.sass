@@ -21,6 +21,31 @@
     &:after
       width: 50%
 
+@mixin line-focus
+  position: relative
+  transition: $transition
+  &:before,
+  &:after
+    content: ''
+    position: absolute
+    top: 100%
+    display: block
+    width: 0
+    height: 1px
+    margin-top: -1px
+    background-color: rgba($color-accent, .7)
+    transition: $transition
+  &:before
+    left: 50%
+  &:after
+    right: 50%
+  &.is-focused
+    &:before,
+    &:after
+      width: 50%
+    input
+      border-bottom-color: transparent
+
 @mixin overflow-text($lines: 3, $fz: 20px, $lh: 1.4)
   display: block
   display: -webkit-box

@@ -5,12 +5,6 @@ import store from './store'
 
 Vue.config.productionTip = false
 
-Vue.directive('focus', {
-  inserted: function (el) {
-    el.focus()
-  }
-})
-
 /* eslint-disable */
 new Vue({
   el: '#app',

@@ -15,15 +15,15 @@
   &__const
     position: relative
     min-width: 200px
-    padding: 20px
+    padding: 20px 10px
     padding-bottom: 35px
     font-size: 16px
     line-height: 1.5
   &__arrow
     position: absolute
     top: 50%
-    margin-top: -15px
-    font-size: 30px
+    margin-top: -10px
+    font-size: 20px
     font-weight: bold
     color: #fff
     cursor: pointer
@@ -32,13 +32,15 @@
     &--left
       left: 2px
 
-@media only screen and (min-width: 768px)
+@media only screen and (min-width: 600px)
   .gallery
     &__item
       display: flex
     &__const
-      min-width: 300px
-      width: 300px
+      min-width: 200px
+      width: 200px
+      padding-left: 20px
+      padding-right: 20px
     &__text
       height: 100%
       padding: 20px 20px
@@ -47,6 +49,15 @@
         right: 10px
       &--left
         left: 10px
+
+@media only screen and (min-width: 768px)
+  .gallery
+    &__const
+      min-width: 300px
+      width: 300px
+    &__arrow
+      margin-top: -15px
+      font-size: 30px
 
 @media only screen and (min-width: 1025px)
   .gallery

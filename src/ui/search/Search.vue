@@ -2,30 +2,26 @@
   <div class="search">
     <div
       class="search__field">
+      <div
+        ref="input"
+        class="search__input"
+        @click="focus">
+        <input
+          :maxlength="maxlength"
+          :placeholder="placeholder"
+          type="text"
+          @input="changeValue">
+      </div>
       <transition
         name="fade">
         <div
-          v-show="isShown">
-          <input
-            ref="input"
-            :maxlength="maxlength"
-            :placeholder="placeholder"
-            type="text"
-            class="search__input"
-            @input="changeValue">
-          <transition
-            name="fade">
-            <div
-              v-if="isError"
-              class="search__error">
-              {{ errorMsg }}
-            </div>
-          </transition>
+          v-if="isError"
+          class="search__error">
+          {{ errorMsg }}
         </div>
       </transition>
       <span
-        class="search__icon icon-search"
-        @click="toggleInput"/>
+        class="search__icon icon-search"/>
     </div>
   </div>
 </template>
@@ -41,18 +37,22 @@ export default {
   },
   data () {
     return {
-      isShown: false,
       maxlength: 30,
       placeholder: 'пошук',
       errorMsg: 'Не знайдено :('
     }
   },
-  methods: {
-    toggleInput () {
-      this.isShown = !this.isShown
-      if (this.isShown) {
-        this.$nextTick(_ => this.$refs.input.focus())
+  created () {
+    const vm = this
+    window.addEventListener('click', function (e) {
+      if (!vm.$refs.input.contains(e.target)) {
+        vm.$refs.input.classList.remove('is-focused')
       }
+    })
+  },
+  methods: {
+    focus () {
+      this.$refs.input.classList.add('is-focused')
     },
     changeValue (e) {
       this.$emit('input', e.target.value)

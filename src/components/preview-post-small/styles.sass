@@ -3,7 +3,7 @@
     margin-bottom: 70px
   &__img
     position: relative
-    display: block
+    display: inline-block
     margin-bottom: 20px
     background-position: center
     background-size: cover
@@ -36,7 +36,7 @@
   &__desc
     +overflow-text(3, 18px)
 
-@media only screen and (min-width: 480px)
+@media only screen and (min-width: 600px)
   .post-prev
     font-size: 0
     &__const,
@@ -45,23 +45,15 @@
       vertical-align: top
     &__const
       position: relative
-      width: 200px
-      margin-right: -200px
+      width: 300px
+      margin-right: -300px
       z-index: 1
     &__var
       width: 100%
-      padding-left: 220px
+      padding-left: 320px
       padding-top: 7px
     &__img
       margin-bottom: 0
-
-@media only screen and (min-width: 768px)
-  .post-prev
-    &__const
-      width: 300px
-      margin-right: -300px
-    &__var
-      padding-left: 320px
 
 @media only screen and (min-width: 1025px)
   .post-prev
