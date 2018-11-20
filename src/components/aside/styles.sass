@@ -1,15 +1,16 @@
-.aside
-  display: flex
-
 @media only screen and (max-width: 767px)
   .aside
-    justify-content: space-between
-    align-items: flex-start
+    position: relative
+    .soc-links
+      position: absolute
+      top: 0
+      right: 0
     .copyright
       display: none
 
 @media only screen and (min-width: 768px)
   .aside
+    display: flex
     flex-direction: column
     justify-content: center
     align-items: flex-end
