@@ -20,7 +20,7 @@
     <div class="about__two-parts">
       <div class="about__const">
         <img
-          src="https://iryna-zgn.github.io/rho.blog/static/about/img.jpg"
+          src="https://iryna-zgn.github.io/rho-blog/static/about/img.jpg"
           alt="">
       </div>
       <div class="about__var">

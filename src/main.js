@@ -5,6 +5,9 @@ import store from './store'
 import VueTouch from 'vue-touch'
 
 Vue.use(VueTouch)
+VueTouch.config.swipe = {
+  direction: 'horizontal'
+}
 
 Vue.config.productionTip = false
 
