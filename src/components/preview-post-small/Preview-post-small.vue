@@ -7,7 +7,7 @@
         class="post-prev__img"
         @click="goToPost(post.rout)">
         <img
-          src="https://iryna-zgn.github.io/rho-blog/static/posts/images/dummy_580x435.png"
+          src="https://iryna-zgn.github.io/rho-blog/static/posts/images/dummy_580x435.jpg"
           alt=""
           class="post-prev__dummy-img">
       </div>
