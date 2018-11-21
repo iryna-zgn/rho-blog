@@ -21,6 +21,8 @@
       </footer>
     </div>
     <blog-modals/>
+    <blog-preloader
+      v-if="isPreloaderShown"/>
   </div>
 </template>
 
@@ -28,13 +30,20 @@
 import BlogAside from './components/aside/Aside'
 import BlogModals from './components/modals/Modals'
 import BlogCopyright from './components/copyright/Copyright'
-import { mapActions } from 'vuex'
+import BlogPreloader from './ui/preloader/Preloader'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'App',
   components: {
     BlogAside,
     BlogModals,
-    BlogCopyright
+    BlogCopyright,
+    BlogPreloader
+  },
+  computed: {
+    ...mapGetters({
+      isPreloaderShown: 'preloader/isShown'
+    })
   },
   created () {
     this.loadPosts()

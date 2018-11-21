@@ -24,7 +24,6 @@
       margin-right: 7px
   &__img
     position: relative
-    // margin: 0 -5px 40px
     margin-bottom: 40px
     text-align: center
     font-size: 0
@@ -33,6 +32,12 @@
       position: relative
       display: inline-block
       +img-hover
+    &.u-spaced
+      margin-left: -5px
+      margin-right: -5px
+      .post__img-item
+        padding: 5px
+        +img-hover(5px)
   &__desc
     +overflow-text(5)
   &__gallery-item
@@ -60,12 +65,6 @@
 @media only screen and (min-width: 480px)
   .post
     &__img
-      &.u-spaced
-        margin-left: -5px
-        margin-right: -5px
-        .post__img-item
-          padding: 5px
-          +img-hover(5px)
       &.u-50
         .post__img-item
           max-width: 50%

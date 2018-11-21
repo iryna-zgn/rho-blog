@@ -76,12 +76,25 @@ export default {
     })
   },
   created () {
-    this.loadPosts(this.rout)
+    // TODO: rewrite this code
+    this.showPreloader()
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => resolve(), 1000)
+    })
+    promise
+      .then(
+        () => {
+          this.loadPosts(this.rout)
+          this.hidePreloader()
+        }
+      )
   },
   methods: {
     ...mapActions({
       setGallery: 'posts/setGallery',
-      loadPosts: 'posts/loadPosts'
+      loadPosts: 'posts/loadPosts',
+      showPreloader: 'preloader/showPreloader',
+      hidePreloader: 'preloader/hidePreloader'
     })
   }
 }

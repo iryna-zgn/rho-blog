@@ -1,0 +1,2 @@
+export const SHOW_PRELOADER = 'SHOW_PRELOADER'
+export const HIDE_PRELOADER = 'HIDE_PRELOADER'
