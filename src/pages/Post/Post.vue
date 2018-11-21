@@ -18,14 +18,18 @@
         :key="galleryIndex"
         class="post__gallery-item">
         <div
-          class="post__img">
+          :class="['post__img',
+                   {
+                     'u-50 u-spaced': item.images.length === 2,
+                     'u-33 u-spaced': item.images.length >= 3
+                   }
+        ]">
           <div
             v-for="(img, imgIndex) in item.images"
             :key="imgIndex"
             :class="['post__img-item',
                      {
-                       'u-50': item.images.length === 2,
-                       'u-33': item.images.length >= 3
+                       'u-stretched': galleryIndex === 0
                      }
             ]"
             @click="setGallery({

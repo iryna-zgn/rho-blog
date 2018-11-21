@@ -19,7 +19,7 @@
     <div
       class="post__img"
       @click="goToPost(post.rout)">
-      <div class="post__img-item">
+      <div class="post__img-item u-stretched">
         <div
           v-if="post.map"
           class="post__map">
@@ -37,7 +37,7 @@
       {{ post.description }}
     </p>
     <blog-more-link
-      :text="'Читати...'"
+      :text="'Читати'"
       @click.native="goToPost(post.rout)"/>
   </div>
 </template>

@@ -24,15 +24,15 @@
       margin-right: 7px
   &__img
     position: relative
-    margin: 0 -5px 40px
+    // margin: 0 -5px 40px
+    margin-bottom: 40px
     text-align: center
     font-size: 0
     cursor: pointer
     &-item
       position: relative
       display: inline-block
-      padding: 5px
-      +img-hover(5px)
+      +img-hover
   &__desc
     +overflow-text(5)
   &__gallery-item
@@ -43,7 +43,6 @@
     position: absolute
     top: 34px
     left: 34px
-    display: none
     max-width: 255px
     width: 100%
     font-size: 0
@@ -51,12 +50,28 @@
       max-width: 100%
       max-height: 22vw
 
+@media only screen and (max-width: 767px)
+  .post
+    &__img-item
+      &.u-stretched
+        margin-left: -10px
+        margin-right: -10px
+
 @media only screen and (min-width: 480px)
   .post
-    .u-50
-      max-width: 50%
-    .u-33
-      max-width: 33.3333%
+    &__img
+      &.u-spaced
+        margin-left: -5px
+        margin-right: -5px
+        .post__img-item
+          padding: 5px
+          +img-hover(5px)
+      &.u-50
+        .post__img-item
+          max-width: 50%
+      &.u-33
+        .post__img-item
+          max-width: 33.3333%
 
 @media only screen and (min-width: 768px)
   .post

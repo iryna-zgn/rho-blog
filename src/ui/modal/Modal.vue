@@ -31,7 +31,7 @@ export default {
   },
   created () {
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' || e.key === 'Backspace') {
         this.closeModal(this.stateModalName)
       }
     })

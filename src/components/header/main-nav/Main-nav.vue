@@ -2,15 +2,6 @@
   <div class="main-nav">
     <ul class="main-nav__list">
       <router-link
-        :to="{name: 'about'}"
-        tag="li"
-        class="main-nav__item">
-        <span
-          class="main-nav__link">
-          про мене
-        </span>
-      </router-link>
-      <router-link
         v-for="(tagInfo, index) in tagsInfo"
         :key="index"
         :to="{name: 'posts', params: {tag: tagInfo.tag}}"
@@ -23,6 +14,15 @@
         <span
           class="main-nav__count">
           ({{ tagInfo.postsCount }})
+        </span>
+      </router-link>
+      <router-link
+        :to="{name: 'about'}"
+        tag="li"
+        class="main-nav__item">
+        <span
+          class="main-nav__link">
+          про мене
         </span>
       </router-link>
     </ul>

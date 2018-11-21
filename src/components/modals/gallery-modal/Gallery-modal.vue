@@ -4,12 +4,12 @@
     state-modal-name="galleryModal">
     <template slot="content">
       <div class="gallery">
-        <div
-          class="gallery__item">
-          <v-touch
-            class="gallery__img"
-            @swipeleft="slideGalleryImg('next')"
-            @swiperight="slideGalleryImg('prev')">
+        <v-touch
+          class="gallery__item"
+          @swipeleft="slideGalleryImg('next')"
+          @swiperight="slideGalleryImg('prev')">
+          <div
+            class="gallery__img">
             <div
               class="gallery__arrow gallery__arrow--left icon-arrow-left"
               @click="slideGalleryImg('prev')"/>
@@ -18,13 +18,13 @@
             <div
               class="gallery__arrow gallery__arrow--right icon-arrow-right"
               @click="slideGalleryImg('next')"/>
-          </v-touch>
+          </div>
           <div
             v-if="gallery.shortText !== ''"
             class="gallery__const">
             {{ gallery.shortText }}
           </div>
-        </div>
+        </v-touch>
       </div>
     </template>
   </modal>

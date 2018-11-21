@@ -33,7 +33,7 @@
         {{ post.description }}
       </p>
       <blog-more-link
-        :text="'Читати...'"
+        :text="'Читати'"
         @click.native="goToPost(post.rout)"/>
     </div>
   </div>
