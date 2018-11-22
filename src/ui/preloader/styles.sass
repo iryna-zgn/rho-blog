@@ -13,37 +13,28 @@
     position: relative
     display: inline-block
     height: 37px
-    width: 10px
+    width: 15px
     margin: 0 5px
     &:before
       content: ''
       position: absolute
       display: block
       top: 0
-      width: 10px
-      height: 10px
+      width: 15px
+      height: 15px
       border-radius: 50%
       background-color: $color-accent
       transform-origin: 50%
       animation: bounce 500ms alternate infinite ease
-    &:nth-child(1)
-      &:before
-        animation-delay: .1s
-    &:nth-child(2)
-      &:before
-        animation-delay: .2s
-    &:nth-child(3)
-      &:before
-        animation-delay: .3s
 
 @keyframes bounce
   0%
     top: 30px
     height: 5px
-    border-radius: 50px 50px 10px 10px
+    border-radius: 60px 60px 20px 20px
     transform: scaleX(2)
   35%
-    height: 10px
+    height: 15px
     border-radius: 50%
     transform: scaleX(1)
   100%

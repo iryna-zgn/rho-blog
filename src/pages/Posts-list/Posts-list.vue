@@ -41,13 +41,14 @@ export default {
   },
   computed: {
     ...mapGetters({
-      homePosts: 'posts/getHomePost'
+      homePosts: 'posts/getHomePost',
+      searchedPosts: 'posts/getSearchedPosts'
     }),
     hasSearched () {
-      return this.homePosts.searched.length > 0 && this.searchingStr.length > this.char
+      return this.searchedPosts.length > 0 && this.searchingStr.length > this.char
     },
     posts () {
-      return this.hasSearched ? this.homePosts.searched : this.homePosts.part
+      return this.hasSearched ? this.searchedPosts : this.homePosts.part
     },
     count () {
       return this.homePosts.count

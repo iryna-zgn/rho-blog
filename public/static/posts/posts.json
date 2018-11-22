@@ -1,7 +1,8 @@
 [
   {
     "rout": "ras-muhammad",
-    "tags": "travel",
+    "tags": "travel, egypt",
+    "keyWords": "єгипет, шарм ель шейх, рас мохаммед, червоне море, дайвінг, снорклінг",
     "title": "Рас Мохаммед",
     "prevImg": "https://iryna-zgn.github.io/rho-blog/static/posts/images/ras-muhammad/preview.jpg",
     "prevImgBig": "https://iryna-zgn.github.io/rho-blog/static/posts/images/ras-muhammad/previewBig.jpg",
@@ -30,7 +31,8 @@
   },
   {
     "rout": "gorgan-ilemskyj",
-    "tags": "carpathians, travel",
+    "tags": "carpathians, travel, ukraine",
+    "keyWords": "карпати, гори, ґорґани, горгани, мислівка, ґорґан ілемський, горган ілемський, полонина Німецька, одноденний похід",
     "title": "Мандрівка на гору Ґорґан-Ілемський",
     "prevImg": "https://iryna-zgn.github.io/rho-blog/static/posts/images/gorgan-ilemskyj/preview.jpg",
     "prevImgBig": "https://iryna-zgn.github.io/rho-blog/static/posts/images/gorgan-ilemskyj/previewBig.jpg",

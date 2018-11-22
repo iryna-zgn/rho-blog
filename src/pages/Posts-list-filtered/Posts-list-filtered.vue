@@ -1,10 +1,15 @@
 <template>
   <div
     class="posts-list">
+    <blog-search
+      v-model="searchingStr"
+      :is-error="!hasSearched && searchingStr.length > char"
+      @input="searchPosts(searchingStr)"/>
     <blog-preview-posts
+      v-if="posts.length > 0"
       :posts="posts"/>
     <div
-      v-if="posts.length < count"
+      v-if="posts.length < count && !hasSearched"
       class="u-center">
       <blog-more-link
         :text="'Завантажити ще'"
@@ -18,24 +23,32 @@
 <script>
 import BlogPreviewPosts from './../../components/preview-posts/Preview-posts'
 import BlogMoreLink from './../../components/more-link/More-link.vue'
+import BlogSearch from './../../ui/search/Search.vue'
 import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'BlogPostsList',
   components: {
     BlogPreviewPosts,
-    BlogMoreLink
+    BlogMoreLink,
+    BlogSearch
   },
   data () {
     return {
-      tag: this.$route.params.tag
+      tag: this.$route.params.tag,
+      searchingStr: '',
+      char: 2
     }
   },
   computed: {
     ...mapGetters({
-      filteredPosts: 'posts/getFilteredPosts'
+      filteredPosts: 'posts/getFilteredPosts',
+      searchedPosts: 'posts/getSearchedPosts'
     }),
+    hasSearched () {
+      return this.searchedPosts.length > 0 && this.searchingStr.length > this.char
+    },
     posts () {
-      return this.filteredPosts.part
+      return this.hasSearched ? this.searchedPosts : this.filteredPosts.part
     },
     count () {
       return this.filteredPosts.count
@@ -47,7 +60,8 @@ export default {
   methods: {
     ...mapActions({
       loadPosts: 'posts/loadPosts',
-      loadMorePosts: 'posts/loadMorePosts'
+      loadMorePosts: 'posts/loadMorePosts',
+      searchPosts: 'posts/searchPosts'
     })
   }
 }

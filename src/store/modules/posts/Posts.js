@@ -5,10 +5,10 @@ export default {
   state: {
     posts: [], // all posts
     filtered: [],
+    searchedPosts: [],
     homePosts: {
       part: [],
-      count: 0,
-      searched: []
+      count: 0
     },
     filteredPosts: {
       part: [],
@@ -33,6 +33,7 @@ export default {
     getTagsTranslations: state => state.tagsTranslations,
     getTagsInfo: state => state.tagsInfo,
     getFilteredPosts: state => state.filteredPosts,
+    getSearchedPosts: state => state.searchedPosts,
     getCurrentGalleryImg: state => state.galleryModal.currentImg,
     isShownGallery: state => state.galleryModal.isShown,
     isPreloader: state => state.isPreloader
@@ -169,14 +170,15 @@ export default {
       }
     },
     [types.SEARCH_POSTS] (state, str) {
-      state.homePosts.searched = state.posts.filter(e => {
-        return e.title.toLowerCase().includes(str.toLowerCase())
-      }).slice(0, 5)
+      state.searchedPosts = state.posts.filter(e => {
+        return e.title.toLowerCase().includes(str.toLowerCase()) ||
+                e.keyWords.toLowerCase().includes(str.toLowerCase())
+      }).slice(0, 10)
     },
     [types.HIDE_PRELOADER] (state) {
       setTimeout(() => {
         state.isPreloader = false
-      }, 1500)
+      }, 500)
     },
     [types.SHOW_PRELOADER] (state) {
       state.isPreloader = true
