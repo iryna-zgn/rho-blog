@@ -22,7 +22,7 @@
     </div>
     <blog-modals/>
     <blog-preloader
-      v-if="isPreloaderShown"/>
+      v-if="isPreloader"/>
   </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isPreloaderShown: 'preloader/isShown'
+      isPreloader: 'posts/isPreloader'
     })
   },
   created () {

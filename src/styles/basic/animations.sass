@@ -1,17 +1,11 @@
 .fade
   &-leave-active
-    animation: tooglePage .2s reverse
+    animation: fade .2s reverse
   &-enter-active
-    animation: tooglePage .2s
+    animation: fade .2s
 
-@keyframes tooglePage
+@keyframes fade
   from
     opacity: 0
   to
     opacity: 1
-
-@keyframes rotate
-  0%
-    transform: translate(-50%, -50%) rotate(0deg)
-  100%
-    transform: translate(-50%, -50%) rotate(360deg)

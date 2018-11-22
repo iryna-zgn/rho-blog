@@ -23,7 +23,8 @@ export default {
       currentImg: {},
       gallery: [],
       currentIndex: null
-    }
+    },
+    isPreloader: false
   },
   getters: {
     getPosts: state => state.posts,
@@ -33,7 +34,8 @@ export default {
     getTagsInfo: state => state.tagsInfo,
     getFilteredPosts: state => state.filteredPosts,
     getCurrentGalleryImg: state => state.galleryModal.currentImg,
-    isShownGallery: state => state.galleryModal.isShown
+    isShownGallery: state => state.galleryModal.isShown,
+    isPreloader: state => state.isPreloader
   },
   actions: {
     loadPosts ({ commit }, param) {
@@ -60,6 +62,12 @@ export default {
     },
     searchPosts ({ commit }, str) {
       commit(types.SEARCH_POSTS, str)
+    },
+    hidePreloader ({ commit }) {
+      commit(types.HIDE_PRELOADER)
+    },
+    showPreloader ({ commit }) {
+      commit(types.SHOW_PRELOADER)
     }
   },
   mutations: {
@@ -164,6 +172,14 @@ export default {
       state.homePosts.searched = state.posts.filter(e => {
         return e.title.toLowerCase().includes(str.toLowerCase())
       }).slice(0, 5)
+    },
+    [types.HIDE_PRELOADER] (state) {
+      setTimeout(() => {
+        state.isPreloader = false
+      }, 1500)
+    },
+    [types.SHOW_PRELOADER] (state) {
+      state.isPreloader = true
     }
   }
 }

@@ -7,22 +7,44 @@
   display: flex
   justify-content: center
   align-items: center
-  background-color: rgba(#ffffff, .7)
+  background-color: rgba(#ffffff, 1)
   z-index: 1
-  &__box
-    width: 50px
-    height: 50px
-    border: 7px solid $color-accent
-    border-top-color: transparent
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, .1)
-    border-radius: 50%
-    animation: rotate 1.9s linear infinite
-    &:after
+  &__bounceball
+    position: relative
+    display: inline-block
+    height: 37px
+    width: 10px
+    margin: 0 5px
+    &:before
+      content: ''
       position: absolute
-      width: 140px
-      height: 140px
-      border: 20px solid $color-accent
-      border-top-color: transparent
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, .1)
+      display: block
+      top: 0
+      width: 10px
+      height: 10px
       border-radius: 50%
-      transform: rotate(90deg)
+      background-color: $color-accent
+      transform-origin: 50%
+      animation: bounce 500ms alternate infinite ease
+    &:nth-child(1)
+      &:before
+        animation-delay: .1s
+    &:nth-child(2)
+      &:before
+        animation-delay: .2s
+    &:nth-child(3)
+      &:before
+        animation-delay: .3s
+
+@keyframes bounce
+  0%
+    top: 30px
+    height: 5px
+    border-radius: 50px 50px 10px 10px
+    transform: scaleX(2)
+  35%
+    height: 10px
+    border-radius: 50%
+    transform: scaleX(1)
+  100%
+    top: 0

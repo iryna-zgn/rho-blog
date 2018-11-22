@@ -1,6 +1,9 @@
 <template>
   <div class="preloader">
-    <div class="preloader__box"/>
+    <div
+      v-for="ball in 3"
+      :key="ball"
+      class="preloader__bounceball"/>
   </div>
 </template>
 <script>
