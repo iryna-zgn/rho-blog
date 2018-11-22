@@ -9,7 +9,8 @@ import About from '../pages/About/About'
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'hash',
+  // mode: 'hash',
+  mode: 'history',
   linkExactActiveClass: 'is-active',
   routes: [
     {
