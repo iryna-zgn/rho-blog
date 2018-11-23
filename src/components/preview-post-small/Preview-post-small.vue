@@ -7,7 +7,7 @@
         class="post-prev__img"
         @click="goToPost(post.rout)">
         <img
-          src="static/posts/images/dummy_580x435.jpg"
+          src="static/posts/dummy_580x435.jpg"
           alt=""
           class="post-prev__dummy-img">
       </div>
