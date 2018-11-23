@@ -43,6 +43,7 @@ export default {
       fetch(paths.posts)
         .then(data => data.json())
         .then(data => commit(types.LOAD_POSTS, [data, param]))
+        .then(data => commit(types.HIDE_PRELOADER))
     },
     loadTranslations ({ commit }) {
       fetch(paths.tagsTranslations)

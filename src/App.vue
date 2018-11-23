@@ -48,15 +48,11 @@ export default {
   created () {
     this.showPreloader()
     this.loadPosts()
-    window.addEventListener('load', () => {
-      this.hidePreloader()
-    })
   },
   methods: {
     ...mapActions({
       loadPosts: 'posts/loadPosts',
-      showPreloader: 'posts/showPreloader',
-      hidePreloader: 'posts/hidePreloader'
+      showPreloader: 'posts/showPreloader'
     })
   }
 }
