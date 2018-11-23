@@ -9,7 +9,7 @@
         </div>
         <div class="main-wrapper__main">
           <transition
-            name="fade"
+            name="toggle-page"
             mode="out-in">
             <router-view
               :key="$route.path"/>
@@ -46,11 +46,17 @@ export default {
     })
   },
   created () {
+    this.showPreloader()
     this.loadPosts()
+    window.addEventListener('load', () => {
+      this.hidePreloader()
+    })
   },
   methods: {
     ...mapActions({
-      loadPosts: 'posts/loadPosts'
+      loadPosts: 'posts/loadPosts',
+      showPreloader: 'posts/showPreloader',
+      hidePreloader: 'posts/hidePreloader'
     })
   }
 }

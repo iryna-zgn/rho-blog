@@ -178,7 +178,7 @@ export default {
     [types.HIDE_PRELOADER] (state) {
       setTimeout(() => {
         state.isPreloader = false
-      }, 500)
+      }, 200)
     },
     [types.SHOW_PRELOADER] (state) {
       state.isPreloader = true

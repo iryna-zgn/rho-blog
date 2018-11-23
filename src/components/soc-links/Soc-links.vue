@@ -5,10 +5,10 @@
       :key="index"
       class="soc-links__item">
       <a
-        href="#"
+        :href="item.url"
         class="soc-links__link">
         <span
-          :class="['soc-links__icon', 'icon-'+ item]"/>
+          :class="['soc-links__icon', 'icon-'+ item.name]"/>
       </a>
     </li>
   </ul>
@@ -19,7 +19,20 @@ export default {
   name: 'SocLinks',
   data () {
     return {
-      items: ['instagram', 'facebook']
+      items: [
+        {
+          name: 'instagram',
+          url: '#'
+        },
+        {
+          name: 'facebook',
+          url: '#'
+        },
+        {
+          name: 'github',
+          url: '#'
+        }
+      ]
     }
   }
 }

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from '../store'
 import PostsList from '../pages/Posts-list/Posts-list'
 import PostsListFiltered from '../pages/Posts-list-filtered/Posts-list-filtered'
 import Post from '../pages/Post/Post'
@@ -9,27 +8,27 @@ import About from '../pages/About/About'
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'hash',
-  // mode: 'history',
+  // mode: 'hash',
+  mode: 'history',
   linkExactActiveClass: 'is-active',
   routes: [
     {
-      path: '/',
+      path: '/rho-blog',
       name: 'postsList',
       component: PostsList
     },
     {
-      path: '/posts/:tag',
+      path: '/rho-blog/posts/:tag',
       name: 'posts',
       component: PostsListFiltered
     },
     {
-      path: '/post/:rout',
+      path: '/rho-blog/post/:rout',
       name: 'post',
       component: Post
     },
     {
-      path: '/about',
+      path: '/rho-blog/about',
       name: 'about',
       component: About
     }
@@ -45,15 +44,6 @@ const router = new Router({
       }, 500)
     })
   }
-})
-
-router.beforeEach((to, from, next) => {
-  store.dispatch('posts/showPreloader')
-  next()
-})
-
-router.afterEach((to, from) => {
-  store.dispatch('posts/hidePreloader')
 })
 
 export default router
