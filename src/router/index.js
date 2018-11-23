@@ -8,27 +8,27 @@ import About from '../pages/About/About'
 Vue.use(Router)
 
 const router = new Router({
-  // mode: 'hash',
-  mode: 'history',
+  mode: 'hash',
+  // mode: 'history',
   linkExactActiveClass: 'is-active',
   routes: [
     {
-      path: '/rho-blog',
+      path: '/',
       name: 'postsList',
       component: PostsList
     },
     {
-      path: '/rho-blog/posts/:tag',
+      path: '/posts/:tag',
       name: 'posts',
       component: PostsListFiltered
     },
     {
-      path: '/rho-blog/post/:rout',
+      path: '/post/:rout',
       name: 'post',
       component: Post
     },
     {
-      path: '/rho-blog/about',
+      path: '/about',
       name: 'about',
       component: About
     }

@@ -5,7 +5,7 @@ const Renderer = PrerenderSpaPlugin.PuppeteerRenderer
 const productionPlugins = [
   new PrerenderSpaPlugin({
     staticDir: path.join(__dirname, 'docs'),
-    routes: ['/rho-blog'],
+    routes: ['/'],
     renderer: new Renderer({
       renderAfterTime: 5000
     })
