@@ -17,12 +17,15 @@
     <div class="about__two-parts">
       <div class="about__const">
         <img
-          src="https://iryna-zgn.github.io/rho-blog/static/about/img.jpg"
+          src="static/about/img.jpg"
           alt="">
       </div>
       <div class="about__var">
-        <p>Я Ірина. Власноручно створене сховище спогадів та думок.</p>
-        <p>Те, про що хочеться розказати.</p>
+        <p>
+          розповіді / фото / фільми / думки <br>
+          те, про що хочу розказати.<br>
+          Ірина.
+        </p>
       </div>
     </div>
   </div>
