@@ -2,11 +2,14 @@
   <ul class="soc-links">
     <li
       v-for="(item, index) in items"
+      v-if="item.isActive"
       :key="index"
       class="soc-links__item">
       <a
         :href="item.url"
-        class="soc-links__link">
+        :title="item.name"
+        class="soc-links__link"
+        target="_blank">
         <span
           :class="['soc-links__icon', 'icon-'+ item.name]"/>
       </a>
@@ -22,15 +25,18 @@ export default {
       items: [
         {
           name: 'instagram',
-          url: '#'
+          url: '#',
+          isActive: false
         },
         {
           name: 'facebook',
-          url: '#'
+          url: '#',
+          isActive: false
         },
         {
           name: 'github',
-          url: '#'
+          url: 'https://github.com/iryna-zgn',
+          isActive: true
         }
       ]
     }

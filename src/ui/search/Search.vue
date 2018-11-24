@@ -6,7 +6,9 @@
         ref="input"
         class="search__input"
         @click="focus">
+        <label for="searchInput">Search</label>
         <input
+          id="searchInput"
           :maxlength="maxlength"
           :placeholder="placeholder"
           type="text"
