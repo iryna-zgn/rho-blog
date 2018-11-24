@@ -9,7 +9,8 @@
         :href="item.url"
         :title="item.name"
         class="soc-links__link"
-        target="_blank">
+        target="_blank"
+        rel="noopener">
         <span
           :class="['soc-links__icon', 'icon-'+ item.name]"/>
       </a>
