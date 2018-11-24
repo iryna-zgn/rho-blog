@@ -44,9 +44,13 @@
                 :src="post.map"
                 alt="">
             </div>
-            <img
-              :src="img.img"
-              alt="">
+            <div class="space"/>
+            <div class="progressive">
+              <img
+                v-progressive="img.img"
+                :src="img.preview"
+                class="preview" >
+            </div>
           </div>
         </div>
         <div
