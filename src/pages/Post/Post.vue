@@ -17,19 +17,23 @@
         v-for="(item, galleryIndex) in post.gallery"
         :key="galleryIndex"
         class="post__gallery-item">
+        <h2
+          v-if="item.title"
+          class="t2 post__gallery-title">
+          {{ item.title }}
+        </h2>
         <div
-          :class="['post__img',
-                   {
-                     'u-50 u-spaced': item.images.length === 2,
-                     'u-33 u-spaced': item.images.length >= 3
-                   }
-        ]">
+          v-if="item.images[0].img !== null"
+          :class="['post__img',{
+            'u-50 u-spaced': item.images.length === 2,
+            'u-33 u-spaced': item.images.length >= 3
+        }]">
           <div
             v-for="(img, imgIndex) in item.images"
             :key="imgIndex"
             :class="['post__img-item',
                      {
-                       'u-stretched': galleryIndex === 0
+                       'u-stretched': galleryIndex === 0 && item.images.length === 1
                      }
             ]"
             @click="setGallery({

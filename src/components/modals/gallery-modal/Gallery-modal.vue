@@ -20,7 +20,7 @@
               @click="slideGalleryImg('next')"/>
           </div>
           <div
-            v-if="gallery.shortText !== ''"
+            v-if="gallery.shortText !== null"
             class="gallery__const">
             {{ gallery.shortText }}
           </div>
