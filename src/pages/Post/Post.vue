@@ -22,8 +22,17 @@
           class="t2 post__gallery-title">
           {{ item.title }}
         </h2>
+        <ul
+          v-if="item.list"
+          class="post__gallery-list">
+          <li
+            v-for="(item, index) in item.list"
+            :key="index">
+            {{ item }}
+          </li>
+        </ul>
         <div
-          v-if="item.images[0].img !== null"
+          v-if="item.images"
           :class="['post__img',{
             'u-50 u-spaced': item.images.length === 2,
             'u-33 u-spaced': item.images.length >= 3
@@ -48,13 +57,9 @@
                 :src="post.map"
                 alt="">
             </div>
-            <div class="space"/>
-            <div class="progressive">
-              <img
-                v-progressive="img.img"
-                :src="img.preview"
-                class="preview" >
-            </div>
+            <img
+              :src="img.img"
+              alt="" >
           </div>
         </div>
         <div

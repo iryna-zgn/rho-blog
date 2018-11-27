@@ -84,9 +84,11 @@ export default {
         tags.forEach(e => tagsSet.add(e))
         post.tags = [...tagsSet]
 
-        post.gallery.forEach(e => {
-          e.text = `<p>${e.text.replace(/\/n/ig, '</p><p>')}</p>`
-        })
+        post.gallery
+          .filter(e => e.text)
+          .forEach(e => {
+            e.text = `<p>${e.text.replace(/\/n/ig, '</p><p>')}</p>`
+          })
       })
       state.posts = posts
       // for home page
@@ -131,6 +133,7 @@ export default {
       document.querySelector('body').classList.add('is-fixed')
 
       state.galleryModal.gallery = gallery
+        .filter(e => e.images)
         .map(e => e.images)
         .reduce((a, b) => [...a, ...b], [])
       state.galleryModal.currentIndex = state.galleryModal.gallery.findIndex(e => e === currentImage)
