@@ -9,7 +9,6 @@ const productionPlugins = [
 ]
 
 module.exports = {
-  baseUrl: process.env.NODE_ENV === 'production' ? '/rho-blog/' : '/',
   outputDir: 'docs',
   lintOnSave: false,
   configureWebpack: (config) => {
