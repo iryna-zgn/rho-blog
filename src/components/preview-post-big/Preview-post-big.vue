@@ -1,13 +1,13 @@
 <template>
   <div
     class="post">
-    <h2 class="t1 post__title">
+    <h1 class="t1 post__title">
       <span
         class="post__title-link"
         @click="goToPost(post.rout)">
         {{ post.title }}
       </span>
-    </h2>
+    </h1>
     <div class="post__tags">
       <span
         v-for="(tag, index) in post.tags"
