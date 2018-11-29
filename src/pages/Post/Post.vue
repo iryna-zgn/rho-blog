@@ -63,6 +63,11 @@
           </div>
         </div>
         <div
+          v-if="item.quote"
+          class="post__quote">
+          {{ item.quote }}
+        </div>
+        <div
           class="post__text"
           v-html="item.text"/>
       </div>

@@ -19,4 +19,5 @@ yarn-error.log*
 *.sln
 *.sw*
 
+docs
 vue.config.js
