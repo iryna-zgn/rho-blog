@@ -59,7 +59,12 @@
             </div>
             <img
               :src="img.img"
-              alt="" >
+              alt="">
+          </div>
+          <div
+            v-if="item.galleryCapture"
+            class="post__img-capture">
+            {{ item.galleryCapture }}
           </div>
         </div>
         <div
