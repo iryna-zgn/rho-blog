@@ -1,18 +1,10 @@
 <template>
-  <div
-    v-if="post">
+  <div>
     <div class="post">
-      <h1 class="t1 post__title">
-        {{ post.title }}
-      </h1>
-      <div class="post__tags">
-        <span
-          v-for="(tag, index) in post.tags"
-          :key="index"
-          class="post__tag">
-          #{{ t(tag) }}
-        </span>
-      </div>
+      <post-title
+        :title="post.title"/>
+      <post-tags
+        :tags="post.tags"/>
       <div
         v-for="(item, galleryIndex) in post.gallery"
         :key="galleryIndex"
@@ -67,35 +59,34 @@
             {{ item.galleryCapture }}
           </div>
         </div>
-        <div
-          v-if="item.quote"
-          class="post__quote">
-          {{ item.quote }}
-          <div>
-            {{ item.quoteAuthor }}
-          </div>
-        </div>
-        <div
-          class="post__text"
-          v-html="item.text"/>
-        <div
-          v-if="item.footnote"
-          class="post__footnote">
-          {{ item.footnote }}
-        </div>
+        <post-quoter
+          :quote="item.quote"
+          :author="item.quoteAuthor"/>
+        <post-text
+          :text="item.text"/>
+        <post-footnote
+          :footnote="item.footnote "/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import tagsTranslate from './../../mixins/tagsTranslate'
+import PostTitle from './../../components/post/title/Title'
+import PostTags from './../../components/post/tags/Tags'
+import PostText from './../../components/post/text/Text'
+import PostQuoter from './../../components/post/quoter/Quoter'
+import PostFootnote from './../../components/post/footnote/Footnote'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Post',
-  mixins: [
-    tagsTranslate
-  ],
+  components: {
+    PostTitle,
+    PostTags,
+    PostText,
+    PostQuoter,
+    PostFootnote
+  },
   data () {
     return {
       rout: this.$route.params.rout

@@ -1,21 +1,12 @@
 <template>
   <div
     class="post">
-    <h1 class="t1 post__title">
-      <span
-        class="post__title-link"
-        @click="goToPost(post.rout)">
-        {{ post.title }}
-      </span>
-    </h1>
-    <div class="post__tags">
-      <span
-        v-for="(tag, index) in post.tags"
-        :key="index"
-        class="post__tag">
-        #{{ t(tag) }}
-      </span>
-    </div>
+    <post-title
+      :title="post.title"
+      is-link
+      @click.native="goToPost(post.rout)"/>
+    <post-tags
+      :tags="post.tags"/>
     <div
       class="post__img"
       @click="goToPost(post.rout)">
@@ -32,11 +23,8 @@
           alt="">
       </div>
     </div>
-    <p
-      v-if="post.description"
-      class="post__desc">
-      {{ post.description }}
-    </p>
+    <post-description
+      :description="post.description"/>
     <blog-more-link
       :text="'Читати'"
       @click.native="goToPost(post.rout)"/>
@@ -44,16 +32,18 @@
 </template>
 
 <script>
+import PostTitle from './../../components/post/title/Title'
+import PostTags from './../../components/post/tags/Tags'
+import PostDescription from './../../components/post/description/Description'
 import BlogMoreLink from './../more-link/More-link.vue'
-import tagsTranslate from './../../mixins/tagsTranslate'
 export default {
   name: 'PreviewPostBig',
   components: {
+    PostTags,
+    PostTitle,
+    PostDescription,
     BlogMoreLink
   },
-  mixins: [
-    tagsTranslate
-  ],
   props: {
     post: {
       type: Object,
