@@ -66,10 +66,18 @@
           v-if="item.quote"
           class="post__quote">
           {{ item.quote }}
+          <div>
+            {{ item.quoteAuthor }}
+          </div>
         </div>
         <div
           class="post__text"
           v-html="item.text"/>
+        <div
+          v-if="item.footnote"
+          class="post__footnote">
+          {{ item.footnote }}
+        </div>
       </div>
     </div>
   </div>

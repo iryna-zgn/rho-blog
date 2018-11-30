@@ -76,21 +76,15 @@ export default {
     [types.LOAD_POSTS] (state, data) {
       const [posts, param] = data
 
-      posts.forEach(function (e) {
-        const post = e
-        const tagsSet = new Set()
-        const tags = e.tags.split(', ')
-
-        tags.forEach(e => tagsSet.add(e))
-        post.tags = [...tagsSet]
-
+      posts.forEach(post => {
+        post.tags = post.tags.split(', ')
         post.gallery
           .filter(e => e.text)
           .forEach(e => {
             e.text = `<p>${e.text.replace(/\/n/ig, '</p><p>')}</p>`
           })
       })
-      state.posts = posts
+      state.posts = posts.filter(e => e.isActive)
       // for home page
       state.homePosts.part = state.posts.slice(0, state.perPage)
       state.homePosts.count = state.posts.length
@@ -136,7 +130,8 @@ export default {
         .filter(e => e.images)
         .map(e => e.images)
         .reduce((a, b) => [...a, ...b], [])
-      state.galleryModal.currentIndex = state.galleryModal.gallery.findIndex(e => e === currentImage)
+      state.galleryModal.currentIndex = state.galleryModal.gallery
+        .findIndex(e => e === currentImage)
     },
     [types.SLIDE_GALLERY_IMG] (state, arrow) {
       const count = state.galleryModal.gallery.length
@@ -175,8 +170,8 @@ export default {
     },
     [types.SEARCH_POSTS] (state, str) {
       state.searchedPosts = state.posts.filter(e => {
-        return e.title.toLowerCase().includes(str.toLowerCase()) ||
-                e.keyWords.toLowerCase().includes(str.toLowerCase())
+        return e.title.toLowerCase().includes(str.trim().toLowerCase()) ||
+                e.keyWords.toLowerCase().includes(str.trim().toLowerCase())
       }).slice(0, 10)
     },
     [types.HIDE_PRELOADER] (state) {
