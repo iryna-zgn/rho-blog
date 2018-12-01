@@ -1,16 +1,16 @@
 <template>
-  <div
-    v-if="footnote"
-    class="post-footnote">
-    {{ footnote }}
-  </div>
+  <h2
+    v-if="subtitle"
+    class="t2 post-subtitle">
+    {{ subtitle }}
+  </h2>
 </template>
 
 <script>
 export default {
-  name: 'PostFootnote',
+  name: 'PostSubtitle',
   props: {
-    footnote: {
+    subtitle: {
       type: String,
       default: null
     }

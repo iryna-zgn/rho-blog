@@ -118,8 +118,8 @@ export default {
       state.tagsTranslations = translations
     },
     [types.SET_GALLERY] (state, galleryInfo) {
-      const { gallery, galleryIndex, imageIndex } = galleryInfo
-      const currentImage = gallery[galleryIndex].images[imageIndex]
+      const { gallery, galleryIndex, imgIndex } = galleryInfo
+      const currentImage = gallery[galleryIndex].images[imgIndex]
 
       state.galleryModal.currentImg = currentImage
 

@@ -1,28 +1,16 @@
 <template>
   <div
-    class="post">
+    class="post-preview-big">
     <post-title
       :title="post.title"
       is-link
       @click.native="goToPost(post.rout)"/>
     <post-tags
       :tags="post.tags"/>
-    <div
-      class="post__img"
-      @click="goToPost(post.rout)">
-      <div class="post__img-item u-stretched">
-        <div
-          v-if="post.map"
-          class="post__map">
-          <img
-            :src="post.map"
-            alt="">
-        </div>
-        <img
-          :src="post.prevImgBig"
-          alt="">
-      </div>
-    </div>
+    <post-preview
+      :preview="post.prevImgBig"
+      :map="post.map"
+      @click.native="goToPost(post.rout)"/>
     <post-description
       :description="post.description"/>
     <blog-more-link
@@ -34,6 +22,7 @@
 <script>
 import PostTitle from './../../components/post/title/Title'
 import PostTags from './../../components/post/tags/Tags'
+import PostPreview from './../../components/post/gallery/Preview'
 import PostDescription from './../../components/post/description/Description'
 import BlogMoreLink from './../more-link/More-link.vue'
 export default {
@@ -41,6 +30,7 @@ export default {
   components: {
     PostTags,
     PostTitle,
+    PostPreview,
     PostDescription,
     BlogMoreLink
   },
