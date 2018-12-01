@@ -1,34 +1,33 @@
 <template>
-  <div
-    v-if="post">
-    <div class="post">
-      <post-title
-        :title="post.title"/>
-      <post-tags
-        :tags="post.tags"/>
-      <div
-        v-for="(item, galleryIndex) in post.gallery"
-        :key="galleryIndex"
-        class="post__part">
-        <post-subtitle
-          :subtitle="item.title"/>
-        <post-list
-          :list="item.list"/>
-        <post-gallery
-          :images="item.images"
-          :gallery="post.gallery"
-          :gallery-index="galleryIndex"
-          :map="post.map"
-          :capture="item.galleryCapture"/>
-        <blog-quoter
-          :quote="item.quote"
-          :author="item.quoteAuthor"/>
-        <post-text
-          :text="item.text"/>
-      </div>
-      <post-footnotes
-        :footnotes="post.footnotes"/>
+  <div 
+    v-if="post"
+    class="post">
+    <post-title
+      :title="post.title"/>
+    <post-tags
+      :tags="post.tags"/>
+    <div
+      v-for="(item, galleryIndex) in post.gallery"
+      :key="galleryIndex"
+      class="post__part">
+      <post-subtitle
+        :subtitle="item.title"/>
+      <post-list
+        :list="item.list"/>
+      <post-gallery
+        :images="item.images"
+        :gallery="post.gallery"
+        :gallery-index="galleryIndex"
+        :map="post.map"
+        :capture="item.galleryCapture"/>
+      <blog-quoter
+        :quote="item.quote"
+        :author="item.quoteAuthor"/>
+      <post-text
+        :text="item.text"/>
     </div>
+    <post-footnotes
+      :footnotes="post.footnotes"/>
   </div>
 </template>
 
