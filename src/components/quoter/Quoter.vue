@@ -1,9 +1,10 @@
 <template>
   <div
     v-if="quote"
-    class="post-quote">
+    class="quote">
     {{ quote }}
-    <div>
+    <div
+      class="quote__author">
       {{ author }}
     </div>
   </div>
@@ -11,7 +12,7 @@
 
 <script>
 export default {
-  name: 'PostQuoter',
+  name: 'BlogQuoter',
   props: {
     quote: {
       type: String,
