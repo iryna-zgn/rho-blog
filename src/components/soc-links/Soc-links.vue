@@ -1,5 +1,7 @@
 <template>
-  <ul class="soc-links">
+  <ul
+    v-if="isActive"
+    class="soc-links">
     <li
       v-for="(item, index) in items"
       v-if="item.isActive"
@@ -23,6 +25,7 @@ export default {
   name: 'SocLinks',
   data () {
     return {
+      isActive: false,
       items: [
         {
           name: 'instagram',
@@ -37,7 +40,7 @@ export default {
         {
           name: 'github',
           url: 'https://github.com/iryna-zgn',
-          isActive: true
+          isActive: false
         }
       ]
     }
