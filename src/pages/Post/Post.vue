@@ -25,9 +25,9 @@
           :author="item.quoteAuthor"/>
         <post-text
           :text="item.text"/>
-        <post-footnote
-          :footnote="item.footnote "/>
       </div>
+      <post-footnotes
+        :footnotes="post.footnotes"/>
     </div>
   </div>
 </template>
@@ -40,7 +40,7 @@ import PostGallery from './../../components/post/gallery/Gallery'
 import PostText from './../../components/post/text/Text'
 import PostList from './../../components/post/list/List'
 import PostQuoter from './../../components/post/quoter/Quoter'
-import PostFootnote from './../../components/post/footnote/Footnote'
+import PostFootnotes from './../../components/post/footnotes/Footnotes'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Post',
@@ -52,7 +52,7 @@ export default {
     PostText,
     PostList,
     PostQuoter,
-    PostFootnote
+    PostFootnotes
   },
   data () {
     return {
