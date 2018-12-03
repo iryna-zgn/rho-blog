@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <blog-quoter
+    <post-quoter
       :quote="quote"
       :author="quoteAuthor"/>
     <div class="about__two-parts">
@@ -21,11 +21,11 @@
 </template>
 
 <script>
-import BlogQuoter from './../../components/quoter/Quoter'
+import PostQuoter from './../../components/post/quoter/Quoter'
 export default {
   name: 'BlogAbout',
   components: {
-    BlogQuoter
+    PostQuoter
   },
   data () {
     return {

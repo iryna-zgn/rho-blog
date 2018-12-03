@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'BlogQuoter',
+  name: 'PostQuoter',
   props: {
     quote: {
       type: String,

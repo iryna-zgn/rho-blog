@@ -20,7 +20,7 @@
         :gallery-index="galleryIndex"
         :map="post.map"
         :capture="item.galleryCapture"/>
-      <blog-quoter
+      <post-quoter
         :quote="item.quote"
         :author="item.quoteAuthor"/>
       <post-text
@@ -39,7 +39,7 @@ import PostGallery from './../../components/post/gallery/Gallery'
 import PostText from './../../components/post/text/Text'
 import PostList from './../../components/post/list/List'
 import PostFootnotes from './../../components/post/footnotes/Footnotes'
-import BlogQuoter from './../../components/quoter/Quoter'
+import BlogAbout from './../../components/post/quoter/Quoter'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Post',
@@ -51,7 +51,7 @@ export default {
     PostText,
     PostList,
     PostFootnotes,
-    BlogQuoter
+    BlogAbout
   },
   data () {
     return {
