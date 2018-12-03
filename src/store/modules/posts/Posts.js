@@ -124,6 +124,11 @@ export default {
         tagsMap.get(tag).postsCount = count
       })
       state.tagsInfo = [...tagsMap.values()]
+      state.tagsInfo.sort(function (a, b) {
+        if (a.tag < b.tag) { return -1 }
+        if (a.tag > b.tag) { return 1 }
+        return 0
+      })
     },
     [types.LOAD_TAGS_TRANSLATIONS] (state, translations) {
       state.tagsTranslations = translations
