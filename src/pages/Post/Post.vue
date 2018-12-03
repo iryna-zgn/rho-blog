@@ -28,6 +28,19 @@
     </div>
     <post-footnotes
       :footnotes="post.footnotes"/>
+    <template
+      v-if="related.length">
+      <div
+        class="post__related">
+        Читайте також
+      </div>
+      <template
+        v-for="post in related">
+        <preview-post-small
+          :post="post"
+          :key="post.rout"/>
+      </template>
+    </template>
   </div>
 </template>
 
@@ -39,7 +52,8 @@ import PostGallery from './../../components/post/gallery/Gallery'
 import PostText from './../../components/post/text/Text'
 import PostList from './../../components/post/list/List'
 import PostFootnotes from './../../components/post/footnotes/Footnotes'
-import BlogAbout from './../../components/post/quoter/Quoter'
+import PostQuoter from './../../components/post/quoter/Quoter'
+import PreviewPostSmall from './../../components/preview-post-small/Preview-post-small'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Post',
@@ -51,7 +65,8 @@ export default {
     PostText,
     PostList,
     PostFootnotes,
-    BlogAbout
+    PostQuoter,
+    PreviewPostSmall
   },
   data () {
     return {
@@ -60,8 +75,14 @@ export default {
   },
   computed: {
     ...mapGetters({
-      post: 'posts/getCurrentPost'
-    })
+      currentPost: 'posts/getCurrentPost'
+    }),
+    post () {
+      return this.currentPost.post
+    },
+    related () {
+      return this.currentPost.related
+    }
   },
   created () {
     this.loadPosts(this.rout)

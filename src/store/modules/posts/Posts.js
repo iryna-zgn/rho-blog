@@ -15,7 +15,10 @@ export default {
       count: 0
     },
     perPage: 3,
-    currentPost: {},
+    currentPost: {
+      post: null,
+      related: []
+    },
     tagsTranslations: {},
     tagsInfo: [],
     galleryModal: {
@@ -95,7 +98,15 @@ export default {
       state.filteredPosts.part = state.filtered.slice(0, state.perPage)
       state.filteredPosts.count = state.filtered.length
       // for post page
-      state.currentPost = posts.filter(e => e.rout === param)[0]
+      state.currentPost.post = posts.filter(e => e.rout === param)[0]
+      if (state.currentPost.post) {
+        state.currentPost.post.tags.forEach(e => {
+          const tag = e
+          state.currentPost.related =
+            posts.filter(e => e.tags.includes(tag))
+              .filter(e => e !== state.currentPost.post).slice(0, 2)
+        })
+      }
 
       const tagsMap = new Map()
       posts.forEach(e => {
