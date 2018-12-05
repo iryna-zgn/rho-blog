@@ -5,7 +5,7 @@
     <span
       v-for="(tag, index) in tags"
       :key="index"
-      class="post-tag__item">
+      class="post-tags__item">
       #{{ t(tag) }}
     </span>
   </div>
