@@ -24,7 +24,7 @@
         <span
           v-for="(tag, index) in post.tags"
           :key="index"
-          class="post__tag">
+          class="post-prev__tag">
           #{{ t(tag) }}
         </span>
       </div>
