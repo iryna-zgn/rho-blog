@@ -12,7 +12,7 @@
       v-if="posts.length < count && !hasSearched"
       class="u-center">
       <blog-more-link
-        :text="'Завантажити ще'"
+        :text="'Показати більше'"
         @click.native="loadMorePosts({
           from: 'filter',
           offset: posts.length})"/>
