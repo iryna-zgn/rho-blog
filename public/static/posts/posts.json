@@ -8,15 +8,32 @@
     "prevImg": "static/posts/lviv-streets/preview.jpg",
     "prevImgBig": "static/posts/lviv-streets/previewBig.jpg",
     "description": "Description Lviv Street",
+    "map": "static/posts/lviv-streets/map.svg",
     "gallery": [
       {
         "images": [
           {
-            "img": "static/posts/lviv-streets/img-1.jpg",
+            "img": "static/posts/lviv-streets/img-2.jpg",
+            "shortText": ""
+          }
+        ]
+      },
+      {
+        "images": [
+          {
+            "img": "static/posts/lviv-streets/img-5.jpg",
             "shortText": ""
           },
           {
-            "img": "static/posts/lviv-streets/img-2.jpg",
+            "img": "static/posts/lviv-streets/img-9.jpg",
+            "shortText": ""
+          },
+          {
+            "img": "static/posts/lviv-streets/img-6.jpg",
+            "shortText": ""
+          },
+          {
+            "img": "static/posts/lviv-streets/img-1.jpg",
             "shortText": ""
           },
           {
@@ -28,23 +45,11 @@
             "shortText": ""
           },
           {
-            "img": "static/posts/lviv-streets/img-5.jpg",
-            "shortText": ""
-          },
-          {
-            "img": "static/posts/lviv-streets/img-6.jpg",
-            "shortText": ""
-          },
-          {
-            "img": "static/posts/lviv-streets/img-7.jpg",
-            "shortText": ""
-          },
-          {
             "img": "static/posts/lviv-streets/img-8.jpg",
             "shortText": ""
           },
           {
-            "img": "static/posts/lviv-streets/img-9.jpg",
+            "img": "static/posts/lviv-streets/img-2.jpg",
             "shortText": ""
           }
         ]
