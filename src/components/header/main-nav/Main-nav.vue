@@ -6,7 +6,8 @@
         :key="index"
         :to="{name: 'posts', params: {tag: tagInfo.tag}}"
         tag="li"
-        class="main-nav__item">
+        class="main-nav__item"
+        :class="[{'is-active-tag': hasCurrentTag(tagInfo.tag)}]">
         <span
           class="main-nav__link">
           #{{ t(tagInfo.tag) }}
@@ -44,7 +45,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      tagsInfo: 'posts/getTagsInfo'
+      tagsInfo: 'posts/getTagsInfo',
+      currentPost: 'posts/getCurrentPost'
     })
   },
   watch: {
@@ -56,7 +58,12 @@ export default {
   methods: {
     ...mapActions({
       loadPosts: 'posts/loadPosts'
-    })
+    }),
+    hasCurrentTag (tag) {
+      if (this.currentPost.post) {
+        return this.currentPost.post.tags.some(e => e === tag)
+      }
+    }
   }
 }
 </script>

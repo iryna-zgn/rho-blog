@@ -12,10 +12,12 @@
       .main-nav__count
         opacity: 1
         visibility: visible
+    &.is-active-tag
+      .main-nav__link
+        color: rgba($color-accent, .85)
   &__link
     display: inline-block
     font-size: 20px
-    // color: rgba($color-text, .7)
     color: $color-text-lighter
     cursor: pointer
     +line-hover

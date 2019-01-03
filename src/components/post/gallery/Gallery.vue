@@ -22,7 +22,7 @@
         imgIndex
     })">
       <div
-        v-if="map && galleryIndex==0"
+        v-if="map && galleryIndex===0 && images.length === 1"
         class="post-gallery__map">
         <img
           :src="map"
