@@ -1,11 +1,13 @@
 <template>
   <div
+    v-masonry
     v-if="images"
-    v-masonry transition-duration="0.3s" item-selector=".post-gallery__item"
     :class="['post-gallery',{
       'u-50 u-spaced': images.length === 2,
       'u-33 u-spaced': images.length >= 3
-  }]">
+    }]"
+    transition-duration="0.3s"
+    item-selector=".post-gallery__item">
     <div
       v-masonry-tile
       v-for="(img, imgIndex) in images"

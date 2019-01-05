@@ -13,7 +13,8 @@
       </div>
       <img
         v-if="post.map"
-        :src="post.map" alt=""
+        :src="post.map"
+        alt=""
         class="post-prev__map">
     </div>
     <div class="post-prev__var">

@@ -5,9 +5,9 @@
         v-for="(tagInfo, index) in tagsInfo"
         :key="index"
         :to="{name: 'posts', params: {tag: tagInfo.tag}}"
+        :class="[{'is-active-tag': hasCurrentTag(tagInfo.tag)}]"
         tag="li"
-        class="main-nav__item"
-        :class="[{'is-active-tag': hasCurrentTag(tagInfo.tag)}]">
+        class="main-nav__item">
         <span
           class="main-nav__link">
           #{{ t(tagInfo.tag) }}
