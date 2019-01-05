@@ -10,12 +10,12 @@
           src="static/posts/dummy_580x435.jpg"
           alt=""
           class="post-prev__dummy-img">
+        <img
+          v-if="post.map"
+          :src="post.map"
+          alt=""
+          class="post-prev__map">
       </div>
-      <img
-        v-if="post.map"
-        :src="post.map"
-        alt=""
-        class="post-prev__map">
     </div>
     <div class="post-prev__var">
       <h3 class="t2 post-prev__title">
