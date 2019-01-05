@@ -11,6 +11,10 @@
           alt=""
           class="post-prev__dummy-img">
       </div>
+      <img
+        v-if="post.map"
+        :src="post.map" alt=""
+        class="post-prev__map">
     </div>
     <div class="post-prev__var">
       <h3 class="t2 post-prev__title">

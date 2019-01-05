@@ -32,11 +32,11 @@
         :src="img.img"
         alt="">
     </div>
-    <div
+    <!-- <div
       v-if="capture"
       class="post-gallery__capture">
       {{ capture }}
-    </div>
+    </div> -->
   </div>
 </template>
 
