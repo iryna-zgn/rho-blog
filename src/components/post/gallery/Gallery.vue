@@ -1,43 +1,46 @@
 <template>
   <div
-    v-masonry
     v-if="images"
-    :class="['post-gallery',{
-      'u-50 u-spaced': images.length === 2,
-      'u-33 u-spaced': images.length >= 3
-    }]"
-    item-selector=".post-gallery__item">
+    class="post-gallery">
     <div
-      v-masonry-tile
-      v-for="(img, imgIndex) in images"
-      :key="imgIndex"
-      :class="['post-gallery__item',
-               {
-                 'u-stretched': galleryIndex === 0 &&
-                   images.length === 1
-               }
-      ]"
-      @click="setGallery({
-        gallery,
-        galleryIndex,
-        imgIndex
-    })">
+      v-masonry
+      :class="['post-gallery__grid', {
+        'u-50 u-spaced': images.length === 2,
+        'u-33 u-spaced': images.length >= 3
+      }]"
+      item-selector=".post-gallery__item">
       <div
-        v-if="map && galleryIndex===0 && images.length === 1"
-        class="post-gallery__map">
+        v-masonry-tile
+        v-for="(img, imgIndex) in images"
+        :key="imgIndex"
+        :class="['post-gallery__item',
+                 {
+                   'u-stretched': galleryIndex === 0 &&
+                     images.length === 1
+                 }
+        ]"
+        @click="setGallery({
+          gallery,
+          galleryIndex,
+          imgIndex
+      })">
+        <div
+          v-if="map && galleryIndex===0 && images.length === 1"
+          class="post-gallery__map">
+          <img
+            :src="map"
+            alt="">
+        </div>
         <img
-          :src="map"
+          :src="img.img"
           alt="">
       </div>
-      <img
-        :src="img.img"
-        alt="">
     </div>
-    <!-- <div
+    <div
       v-if="capture"
       class="post-gallery__capture">
       {{ capture }}
-    </div> -->
+    </div>
   </div>
 </template>
 

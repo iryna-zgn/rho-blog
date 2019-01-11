@@ -25,7 +25,7 @@ export default {
   name: 'SocLinks',
   data () {
     return {
-      isActive: false,
+      isActive: true,
       items: [
         {
           name: 'instagram',
@@ -40,7 +40,7 @@ export default {
         {
           name: 'github',
           url: 'https://github.com/iryna-zgn',
-          isActive: false
+          isActive: true
         }
       ]
     }

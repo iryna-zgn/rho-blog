@@ -85,11 +85,13 @@ export default {
     }
   },
   created () {
+    this.showPreloader()
     this.loadPosts(this.rout)
   },
   methods: {
     ...mapActions({
-      loadPosts: 'posts/loadPosts'
+      loadPosts: 'posts/loadPosts',
+      showPreloader: 'posts/showPreloader'
     })
   }
 }
