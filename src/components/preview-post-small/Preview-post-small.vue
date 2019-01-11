@@ -10,11 +10,11 @@
           src="static/posts/dummy_580x435.jpg"
           alt=""
           class="post-prev__dummy-img">
-        <img
+          <!-- <img
           v-if="post.map"
           :src="post.map"
           alt=""
-          class="post-prev__map">
+          class="post-prev__map"> -->
       </div>
     </div>
     <div class="post-prev__var">

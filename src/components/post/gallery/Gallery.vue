@@ -6,7 +6,6 @@
       'u-50 u-spaced': images.length === 2,
       'u-33 u-spaced': images.length >= 3
     }]"
-    transition-duration="0.3s"
     item-selector=".post-gallery__item">
     <div
       v-masonry-tile
