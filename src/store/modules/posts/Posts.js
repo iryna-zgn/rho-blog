@@ -140,7 +140,7 @@ export default {
       state.galleryModal.currentImg = currentImage
 
       state.galleryModal.isShown = true
-      // document.querySelector('body').classList.add('is-fixed')
+      document.querySelector('body').classList.add('is-fixed')
 
       state.galleryModal.gallery = gallery
         .filter(e => e.images)
@@ -170,9 +170,9 @@ export default {
     },
     [types.CLOSE_MODAL] (state, modalName) {
       state[modalName].isShown = false
-      // setTimeout(function () {
-      //   document.querySelector('body').classList.remove('is-fixed')
-      // }, 200)
+      setTimeout(function () {
+        document.querySelector('body').classList.remove('is-fixed')
+      }, 200)
     },
     [types.LOAD_MORE_POSTS] (state, payload) {
       const { from, offset } = payload
