@@ -81,11 +81,15 @@ export default {
 
       posts.forEach(post => {
         post.tags = post.tags.split(', ')
-        post.gallery
-          .filter(e => e.text)
-          .forEach(e => {
-            e.text = `<p>${e.text.replace(/\/n/ig, '</p><p>')}</p>`
-          })
+        const filter = (key) => {
+          return post.gallery
+            .filter(e => e[key])
+            .forEach(e => {
+              e[key] = `<p>${e[key].replace(/\/n/ig, '</p><p>')}</p>`
+            })
+        }
+        filter('text')
+        filter('textQuote')
       })
       state.posts = posts.filter(e => e.isActive)
       // for home page
@@ -140,7 +144,7 @@ export default {
       state.galleryModal.currentImg = currentImage
 
       state.galleryModal.isShown = true
-      document.querySelector('body').classList.add('is-fixed')
+      document.querySelector('body, html').classList.add('is-fixed')
 
       state.galleryModal.gallery = gallery
         .filter(e => e.images)
@@ -171,7 +175,7 @@ export default {
     [types.CLOSE_MODAL] (state, modalName) {
       state[modalName].isShown = false
       setTimeout(function () {
-        document.querySelector('body').classList.remove('is-fixed')
+        document.querySelector('body, html').classList.remove('is-fixed')
       }, 200)
     },
     [types.LOAD_MORE_POSTS] (state, payload) {

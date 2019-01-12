@@ -29,8 +29,8 @@ export default {
       items: [
         {
           name: 'instagram',
-          url: '#',
-          isActive: false
+          url: 'https://www.instagram.com/dmytruk.i/',
+          isActive: true
         },
         {
           name: 'facebook',
@@ -39,8 +39,8 @@ export default {
         },
         {
           name: 'github',
-          url: 'https://github.com/iryna-zgn',
-          isActive: true
+          url: '#',
+          isActive: false
         }
       ]
     }

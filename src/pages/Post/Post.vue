@@ -25,6 +25,10 @@
         :author="item.quoteAuthor"/>
       <post-text
         :text="item.text"/>
+      <post-text
+        v-if="item.textQuote"
+        :text="item.textQuote"
+        is-decorate/>
     </div>
     <post-footnotes
       :footnotes="post.footnotes"/>
