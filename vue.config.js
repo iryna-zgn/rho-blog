@@ -7,7 +7,7 @@ const productionPlugins = [
   })
 ]
 module.exports = {
-  baseUrl: process.env.NODE_ENV === 'production' ? '/rho/' : '/',
+  baseUrl: process.env.NODE_ENV === 'production' ? '/vuejs-blog/' : '/',
   outputDir: 'docs',
   lintOnSave: false,
   configureWebpack: (config) => {
