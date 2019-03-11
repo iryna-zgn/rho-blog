@@ -14,7 +14,8 @@
       <div
         class="modal__container">
         <slot
-          name="content"/></div>
+          name="content"/>
+      </div>
     </div>
   </transition>
 </template>
