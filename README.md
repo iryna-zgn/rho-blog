@@ -1,4 +1,6 @@
-# rho-blog
+# Rho-blog
+
+[Link on GitHub Page](https://iryna-zgn.github.io/vue.js-blog)
 
 ## Project setup
 ```
